@@ -31,8 +31,6 @@ const quickLinks = [
 ];
 
 const Footer = () => {
-  const [kokandemail, setKokandEmail] = useState("")
-
   const date = new Date();
   const year = date.getFullYear();
   return (
@@ -45,17 +43,15 @@ const Footer = () => {
                 <Link to="/home" className=" d-flex align-items-center gap-2">
                   <i class="ri-car-line"></i>
                   <span>
-                  Avtomobil ijarasi <br/> xizmati
+                    Avtomobil ijarasi <br /> xizmati
                   </span>
                 </Link>
               </h1>
             </div>
             <p className="footer__logo-content">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur, distinctio, itaque reiciendis ab cupiditate harum ex
-              quam veniam, omnis expedita animi quibusdam obcaecati mollitia?
-              Delectus et ad illo recusandae temporibus?
+              Bizning avtomobil ijara xizmati sizga qulay va ishonchli transport vositalarini taqdim etadi. Har xil toifadagi mashinalarni qisqa yoki uzoq muddatga ijaraga olishingiz mumkin. Yangi, qulay va texnik jihatdan mukammal holatda bo'lgan avtomobillarimiz sizning ehtiyojlaringizga mos keladi.
             </p>
+            <p className="footer__logo-content">Qo'shimcha ma'lumot va buyurtma uchun biz bilan bog'laning!</p>
           </Col>
 
           <Col lg="2" md="4" sm="6">
@@ -87,14 +83,6 @@ const Footer = () => {
             <div className="mb-4">
               <h5 className="footer__link-title">Axborotlar</h5>
               <p className="section__description">Bizning yangiliklarimizga obuna bo'ling</p>
-              <div className="newsletter">
-                <form>
-                <input type="email" onClick={(e) => setKokandEmail(e?.target?.value)}  placeholder="Elektron pochtangiz" />
-                </form>
-                <span>
-                  <i class="ri-send-plane-line"></i>
-                </span>
-              </div>
             </div>
           </Col>
 
