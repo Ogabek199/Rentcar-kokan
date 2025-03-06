@@ -22,7 +22,7 @@ const carData = [
     seatType: "O'rindiqlarni isitish",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      "Ushbu zamonaviy va qulay avtomobil sizning sayohatingizni yanada yoqimli qiladi. Yuqori sifat, qulay boshqaruv va zamonaviy funksiyalar bilan jihozlangan ushbu model uzoq va qisqa masofalar uchun ideal tanlovdir.",
   },
 
   {
@@ -38,7 +38,7 @@ const carData = [
     seatType: "O'rindiqlarni isitish",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      "Ushbu zamonaviy va qulay avtomobil sizning sayohatingizni yanada yoqimli qiladi. Yuqori sifat, qulay boshqaruv va zamonaviy funksiyalar bilan jihozlangan ushbu model uzoq va qisqa masofalar uchun ideal tanlovdir.",
   },
 
   {
@@ -54,7 +54,7 @@ const carData = [
     seatType: "O'rindiqlarni isitish",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      "Ushbu zamonaviy va qulay avtomobil sizning sayohatingizni yanada yoqimli qiladi. Yuqori sifat, qulay boshqaruv va zamonaviy funksiyalar bilan jihozlangan ushbu model uzoq va qisqa masofalar uchun ideal tanlovdir.",
   },
 
   {
@@ -70,7 +70,7 @@ const carData = [
     seatType: "O'rindiqlarni isitish",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      "Ushbu zamonaviy va qulay avtomobil sizning sayohatingizni yanada yoqimli qiladi. Yuqori sifat, qulay boshqaruv va zamonaviy funksiyalar bilan jihozlangan ushbu model uzoq va qisqa masofalar uchun ideal tanlovdir.",
   },
 
   {
@@ -86,7 +86,7 @@ const carData = [
     seatType: "O'rindiqlarni isitish",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      "Ushbu zamonaviy va qulay avtomobil sizning sayohatingizni yanada yoqimli qiladi. Yuqori sifat, qulay boshqaruv va zamonaviy funksiyalar bilan jihozlangan ushbu model uzoq va qisqa masofalar uchun ideal tanlovdir.",
   },
 
   {
@@ -102,14 +102,14 @@ const carData = [
     seatType: "O'rindiqlarni isitish",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      "Ushbu zamonaviy va qulay avtomobil sizning sayohatingizni yanada yoqimli qiladi. Yuqori sifat, qulay boshqaruv va zamonaviy funksiyalar bilan jihozlangan ushbu model uzoq va qisqa masofalar uchun ideal tanlovdir.",
   },
 
   {
     id: 7,
-    brand: "Audi",
+    brand: "Toyota",
     rating: 82,
-    carName: "Audi Fiesta",
+    carName: "Toyota Corolla",
     imgUrl: img07,
     model: "Model 3",
     price: 50,
@@ -118,23 +118,23 @@ const carData = [
     seatType: "O'rindiqlarni isitish",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      "Ushbu zamonaviy va qulay avtomobil sizning sayohatingizni yanada yoqimli qiladi. Yuqori sifat, qulay boshqaruv va zamonaviy funksiyalar bilan jihozlangan ushbu model uzoq va qisqa masofalar uchun ideal tanlovdir.",
   },
 
   {
     id: 8,
-    brand: "Colorado",
+    brand: "Mercedes Benz",
     rating: 52,
-    carName: "Rolls Royce Colorado",
+    carName: "C-Class Coupe.",
     imgUrl: img08,
     model: "Model 3",
     price: 50,
-    speed: "220km",
+    speed: "300km",
     gps: "GPS navigatsiyasi",
     seatType: "O'rindiqlarni isitish",
     automatic: "Automatic",
     description:
-      " Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam. Dolor labore lorem no accusam sit justo sadipscing labore invidunt voluptua, amet duo et gubergren vero gubergren dolor. At diam.",
+      "Ushbu zamonaviy va qulay avtomobil sizning sayohatingizni yanada yoqimli qiladi. Yuqori sifat, qulay boshqaruv va zamonaviy funksiyalar bilan jihozlangan ushbu model uzoq va qisqa masofalar uchun ideal tanlovdir.",
   },
 ];
 

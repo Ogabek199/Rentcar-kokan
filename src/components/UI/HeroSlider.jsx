@@ -24,7 +24,6 @@ const HeroSlider = () => {
           <div className="slider__content ">
             <h4 className="text-light mb-3">ijara uchun $70 kuniga</h4>
             <h1 className="text-light mb-4">Hoziroq band qiling va 50% foiz chegirmaga ega bo'ling</h1>
-
             <button className="btn reserve__btn mt-4">
               <Link to="/cars">Hozir zaxiralash</Link>
             </button>

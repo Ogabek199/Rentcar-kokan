@@ -28,21 +28,15 @@ const About = () => {
             <Col lg="6" md="6" sm="12">
               <div className="about__page-content">
                 <h2 className="section__title">
-                Biz xavfsiz sayohat echimlarini taqdim etishga sodiqmiz
+                  Biz xavfsiz sayohat echimlarini taqdim etishga sodiqmiz
                 </h2>
 
                 <p className="section__description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet veniam assumenda aperiam accusantium ex autem
-                  perferendis repellendus nostrum delectus. Nemo et dolore est
-                  tempore rem minima adipisci magni dolorum ipsam.
+                  Biz mijozlarimizga qulay, ishonchli va xavfsiz sayohat xizmatlarini taklif etamiz. Har bir mijozning ehtiyojlarini inobatga olgan holda, eng yuqori sifatli transport yechimlarini taqdim etishga intilamiz.
                 </p>
 
                 <p className="section__description">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Eveniet veniam assumenda aperiam accusantium ex autem
-                  perferendis repellendus nostrum delectus. Nemo et dolore est
-                  tempore rem minima adipisci magni dolorum ipsam.
+                  Yo‘nalishlaringizni xavfsiz va qulay tarzda bosib o‘tishingiz uchun bizning xizmatlarimizga ishonishingiz mumkin. Tajribali haydovchilar, zamonaviy transport vositalari va yuqori darajadagi xizmat — bizning ustuvor maqsadlarimizdir.
                 </p>
 
                 <div className=" d-flex align-items-center gap-3 mt-4">

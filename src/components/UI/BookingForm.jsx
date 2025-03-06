@@ -1,36 +1,105 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/booking-form.css";
 import { Form, FormGroup } from "reactstrap";
 
 const BookingForm = () => {
+  const [formData, setFormData] = useState({
+    ism: "",
+    familiya: "",
+    email: "",
+    telefon: "",
+    manzildan: "",
+    manzilgacha: "",
+    odamSoni: "1 odam",
+    yukSoni: "1ta yuk",
+    sana: "",
+    vaqt: "",
+    izoh: "",
+  });
+
   const submitHandler = (event) => {
     event.preventDefault();
+    alert("Ma'lumotlar jo‘natildi!");
+    setFormData({
+      ism: "",
+      familiya: "",
+      email: "",
+      telefon: "",
+      manzildan: "",
+      manzilgacha: "",
+      odamSoni: "1 odam",
+      yukSoni: "1ta yuk",
+      sana: "",
+      vaqt: "",
+      izoh: "",
+    });
   };
+
+  const changeHandler = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
     <Form onSubmit={submitHandler}>
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
-        <input type="text" placeholder="Ism" />
+        <input
+          type="text"
+          name="ism"
+          value={formData.ism}
+          onChange={changeHandler}
+          placeholder="Ism"
+        />
       </FormGroup>
       <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-        <input type="text" placeholder="Familiya" />
+        <input
+          type="text"
+          name="familiya"
+          value={formData.familiya}
+          onChange={changeHandler}
+          placeholder="Familiya"
+        />
       </FormGroup>
 
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
-        <input type="email" placeholder="Elektron pochta" />
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={changeHandler}
+          placeholder="Elektron pochta"
+        />
       </FormGroup>
       <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-        <input type="number" placeholder="Telefon raqami" />
+        <input
+          type="number"
+          name="telefon"
+          value={formData.telefon}
+          onChange={changeHandler}
+          placeholder="Telefon raqami"
+        />
       </FormGroup>
 
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
-        <input type="text" placeholder="Manzildan" />
+        <input
+          type="text"
+          name="manzildan"
+          value={formData.manzildan}
+          onChange={changeHandler}
+          placeholder="Manzildan"
+        />
       </FormGroup>
       <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-        <input type="text" placeholder="Manzilgacha" />
+        <input
+          type="text"
+          name="manzilgacha"
+          value={formData.manzilgacha}
+          onChange={changeHandler}
+          placeholder="Manzilgacha"
+        />
       </FormGroup>
 
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
-        <select name="" id="">
+        <select name="odamSoni" value={formData.odamSoni} onChange={changeHandler}>
           <option value="1 odam">1 odam</option>
           <option value="2 odam">2 odam</option>
           <option value="3 odam">3 odam</option>
@@ -39,7 +108,7 @@ const BookingForm = () => {
         </select>
       </FormGroup>
       <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-        <select name="" id="">
+        <select name="yukSoni" value={formData.yukSoni} onChange={changeHandler}>
           <option value="1ta yuk">1ta yuk</option>
           <option value="2ta yuk">2ta yuk</option>
           <option value="3ta yuk">3ta yuk</option>
@@ -49,11 +118,20 @@ const BookingForm = () => {
       </FormGroup>
 
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
-        <input type="date" placeholder="Journey Date" />
+        <input
+          type="date"
+          name="sana"
+          value={formData.sana}
+          onChange={changeHandler}
+          placeholder="Journey Date"
+        />
       </FormGroup>
       <FormGroup className="booking__form d-inline-block ms-1 mb-4">
         <input
           type="time"
+          name="vaqt"
+          value={formData.vaqt}
+          onChange={changeHandler}
           placeholder="Journey Time"
           className="time__picker"
         />
@@ -62,11 +140,16 @@ const BookingForm = () => {
       <FormGroup>
         <textarea
           rows={5}
-          type="textarea"
+          name="izoh"
+          value={formData.izoh}
+          onChange={changeHandler}
           className="textarea"
           placeholder="Izoh qoldirish..."
         ></textarea>
       </FormGroup>
+      <button type="submit" className="bg-blue-700 text-white py-1 px-4">
+        Jo'natish
+      </button>
     </Form>
   );
 };

@@ -13,20 +13,6 @@ const CarListing = () => {
       <section>
         <Container>
           <Row>
-            {/* <Col lg="12">
-              <div className=" d-flex align-items-center gap-3 mb-5">
-                <span className=" d-flex align-items-center gap-2">
-                  <i class="ri-sort-asc"></i> Saralash turi
-                </span>
-
-                <select>
-                  <option>Tanlang</option>
-                  <option value="low">Pastdan yuqoriga</option>
-                  <option value="high">Yuqoridan pastga</option>
-                </select>
-              </div>
-            </Col> */}
-
             {carData.map((item) => (
               <CarItem item={item} key={item.id} />
             ))}
