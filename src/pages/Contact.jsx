@@ -99,13 +99,13 @@ const Contact = () => {
                 </p>
                 <div className=" d-flex align-items-center gap-2">
                   <h6 className="fs-6 mb-0">Telefon:</h6>
-                  <p className="section__description mb-0">+998 90 150 26 57</p>
+                  <a href="tel:+998913238587" style={{textDecoration: "none"}} className="section__description mb-0">+998 91 323 85 87</a>
                 </div>
 
                 <div className=" d-flex align-items-center gap-2">
                   <h6 className="mb-0 fs-6">Email:</h6>
                   <p className="section__description mb-0">
-                    otaxonovogabek633@gmail.com
+                    raxmonaliyev906@gmail.com
                   </p>
                 </div>
               </div>
