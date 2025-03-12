@@ -14,7 +14,7 @@ const OUR__MEMBERS = [
     instUrl: "#",
     twitUrl: "#",
     linkedinUrl: "#",
-    imgUrl: ava01,
+    imgUrl: "https://cdn-uz.kursiv.media/wp-content/uploads/2024/09/snimok-ekrana-2024-09-11-v-09.54.51.png",
   },
 
   {
@@ -24,7 +24,7 @@ const OUR__MEMBERS = [
     instUrl: "#",
     twitUrl: "#",
     linkedinUrl: "#",
-    imgUrl: ava02,
+    imgUrl: "https://storage.kun.uz/source/uploads/20180104/images/042018/14324.jpg",
   },
 
   {
@@ -34,7 +34,7 @@ const OUR__MEMBERS = [
     instUrl: "#",
     twitUrl: "#",
     linkedinUrl: "#",
-    imgUrl: ava03,
+    imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG_Tk3biYlPOYB4RsOpYZPlMwCv_vcksmcIg&s",
   },
 
   {
@@ -44,7 +44,7 @@ const OUR__MEMBERS = [
     instUrl: "#",
     twitUrl: "#",
     linkedinUrl: "#",
-    imgUrl: ava01,
+    imgUrl: "https://media.istockphoto.com/id/183261063/photo/studio-portrait-of-handsome-man-in-late-20s-on-grey.jpg?s=612x612&w=0&k=20&c=SFg1j7OwuPL_WZ171sC9lWXbirzwefPYa9-aKjaGNOo=",
   },
 ];
 
@@ -55,7 +55,7 @@ const OurMembers = () => {
         <Col lg="3" md="3" sm="4" xs="6" key={index} className="mb-4">
           <div className="single__member">
             <div className="single__member-img">
-              <img src={item.imgUrl} alt="" className="w-100" />
+              <img src={item.imgUrl} style={{height: "200px"}} alt="" className="w-100" />
 
               <div className="single__member-social">
                 <Link to={item.fbUrl}>
