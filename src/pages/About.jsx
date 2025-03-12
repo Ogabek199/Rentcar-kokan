@@ -46,7 +46,7 @@ const About = () => {
 
                   <div>
                     <h6 className="section__subtitle">Har qanday yordam kerakmi?</h6>
-                    <h4>+998 90 150 26 57</h4>
+                    <a href="tel:+998913238587" style={{textDecoration: "none", color: "blue", fontSize: "20px"}}>+998 91 323 85 87</a>
                   </div>
                 </div>
               </div>
