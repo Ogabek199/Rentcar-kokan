@@ -18,7 +18,7 @@ const BecomeDriverSection = () => {
               Biz bilan pul ishlashni hohlaysizmi? Shunday ekan, kechikmang
             </h2>
 
-            <button onClick={() => alert("Murojaat uchun: +998 90 150 26 57")} className="btn become__driver-btn mt-4">
+            <button onClick={() => alert("Murojaat uchun: +998 91 323 85 87")} className="btn become__driver-btn mt-4">
               Haydovchi bo'l
             </button>
           </Col>
