@@ -9,8 +9,67 @@
       name="description"
       content="Web site created using create-react-app"
     />
+    <!-- Seo uchun taglar start -->
+    <!-- Primary Meta Tags -->
+    <title>RentCar Kokand – Avtomobil ijarasi xizmatlari</title>
+    <meta
+      name="title"
+      content="RentCar Kokand – Avtomobil ijarasi xizmatlari"
+    />
+    <meta
+      name="description"
+      content="Farg‘ona vodiysida tez va oson avtomobil ijarasi. Arzon narxlar, qulay xizmat va keng avtomobil tanlovi. Bugunoq buyurtma bering!"
+    />
+    <meta
+      name="keywords"
+      content="Rent car, Kokand, Farg‘ona, Avtomobil ijarasi, Arzon mashina ijarasi, ijaraga mashina olish"
+    />
+    <meta name="author" content="RentCar Kokand Team" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="uz" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rentcar-kokand.uz/" />
+    <meta
+      property="og:title"
+      content="RentCar Kokand – Avtomobil ijarasi xizmatlari"
+    />
+    <meta
+      property="og:description"
+      content="Farg‘ona vodiysida tez va oson avtomobil ijarasi. Arzon narxlar, qulay xizmat va keng avtomobil tanlovi."
+    />
+    <meta
+      property="og:image"
+      content="https://rentcar-kokand.uz/og-image.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://rentcar-kokand.uz/" />
+    <meta
+      property="twitter:title"
+      content="RentCar Kokand – Avtomobil ijarasi xizmatlari"
+    />
+    <meta
+      property="twitter:description"
+      content="Farg‘ona vodiysida tez va oson avtomobil ijarasi. Arzon narxlar, qulay xizmat va keng avtomobil tanlovi."
+    />
+    <meta
+      property="twitter:image"
+      content="https://rentcar-kokand.uz/og-image.jpg"
+    />
+
+    <!-- Seo uchun taglar end -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <!-- Humans txt -->
+    <link rel="author" href="/humans.txt" />
+    <!-- Iphone user add home screen icon -->
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -25,7 +84,32 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXX");
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "Car",
+        "name": "Chevrolet Cobalt",
+        "brand": "Chevrolet",
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "UZS",
+          "price": "190000",
+          "availability": "https://schema.org/InStock"
+        }
+      }
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

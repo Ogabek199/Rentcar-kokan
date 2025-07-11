@@ -1,0 +1,9 @@
+/* TEAM */
+Developer: Og‘abek Otaxonov
+From: Farg‘ona vil., Kokand
+GitHub: github.com/username
+Telegram: @yourtelegram
+
+/* SITE */
+Last update: 2025-07-11
+Software: React, TailwindCSS, Node.js

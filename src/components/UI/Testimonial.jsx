@@ -58,7 +58,7 @@ const Testimonial = () => {
           <img src="https://cdn.uza.uz/2024/11/26/18/14/huEQojrUvNuqipRKZxbaacI7k3KbpnbH_front.PNG" alt="photo" className="w-25 h-25 rounded-2" />
 
           <div>
-            <h6 className="mb-0 mt-3">Madina</h6>
+            <h6 className="mb-0 mt-3">Abdulaziz</h6>
             <p className="section__description">Mijoz</p>
           </div>
         </div>
@@ -88,7 +88,7 @@ const Testimonial = () => {
           <img src="https://cdn.uza.uz/2024/11/26/18/14/huEQojrUvNuqipRKZxbaacI7k3KbpnbH_front.PNG" alt="" className="w-25 h-25 rounded-2" />
 
           <div>
-            <h6 className="mb-0 mt-3">Shahlo</h6>
+            <h6 className="mb-0 mt-3">Abduqodir</h6>
             <p className="section__description">Mijoz</p>
           </div>
         </div>

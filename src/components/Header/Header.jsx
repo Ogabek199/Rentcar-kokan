@@ -7,24 +7,24 @@ import "../../styles/header.css";
 const navLinks = [
   {
     path: "/home",
-    display: "Home",
+    display: "Bosh sahifa",
   },
   {
     path: "/about",
-    display: "About",
+    display: "Biz haqimizda",
   },
   {
     path: "/cars",
-    display: "Cars",
+    display: "Avtomobillar",
   },
 
   {
     path: "/blogs",
-    display: "Blog",
+    display: "Blog / Yangiliklar",
   },
   {
     path: "/contact",
-    display: "Contact",
+    display: "Bog'lanish / Aloqa",
   },
 ];
 
@@ -43,7 +43,7 @@ const Header = () => {
               <div className="header__top__left">
                 <span>Yordam kerakmi?</span>
                 <span className="header__top__help">
-                  <i className="ri-phone-fill"></i> <a href="tel:+998913238587" style={{color: "white", textDecoration: "none"}}>+998 91 323 85 87</a>
+                  <i className="ri-phone-fill"></i> <a href="tel:+998913238587" style={{ color: "white", textDecoration: "none" }}>+998 91 323 85 87</a>
                 </span>
               </div>
             </Col>
@@ -64,7 +64,7 @@ const Header = () => {
                   <Link to="/home" className=" d-flex align-items-center gap-2">
                     <i class="ri-car-line"></i>
                     <span>
-                      Avtomobil ijarasi <br/> xizmati
+                      Avtomobil ijarasi <br /> xizmati
                     </span>
                   </Link>
                 </h1>

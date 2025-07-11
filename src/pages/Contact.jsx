@@ -108,6 +108,7 @@ const Contact = () => {
                     raxmonaliyev906@gmail.com
                   </p>
                 </div>
+                
               </div>
             </Col>
           </Row>
