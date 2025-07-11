@@ -1,4 +1,4 @@
-Contact: mailto:ogabek@example.com
+Contact: mailto:otaxonovogabek@gmail.com
 Encryption: https://yourdomain.com/pgp-key.txt
 Acknowledgements: https://yourdomain.com/hall-of-fame
 Preferred-Languages: uz, en

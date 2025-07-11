@@ -73,7 +73,7 @@ const Footer = () => {
               <p className="office__info">Kokand</p>
               <p className="office__info">Telefon: +998 91 323 85 87</p>
 
-              <p className="office__info">Elektron pochta: raxmonaliyev906@gmail.com</p>
+              <p className="office__info">Elektron pochta: otaxonovogabek633@gmail.com</p>
 
               <p className="office__info">Ish vaqti: 10:00dan - 18:00gacha</p>
             </div>
