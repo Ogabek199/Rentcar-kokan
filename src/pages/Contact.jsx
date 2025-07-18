@@ -84,7 +84,6 @@ const Contact = () => {
 
   return (
     <Helmet title="Contact">
-      <ToastContainer>
         <CommonSection title="Aloqa" />
         <section>
           <Container>
@@ -151,7 +150,6 @@ const Contact = () => {
             </Row>
           </Container>
         </section>
-      </ToastContainer>
     </Helmet >
   );
 };
