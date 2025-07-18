@@ -131,6 +131,106 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+    <!-- Tashrif payti chiqadigan modal / toast (SweetAlert2) va Typewriter -->
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Typewriter Effect -->
+    <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.min.js"></script>
+
+    <script>
+      setTimeout(() => {
+        Swal.fire({
+          title: "👋 Xush kelibsiz!",
+          html: `<div id="typewriter" style="font-weight: 500; font-size: 18px; margin-top: 10px;"></div>`,
+          showConfirmButton: true,
+          confirmButtonText: "Yaxshi",
+          width: 500,
+          didOpen: () => {
+            const typewriter = new Typewriter(
+              document.getElementById("typewriter"),
+              {
+                loop: true,
+                delay: 75
+              }
+            );
+
+            typewriter
+              .typeString("Yangi mashinalar keldi faqat bugun -40% 🚗")
+              .pauseFor(1000)
+              .deleteAll()
+              .typeString("Bugungi aksiyalardan foydalaning 🎁")
+              .pauseFor(1000)
+              .deleteAll()
+              .typeString("Faol bo‘ling — cheklangan takliflar!")
+              .pauseFor(1000)
+              .start();
+          }
+        });
+      }, 1000);
+    </script>
+    <!-- Tashrif payti chiqadigan modal / toast (SweetAlert2) va Typewriter end -->
+
+    <!-- Confetti Animation (bayramona qog‘ozlar yog‘ilishi) -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+      setTimeout(() => {
+        confetti({
+          particleCount: 150,
+          spread: 90,
+          origin: { y: 0.6 }
+        });
+      }, 1500);
+    </script>
+    <!-- Confetti Animation (bayramona qog‘ozlar yog‘ilishi) end -->
+
+    <!-- Loading spinner  -->
+    <div
+      id="preloader"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div
+        style="
+          border: 8px solid #f3f3f3;
+          border-top: 8px solid #3498db;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          animation: spin 1s linear infinite;
+        "
+      ></div>
+    </div>
+
+    <style>
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <script>
+      window.addEventListener("load", () => {
+        document.getElementById("preloader").style.display = "none";
+      });
+    </script>
+    <!-- Loading spinner end -->
+
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     <!-- AOS Animate On Scroll JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
