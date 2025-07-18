@@ -31,17 +31,17 @@ const BookingForm = () => {
 
     const message = `
     🟢 Yangi buyurtma:
-    👤 Ism: ${formData.ism}
-    👤 Familiya: ${formData.familiya}
-    📧 Email: ${formData.email}
-    📱 Telefon: ${formData.telefon}
-    📍 Manzildan: ${formData.manzildan}
-    📍 Manzilgacha: ${formData.manzilgacha}
-    🧍‍♂️ Odam soni: ${formData.odamSoni}
-    📦 Yuk soni: ${formData.yukSoni}
-    📅 Sana: ${formData.sana}
-    ⏰ Vaqt: ${formData.vaqt}
-    💬 Izoh: ${formData.izoh}
+  👤 Ism: ${formData.ism}
+  👤 Familiya: ${formData.familiya}
+  📧 Email: ${formData.email}
+  📱 Telefon: ${formData.telefon}
+  📍 Manzildan: ${formData.manzildan}
+  📍 Manzilgacha: ${formData.manzilgacha}
+  🧍‍♂️ Odam soni: ${formData.odamSoni}
+  📦 Yuk soni: ${formData.yukSoni}
+  📅 Sana: ${formData.sana}
+  ⏰ Vaqt: ${formData.vaqt}
+  💬 Izoh: ${formData.izoh}
     `;
 
     try {
