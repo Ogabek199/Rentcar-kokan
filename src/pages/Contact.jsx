@@ -46,11 +46,11 @@ const Contact = () => {
     const chatId = '-1002689421547';
 
     const message = `
-  🟢 Yangi xabar:
-  👤 Ism: ${formData.ism}
-  📧 Email: ${formData.email}
-  💬 Fikr: ${formData.fikr}
-  `;
+    🟢 Yangi xabar:
+    👤 Ism: ${formData.ism}
+    📧 Email: ${formData.email}
+    💬 Izoh: ${formData.fikr}
+    `;
 
     try {
       const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -149,6 +149,7 @@ const Contact = () => {
             </Col>
           </Row>
         </Container>
+        <ToastContainer position="top-right" autoClose={3000} />
       </section>
     </Helmet >
   );
