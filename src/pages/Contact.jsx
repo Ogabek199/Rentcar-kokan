@@ -47,9 +47,9 @@ const Contact = () => {
 
     const message = `
     🟢 Yangi xabar:
-  👤 Ism: ${formData.ism}
-  📧 Email: ${formData.email}
-  💬 Izoh: ${formData.fikr}
+👤 Ism: ${formData.ism}
+📧 Email: ${formData.email}
+💬 Izoh: ${formData.fikr}
     `;
 
     try {
