@@ -1,9 +1,9 @@
 /* TEAM */
 Developer: Og‘abek Otaxonov
 From: Farg‘ona vil., Kokand
-GitHub: github.com/username
-Telegram: @yourtelegram
+GitHub: github.com/Ogabek199
+Telegram: @otaxonov_o17
 
 /* SITE */
 Last update: 2025-07-11
-Software: React, TailwindCSS, Node.js
+Software: React, Next, TailwindCSS, Node.js
