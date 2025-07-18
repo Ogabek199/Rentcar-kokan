@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="./rentcar-kokand.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <!-- Seo uchun taglar start -->
+
     <!-- Primary Meta Tags -->
     <title>RentCar Kokand – Avtomobil ijarasi xizmatlari</title>
     <meta
@@ -18,16 +14,20 @@
     />
     <meta
       name="description"
-      content="Farg‘ona vodiysida tez va oson avtomobil ijarasi. Arzon narxlar, qulay xizmat va keng avtomobil tanlovi. Bugunoq buyurtma bering!"
+      content="Farg'ona vodiysida tez va oson avtomobil ijarasi. Arzon narxlar, qulay xizmat va keng avtomobil tanlovi. Bugunoq buyurtma bering!"
     />
     <meta
       name="keywords"
-      content="Rent car, Kokand, Farg‘ona, Avtomobil ijarasi, Arzon mashina ijarasi, ijaraga mashina olish"
+      content="Rent car, Kokand, Farg'ona, Avtomobil ijarasi, Arzon mashina ijarasi, ijaraga mashina olish"
     />
     <meta name="author" content="RentCar Kokand Team" />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="uz" />
-    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="geo.region" content="UZ-FA" />
+    <meta name="geo.placename" content="Kokand" />
+    <meta name="geo.position" content="40.5289;70.9421" />
+    <meta name="ICBM" content="40.5289, 70.9421" />
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://rentcar-kokand.uz/" />
@@ -37,12 +37,16 @@
     />
     <meta
       property="og:description"
-      content="Farg‘ona vodiysida tez va oson avtomobil ijarasi. Arzon narxlar, qulay xizmat va keng avtomobil tanlovi."
+      content="Farg'ona vodiysida tez va oson avtomobil ijarasi. Arzon narxlar, qulay xizmat va keng avtomobil tanlovi."
     />
     <meta
       property="og:image"
       content="https://rentcar-kokand.uz/og-image.jpg"
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="RentCar Kokand" />
+    <meta property="og:locale" content="uz_UZ" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -53,47 +57,71 @@
     />
     <meta
       property="twitter:description"
-      content="Farg‘ona vodiysida tez va oson avtomobil ijarasi. Arzon narxlar, qulay xizmat va keng avtomobil tanlovi."
+      content="Farg'ona vodiysida tez va oson avtomobil ijarasi. Arzon narxlar, qulay xizmat va keng avtomobil tanlovi."
     />
     <meta
       property="twitter:image"
       content="https://rentcar-kokand.uz/og-image.jpg"
     />
+
+    <!-- Preload Critical Resources -->
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      as="style"
+    />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
+      as="style"
+    />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://rentcar-kokand.uz/" />
+
+    <!-- Alternate languages -->
+    <link rel="alternate" hreflang="uz" href="https://rentcar-kokand.uz/" />
+    <link rel="alternate" hreflang="ru" href="https://rentcar-kokand.uz/ru/" />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://rentcar-kokand.uz/"
+    />
+
     <!-- AOS CSS -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
     />
 
-    <!-- AOS JS -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <!-- Seo uchun taglar end -->
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!-- Flowbite CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css"
       rel="stylesheet"
     />
-    <!-- Humans txt -->
-    <link rel="author" href="/humans.txt" />
-    <!-- Iphone user add home screen icon -->
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- Humans.txt -->
+    <link rel="author" href="/humans.txt" />
+
+    <!-- Google Analytics GA4 -->
+
+    <!-- Google tag (gtag.js) -->
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+      src="https://www.googletagmanager.com/gtag/js?id=G-KM1D7H55HC"
     ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -101,119 +129,89 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "G-XXXXXXX");
+
+      gtag("config", "G-KM1D7H55HC");
     </script>
+
+    <!-- Structured Data - LocalBusiness -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org/",
-        "@type": "Car",
-        "name": "Chevrolet Cobalt",
-        "brand": "Chevrolet",
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "UZS",
-          "price": "190000",
-          "availability": "https://schema.org/InStock"
+        "@type": "LocalBusiness",
+        "@id": "https://rentcar-kokand.uz/#business",
+        "name": "RentCar Kokand",
+        "image": "https://rentcar-kokand.uz/og-image.jpg",
+        "description": "Farg'ona vodiysida tez va oson avtomobil ijarasi. Arzon narxlar, qulay xizmat va keng avtomobil tanlovi.",
+        "url": "https://rentcar-kokand.uz/",
+        "telephone": "+998-90-150-26-57",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Kokand shahar",
+          "addressLocality": "Kokand",
+          "addressRegion": "Farg'ona viloyati",
+          "addressCountry": "UZ"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 40.5289,
+          "longitude": 70.9421
+        },
+        "openingHours": "Mo-Su 08:00-20:00",
+        "priceRange": "$$",
+        "servesCuisine": [],
+        "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+        "currenciesAccepted": "UZS",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Avtomobil ijarasi xizmatlari",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Chevrolet Cobalt ijarasi",
+                "description": "Kunlik avtomobil ijarasi xizmati"
+              }
+            }
+          ]
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "127"
         }
       }
     </script>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-
-    <!-- Tashrif payti chiqadigan modal / toast (SweetAlert2) va Typewriter -->
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <!-- Typewriter Effect -->
-    <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.min.js"></script>
-
-    <script>
-      setTimeout(() => {
-        Swal.fire({
-          title: "👋 Xush kelibsiz!",
-          html: `<div id="typewriter" style="font-weight: 500; font-size: 18px; margin-top: 10px;"></div>`,
-          showConfirmButton: true,
-          confirmButtonText: "Yaxshi",
-          width: 500,
-          didOpen: () => {
-            const typewriter = new Typewriter(
-              document.getElementById("typewriter"),
-              {
-                loop: true,
-                delay: 75
-              }
-            );
-
-            typewriter
-              .typeString("Yangi mashinalar keldi faqat bugun -40% 🚗")
-              .pauseFor(1000)
-              .deleteAll()
-              .typeString("Bugungi aksiyalardan foydalaning 🎁")
-              .pauseFor(1000)
-              .deleteAll()
-              .typeString("Faol bo‘ling — cheklangan takliflar!")
-              .pauseFor(1000)
-              .start();
+    <!-- Structured Data - WebSite -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org/",
+        "@type": "WebSite",
+        "@id": "https://rentcar-kokand.uz/#website",
+        "url": "https://rentcar-kokand.uz/",
+        "name": "RentCar Kokand",
+        "description": "Farg'ona vodiysida tez va oson avtomobil ijarasi",
+        "potentialAction": [
+          {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://rentcar-kokand.uz/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
           }
-        });
-      }, 1000);
+        ]
+      }
     </script>
-    <!-- Tashrif payti chiqadigan modal / toast (SweetAlert2) va Typewriter end -->
 
-    <!-- Confetti Animation (bayramona qog‘ozlar yog‘ilishi) -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    <script>
-      setTimeout(() => {
-        confetti({
-          particleCount: 150,
-          spread: 90,
-          origin: { y: 0.6 }
-        });
-      }, 1500);
-    </script>
-    <!-- Confetti Animation (bayramona qog‘ozlar yog‘ilishi) end -->
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Loading spinner  -->
-    <div
-      id="preloader"
-      style="
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #fff;
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      "
-    >
-      <div
-        style="
-          border: 8px solid #f3f3f3;
-          border-top: 8px solid #3498db;
-          border-radius: 50%;
-          width: 60px;
-          height: 60px;
-          animation: spin 1s linear infinite;
-        "
-      ></div>
-    </div>
-
+    <!-- Critical CSS (inline) -->
     <style>
+      /* Critical CSS - Loading Animation */
       @keyframes spin {
         0% {
           transform: rotate(0deg);
@@ -222,23 +220,253 @@
           transform: rotate(360deg);
         }
       }
+
+      /* Above-the-fold styles */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+      }
+
+      .hero-section {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+      }
     </style>
+  </head>
+  <body>
+    <!-- Enhanced NoScript content -->
+    <noscript>
+      <div
+        style="
+          text-align: center;
+          padding: 50px;
+          max-width: 600px;
+          margin: 0 auto;
+          font-family: Arial, sans-serif;
+        "
+      >
+        <h1 style="color: #333; margin-bottom: 20px">🚗 RentCar Kokand</h1>
+        <h2 style="color: #666; font-weight: normal">
+          Avtomobil ijarasi xizmatlari
+        </h2>
+        <p style="line-height: 1.6; color: #555">
+          Farg'ona vodiysida eng yaxshi avtomobil ijarasi xizmati. Arzon
+          narxlar, qulay xizmat va keng avtomobil tanlovi.
+        </p>
+        <div
+          style="
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+          "
+        >
+          <h3 style="color: #333">📞 Bog'lanish</h3>
+          <p style="margin: 5px 0">Telefon: +998-90-150-26-57</p>
+          <p style="margin: 5px 0">Manzil: Kokand shahar</p>
+          <p style="margin: 5px 0">Ish vaqti: 08:00 - 20:00</p>
+        </div>
+        <div
+          style="
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+          "
+        >
+          <strong>Diqqat!</strong> Saytning to'liq funksionalligini ishlatish
+          uchun JavaScript yoqilgan bo'lishi kerak.
+        </div>
+      </div>
+    </noscript>
 
+    <div id="root"></div>
+
+    <!-- Loading Spinner with better UX -->
+    <div
+      id="preloader"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      "
+    >
+      <div
+        style="
+          border: 4px solid rgba(255, 255, 255, 0.3);
+          border-top: 4px solid #fff;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          animation: spin 1s linear infinite;
+          margin-bottom: 20px;
+        "
+      ></div>
+      <p style="color: white; font-size: 18px; margin: 0">🚗 RentCar Kokand</p>
+      <p
+        style="
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 14px;
+          margin: 5px 0 0 0;
+        "
+      >
+        Yuklanmoqda...
+      </p>
+    </div>
+
+    <!-- Scripts with better loading -->
     <script>
+      // Preloader with timeout fallback
       window.addEventListener("load", () => {
-        document.getElementById("preloader").style.display = "none";
+        const preloader = document.getElementById("preloader");
+        if (preloader) {
+          preloader.style.opacity = "0";
+          preloader.style.transition = "opacity 0.5s ease";
+          setTimeout(() => {
+            preloader.style.display = "none";
+          }, 500);
+        }
       });
-    </script>
-    <!-- Loading spinner end -->
 
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
-    <!-- AOS Animate On Scroll JS -->
+      // Fallback timeout
+      setTimeout(() => {
+        const preloader = document.getElementById("preloader");
+        if (preloader) {
+          preloader.style.display = "none";
+        }
+      }, 10000);
+    </script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Typewriter Effect -->
+    <script src="https://cdn.jsdelivr.net/npm/typewriter-effect@2.18.0/dist/core.min.js"></script>
+
+    <!-- Welcome Modal with better UX -->
+    <script>
+      // Check if user has seen welcome modal recently
+      const hasSeenWelcome = localStorage.getItem("welcomeShown");
+      const lastShown = localStorage.getItem("welcomeLastShown");
+      const now = new Date().getTime();
+      const oneDayAgo = now - 24 * 60 * 60 * 1000;
+
+      if (!hasSeenWelcome || (lastShown && parseInt(lastShown) < oneDayAgo)) {
+        setTimeout(() => {
+          Swal.fire({
+            title: "👋 Xush kelibsiz!",
+            html: `<div id="typewriter" style="font-weight: 500; font-size: 18px; margin-top: 10px; min-height: 60px;"></div>`,
+            showConfirmButton: true,
+            confirmButtonText: "Boshlash",
+            showCancelButton: true,
+            cancelButtonText: "Yopish",
+            width: 500,
+            customClass: {
+              popup: "animated fadeInUp"
+            },
+            didOpen: () => {
+              const typewriter = new Typewriter(
+                document.getElementById("typewriter"),
+                {
+                  loop: true,
+                  delay: 75,
+                  deleteSpeed: 50
+                }
+              );
+
+              typewriter
+                .typeString("Yangi mashinalar keldi faqat bugun -40% 🚗")
+                .pauseFor(2000)
+                .deleteAll()
+                .typeString("Bugungi aksiyalardan foydalaning 🎁")
+                .pauseFor(2000)
+                .deleteAll()
+                .typeString("Faol bo'ling — cheklangan takliflar! ⚡")
+                .pauseFor(2000)
+                .start();
+            }
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // User clicked start - maybe scroll to cars section
+              const carsSection = document.getElementById("cars-section");
+              if (carsSection) {
+                carsSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }
+          });
+
+          // Mark as shown
+          localStorage.setItem("welcomeShown", "true");
+          localStorage.setItem("welcomeLastShown", now.toString());
+        }, 2000);
+      }
+    </script>
+
+    <!-- Confetti Animation -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+      setTimeout(() => {
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ["#667eea", "#764ba2", "#f093fb", "#f5576c"]
+        });
+      }, 2500);
+    </script>
+
+    <!-- AOS Animation -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         AOS.init({
-          duration: 1000, // animatsiya davomiyligi (ms)
-          once: true // faqat 1 marta animatsiya bo‘lsin
+          duration: 1000,
+          once: true,
+          offset: 100,
+          easing: "ease-in-out"
+        });
+      });
+    </script>
+
+    <!-- Flowbite JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+    <!-- Performance Monitoring -->
+    <script>
+      // Web Vitals tracking
+      function sendToAnalytics(metric) {
+        gtag("event", metric.name, {
+          value: Math.round(
+            metric.name === "CLS" ? metric.value * 1000 : metric.value
+          ),
+          event_category: "Web Vitals",
+          event_label: metric.id,
+          non_interaction: true
+        });
+      }
+
+      // Simple performance tracking
+      window.addEventListener("load", () => {
+        const loadTime = performance.now();
+        gtag("event", "page_load_time", {
+          value: Math.round(loadTime),
+          event_category: "Performance"
         });
       });
     </script>
