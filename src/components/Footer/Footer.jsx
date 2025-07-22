@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
 import "../../styles/footer.css";
@@ -99,7 +97,7 @@ const Footer = () => {
           <Col lg="12">
             <div className="footer__bottom">
               <p className="section__description d-flex align-items-center justify-content-center gap-1 pt-4">
-                <i class="ri-copyright-line"></i>Mualliflik huquqi {year}, Sardor Rahmonov tomonidan ishlab chiqilgan. Barcha huquqlar himoyalangan.
+                <i class="ri-copyright-line"></i>Mualliflik huquqi {year}, Otaxonov Og'abek tomonidan ishlab chiqilgan. Barcha huquqlar himoyalangan.
               </p>
             </div>
           </Col>

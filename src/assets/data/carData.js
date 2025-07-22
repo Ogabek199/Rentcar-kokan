@@ -1,13 +1,3 @@
-// import all images from assets/images directory
-import img01 from "../all-images/cars-img/nissan-offer.png";
-import img02 from "../all-images/cars-img/offer-toyota.png";
-import img03 from "../all-images/cars-img/bmw-offer.png";
-import img04 from "../all-images/cars-img/nissan-offer.png";
-import img05 from "../all-images/cars-img/offer-toyota.png";
-import img06 from "../all-images/cars-img/mercedes-offer.png";
-import img07 from "../all-images/cars-img/toyota-offer-2.png";
-import img08 from "../all-images/cars-img/mercedes-offer.png";
-
 const carData = [
   {
     id: 1,
@@ -105,37 +95,6 @@ const carData = [
       "Ushbu zamonaviy va qulay avtomobil sizning sayohatingizni yanada yoqimli qiladi. Yuqori sifat, qulay boshqaruv va zamonaviy funksiyalar bilan jihozlangan ushbu model uzoq va qisqa masofalar uchun ideal tanlovdir.",
   },
 
-  {
-    id: 7,
-    brand: "Toyota",
-    rating: 82,
-    carName: "Toyota Corolla",
-    imgUrl: img07,
-    model: "Model 3",
-    price: 50,
-    speed: "220km",
-    gps: "GPS navigatsiyasi",
-    seatType: "O'rindiqlarni isitish",
-    automatic: "Automatic",
-    description:
-      "Ushbu zamonaviy va qulay avtomobil sizning sayohatingizni yanada yoqimli qiladi. Yuqori sifat, qulay boshqaruv va zamonaviy funksiyalar bilan jihozlangan ushbu model uzoq va qisqa masofalar uchun ideal tanlovdir.",
-  },
-
-  {
-    id: 8,
-    brand: "Mercedes Benz",
-    rating: 52,
-    carName: "C-Class Coupe.",
-    imgUrl: img08,
-    model: "Model 3",
-    price: 110,
-    speed: "300km",
-    gps: "GPS navigatsiyasi",
-    seatType: "O'rindiqlarni isitish",
-    automatic: "Automatic",
-    description:
-      "Ushbu zamonaviy va qulay avtomobil sizning sayohatingizni yanada yoqimli qiladi. Yuqori sifat, qulay boshqaruv va zamonaviy funksiyalar bilan jihozlangan ushbu model uzoq va qisqa masofalar uchun ideal tanlovdir.",
-  },
 ];
 
 export default carData;

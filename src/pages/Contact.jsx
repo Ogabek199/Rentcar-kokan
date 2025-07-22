@@ -42,15 +42,32 @@ const Contact = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
 
+    const { ism, email, fikr } = formData;
+
+    if (!ism.trim()) {
+      toast.error("❗Iltimos, ismingizni kiriting.");
+      return;
+    }
+
+    if (!email.trim()) {
+      toast.error("❗Iltimos, elektron pochtangizni kiriting.");
+      return;
+    }
+
+    if (!fikr.trim()) {
+      toast.error("❗Iltimos, fikr bildirishingiz shart.");
+      return;
+    }
+
     const token = '8070117237:AAHVkDVQLv1Zg8M_57mwk7sXwQlIDpQIk7I';
     const chatId = '-1002689421547';
 
     const message = `
-    🟢 Yangi xabar:
+🟢 Yangi xabar:
 👤 Ism: ${formData.ism}
 📧 Email: ${formData.email}
 💬 Izoh: ${formData.fikr}
-    `;
+  `;
 
     try {
       const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -79,8 +96,6 @@ const Contact = () => {
       console.error(err);
     }
   };
-
-
 
   return (
     <Helmet title="Contact">
