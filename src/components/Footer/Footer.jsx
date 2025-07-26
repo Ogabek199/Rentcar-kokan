@@ -5,26 +5,26 @@ import "../../styles/footer.css";
 const quickLinks = [
   {
     path: "/about",
-    display: "About",
+    display: "Biz haqimizda",
   },
 
   {
-    path: "#",
-    display: "Privacy Policy",
+    path: "/PrivacyPolicy",
+    display: "Maxfiylik Siyosati",
   },
 
   {
     path: "/cars",
-    display: "Car Listing",
+    display: "Avtomobillar",
   },
   {
     path: "/blogs",
-    display: "Blog",
+    display: "Blog / Yangiliklar",
   },
 
   {
     path: "/contact",
-    display: "Contact",
+    display: "Bog'lanish / Aloqa",
   },
 ];
 
