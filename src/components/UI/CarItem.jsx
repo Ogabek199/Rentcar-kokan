@@ -2,6 +2,12 @@ import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import "../../styles/car-item.css";
 
+const formatCurrency = (value) =>
+  new Intl.NumberFormat("uz-UZ", {
+    style: "decimal",
+    maximumFractionDigits: 0,
+  }).format(value);
+
 const CarItem = (props) => {
   const { imgUrl, model, carName, automatic, speed, price } = props.item;
 
@@ -14,8 +20,8 @@ const CarItem = (props) => {
 
         <div className="car__item-content mt-4">
           <h4 className="section__title text-center">{carName}</h4>
-          <h6 className="rent__price text-center mt-">
-            ${price}.00 <span>/ Day</span>
+          <h6 className="rent__price text-center">
+            {formatCurrency(price)} so'm <span>/ kun</span>
           </h6>
 
           <div className="car__item-info d-flex align-items-center justify-content-between mt-3 mb-4">

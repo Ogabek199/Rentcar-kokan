@@ -22,7 +22,7 @@ const HeroSlider = () => {
       <div className="slider__item slider__item-01 mt0">
         <Container>
           <div className="slider__content ">
-            <h4 className="text-light mb-3">ijara uchun $70 kuniga</h4>
+            <h4 className="text-light mb-3">kuniga 450 000 so'mdan ijara</h4>
             <h1 className="text-light mb-4">Hoziroq band qiling va 50% foiz chegirmaga ega bo'ling</h1>
             <button className="btn reserve__btn mt-4">
               <Link to="/cars">Hozir zaxiralash</Link>
@@ -34,7 +34,7 @@ const HeroSlider = () => {
       <div className="slider__item slider__item-02 mt0">
         <Container>
           <div className="slider__content ">
-            <h4 className="text-light mb-3">ijara uchun $70 kuniga</h4>
+            <h4 className="text-light mb-3">premium sedanlar 980 000 so'm/kun</h4>
             <h1 className="text-light mb-4">Hoziroq band qiling va 50% foiz chegirmaga ega bo'ling</h1>
             <button className="btn reserve__btn mt-4">
               <Link to="/cars">Hozir zaxiralash</Link>
@@ -46,7 +46,7 @@ const HeroSlider = () => {
       <div className="slider__item slider__item-03 mt0">
         <Container>
           <div className="slider__content ">
-            <h4 className="text-light mb-3">ijara uchun $40 kuniga</h4>
+            <h4 className="text-light mb-3">ekonom klass 350 000 so'm/kun</h4>
             <h1 className="text-light mb-4">Hoziroq band qiling va 50% foiz chegirmaga ega bo'ling</h1>
             <button className="btn reserve__btn mt-4">
               <Link to="/cars">Hozir zaxiralash</Link>

@@ -7,7 +7,6 @@ import { Container, Row, Col } from "reactstrap";
 import BecomeDriverSection from "../components/UI/BecomeDriverSection";
 
 import driveImg from "../assets/all-images/drive.jpg";
-import OurMembers from "../components/UI/OurMembers";
 import "../styles/about.css";
 
 const About = () => {
@@ -39,14 +38,14 @@ const About = () => {
                   Yo‘nalishlaringizni xavfsiz va qulay tarzda bosib o‘tishingiz uchun bizning xizmatlarimizga ishonishingiz mumkin. Tajribali haydovchilar, zamonaviy transport vositalari va yuqori darajadagi xizmat — bizning ustuvor maqsadlarimizdir.
                 </p>
 
-                <div className=" d-flex align-items-center gap-3 mt-4">
-                  <span className="fs-4">
-                    <i class="ri-phone-line"></i>
+                <div className="info-card mt-3">
+                  <span className="info-card__icon">
+                    <i className="ri-phone-line"></i>
                   </span>
 
-                  <div>
-                    <h6 className="section__subtitle">Har qanday yordam kerakmi?</h6>
-                    <a href="tel:+998913238587" style={{textDecoration: "none", color: "blue", fontSize: "20px"}}>+998 91 323 85 87</a>
+                  <div className="info-card__text">
+                    <h6>Har qanday yordam kerakmi?</h6>
+                    <a href="tel:+998913238587">+998 91 323 85 87</a>
                   </div>
                 </div>
               </div>
@@ -57,17 +56,6 @@ const About = () => {
 
       <BecomeDriverSection />
 
-      <section>
-        <Container>
-          <Row>
-            <Col lg="12" className="mb-5 text-center">
-              <h6 className="section__subtitle">Mutaxasislar</h6>
-              <h2 className="section__title">Bizning azolarimiz</h2>
-            </Col>
-            <OurMembers />
-          </Row>
-        </Container>
-      </section>
     </Helmet>
   );
 };

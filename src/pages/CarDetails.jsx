@@ -6,6 +6,12 @@ import Helmet from "../components/Helmet/Helmet";
 import { useParams } from "react-router-dom";
 import BookingForm from "../components/UI/BookingForm";
 
+const formatCurrency = (value) =>
+  new Intl.NumberFormat("uz-UZ", {
+    style: "decimal",
+    maximumFractionDigits: 0,
+  }).format(value);
+
 const CarDetails = () => {
   const { slug } = useParams();
 
@@ -30,7 +36,7 @@ const CarDetails = () => {
 
                 <div className=" d-flex align-items-center gap-5 mb-4 mt-3">
                   <h6 className="rent__price fw-bold fs-4">
-                    ${singleCarItem.price}.00 / Day
+                    {formatCurrency(singleCarItem.price)} so'm / kun
                   </h6>
 
                   <span className=" d-flex align-items-center gap-2">
