@@ -1,4 +1,4 @@
 Contact: mailto:otaxonovogabek633@gmail.com
-Encryption: https://yourdomain.com/pgp-key.txt
-Acknowledgements: https://yourdomain.com/hall-of-fame
+Encryption: https://rentcar-kokand.uz/pgp-key.txt   
+Acknowledgements: https://rentcar-kokand.uz/hall-of-fame
 Preferred-Languages: uz, en
