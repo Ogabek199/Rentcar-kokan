@@ -88,7 +88,7 @@ const Footer = () => {
                   Web dasturchi | Frontend (React.js, Next.js) & UI dizayn | Kokand, O‘zbekiston<br />
                   <a className="section__description" href="mailto:youremail@example.com">otaxonovogabek633@gmail.com</a> <br />
                   <a className="section__description" href="tel:+998901502657">Murojat uchun: +998 90 150 26 57</a> <br />
-                  <a className="section__description" href="https://t.me/otaxonov_o17" target="_blank">Telegram</a>
+                  <a className="section__description" href="https://t.me/otaxonov_o17" target="_blank" rel="noreferrer">Telegram</a>
                 </p>
               </div>
             </div>

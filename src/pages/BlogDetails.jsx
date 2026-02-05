@@ -57,7 +57,7 @@ const BlogDetails = () => {
                   <Form>
                     <FormGroup className=" d-flex gap-3">
                       <Input type="text" placeholder="To'liq ism" />
-                      <Input type="email" placeholder="Elektron pochta" />
+                      <Input type="tel" placeholder="Telefon raqamingiz" />
                     </FormGroup>
 
                     <FormGroup>

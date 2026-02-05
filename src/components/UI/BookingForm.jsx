@@ -105,23 +105,13 @@ const BookingForm = () => {
             required
           />
         </FormGroup>
-        <FormGroup className="booking__form d-inline-block me-4 mb-4">
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={changeHandler}
-            placeholder="Elektron pochta"
-            required
-          />
-        </FormGroup>
         <FormGroup className="booking__form d-inline-block ms-1 mb-4">
           <input
             type="number"
             name="telefon"
             value={formData.telefon}
             onChange={changeHandler}
-            placeholder="Telefon raqami"
+            placeholder="Telefon raqamingiz"
             required
           />
         </FormGroup>

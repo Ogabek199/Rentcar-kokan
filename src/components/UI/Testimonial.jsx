@@ -38,7 +38,7 @@ const Testimonial = () => {
         </p>
 
         <div className="mt-3 d-flex align-items-center gap-4">
-          <img src="https://cdn.uza.uz/2025/01/27/18/24/2FhbrttwJ2720WmOhr9IUTdizlX3LL9L_front.PNG" alt="photo" className="w-25 h-25 rounded-2" />
+          <img src="https://cdn.uza.uz/2025/01/27/18/24/2FhbrttwJ2720WmOhr9IUTdizlX3LL9L_front.PNG" alt="Sardor" className="w-25 h-25 rounded-2" />
 
           <div>
             <h6 className="mb-0 mt-3">Sardor</h6>
@@ -53,7 +53,7 @@ const Testimonial = () => {
         </p>
 
         <div className="mt-3 d-flex align-items-center gap-4">
-          <img src="https://cdn.uza.uz/2024/11/26/18/14/huEQojrUvNuqipRKZxbaacI7k3KbpnbH_front.PNG" alt="image" className="w-25 h-25 rounded-2" />
+          <img src="https://cdn.uza.uz/2024/11/26/18/14/huEQojrUvNuqipRKZxbaacI7k3KbpnbH_front.PNG" alt="Abdulaziz" className="w-25 h-25 rounded-2" />
 
           <div>
             <h6 className="mb-0 mt-3">Abdulaziz</h6>
@@ -68,7 +68,7 @@ const Testimonial = () => {
         </p>
 
         <div className="mt-3 d-flex align-items-center gap-4">
-          <img src="https://pngimg.com/uploads/man/man_PNG6533.png" alt="image-uploads" className="w-25 h-25 rounded-2" />
+          <img src="https://pngimg.com/uploads/man/man_PNG6533.png" alt="Jasur" className="w-25 h-25 rounded-2" />
 
           <div>
             <h6 className="mb-0 mt-3">Jasur</h6>
@@ -83,7 +83,7 @@ const Testimonial = () => {
         </p>
 
         <div className="mt-3 d-flex align-items-center gap-4">
-          <img src="https://cdn.uza.uz/2024/11/26/18/14/huEQojrUvNuqipRKZxbaacI7k3KbpnbH_front.PNG" alt="image-front" className="w-25 h-25 rounded-2" />
+          <img src="https://cdn.uza.uz/2024/11/26/18/14/huEQojrUvNuqipRKZxbaacI7k3KbpnbH_front.PNG" alt="Abduqodir" className="w-25 h-25 rounded-2" />
 
           <div>
             <h6 className="mb-0 mt-3">Abduqodir</h6>
