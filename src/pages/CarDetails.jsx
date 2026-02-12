@@ -56,7 +56,7 @@ const CarDetails = () => {
                 </p>
 
                 <div
-                  className=" d-flex align-items-center mt-3"
+                  className="d-flex align-items-center mt-3"
                   style={{ columnGap: "4rem" }}
                 >
                   <span className=" d-flex align-items-center gap-1 section__description">

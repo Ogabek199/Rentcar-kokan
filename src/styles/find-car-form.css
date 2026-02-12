@@ -34,6 +34,9 @@
   padding-bottom: 50px;
   padding-left: 15px;
   padding-right: 15px;
+  overflow: visible;
+  width: 100%;
+  max-width: 100%;
 }
 
 .select__group {
@@ -52,6 +55,9 @@
   position: relative;
   z-index: 10;
   margin-bottom: 200px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .hero__form {
@@ -59,6 +65,9 @@
   bottom: -150px;
   z-index: 11;
   width: 100%;
+  max-width: 100%;
+  left: 0;
+  right: 0;
 }
 
 .form__row {
@@ -66,11 +75,6 @@
   box-shadow: 5px 5px 15px -5px #7c8a97;
 }
 
-.journey__time::before {
-  content: "Journey time";
-  margin-right: 0.8rem;
-  color: #7c8a97;
-}
 
 .find__car-btn {
   background: #000d6b !important;
@@ -108,13 +112,36 @@
 @media only screen and (max-width: 768px) {
   .find__cars-left {
     padding-top: 20px;
-    padding-bottom: 0;
+    padding-bottom: 15px;
     background: #fff;
     text-align: center;
   }
 
   .form {
-    padding: 20px 10px;
+    padding: 20px 15px 30px 15px;
+  }
+
+  .hero__form {
+    position: relative;
+    bottom: 0;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .hero__slider-section {
+    margin-bottom: 40px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .form__group,
+  .select__group {
+    margin-bottom: 12px;
   }
 }
 
@@ -126,17 +153,25 @@
   }
 
   .form__group input {
-    font-size: 0.7rem !important;
+    font-size: 0.9rem !important;
+    padding: 10px 12px;
   }
 
   .select__group {
     width: 100%;
-    padding-right: 10px;
-    font-size: 0.7rem;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+  }
+
+  .select__group select {
+    padding: 10px 12px;
+    font-size: 0.9rem;
   }
 
   .find__car-btn {
-    font-size: 0.8rem;
+    font-size: 1rem;
+    padding: 12px 15px;
+    margin-top: 10px;
   }
 
   .find__cars-left h2 {
@@ -144,6 +179,50 @@
   }
 
   .hero__form {
-    bottom: -250px;
+    position: relative;
+    bottom: 0;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    width: 100%;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  .hero__slider-section {
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .form {
+    padding: 20px 15px 25px 15px;
+    margin-bottom: 15px;
+  }
+
+  .form__row {
+    padding-bottom: 20px;
+    margin-bottom: 0;
+  }
+
+  .d-flex.gap-3 {
+    gap: 12px !important;
+    flex-direction: column;
+  }
+
+  .hero__form .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .hero__form .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .hero__form [class*="col-"] {
+    padding-left: 0;
+    padding-right: 0;
   }
 }

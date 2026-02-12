@@ -17,13 +17,11 @@ const FindCarForm = () => {
 
   const [formData, setFormData] = useState({
     date: "",
-    time: "",
     carType: "Malibu",
     minPrice: "",
     maxPrice: "",
     fuelType: "",
     transmission: "",
-    capacity: "",
   });
 
   const handleChange = (e) => {
@@ -42,8 +40,8 @@ const FindCarForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.date || !formData.time || !formData.carType) {
-      alert("Iltimos, sana, vaqt va mashina turini tanlang!");
+    if (!formData.date || !formData.carType) {
+      alert("Iltimos, sana va mashina turini tanlang!");
       return;
     }
 
@@ -62,17 +60,6 @@ const FindCarForm = () => {
             type="date"
             name="date"
             value={formData.date}
-            onChange={handleChange}
-            required
-          />
-        </FormGroup>
-
-        <FormGroup className="form__group">
-          <input
-            className="journey__time"
-            type="time"
-            name="time"
-            value={formData.time}
             onChange={handleChange}
             required
           />
@@ -111,7 +98,7 @@ const FindCarForm = () => {
 
         <FormGroup className="select__group">
           <select name="fuelType" value={formData.fuelType} onChange={handleChange}>
-            <option value="">Yoqilg‘i turi</option>
+            <option value="">Yoqilg'i turi</option>
             <option value="benzin">Benzin</option>
             <option value="gaz">Gaz</option>
             <option value="elektr">Elektr</option>
@@ -128,15 +115,6 @@ const FindCarForm = () => {
             <option value="">Uzatma turi</option>
             <option value="automatic">Avtomat</option>
             <option value="manual">Mexanika</option>
-          </select>
-        </FormGroup>
-
-        <FormGroup className="select__group">
-          <select name="capacity" value={formData.capacity} onChange={handleChange}>
-            <option value="">Sig‘imi</option>
-            <option value="2">2 o‘rinli</option>
-            <option value="4">4 o‘rinli</option>
-            <option value="7">7 o‘rinli</option>
           </select>
         </FormGroup>
 

@@ -31,11 +31,43 @@ const Contact = () => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Telefon raqamini formatlash
+  const formatPhoneNumber = useCallback((value) => {
+    // Faqat raqamlarni olib tashlash
+    const numbers = value.replace(/\D/g, "");
+    
+    // +998 bilan boshlanmasa, qo'shish
+    let formatted = numbers;
+    if (numbers.length > 0 && !numbers.startsWith("998")) {
+      formatted = numbers.startsWith("9") ? "998" + numbers : numbers;
+    }
+    
+    // Formatlash: +998 99 999 99 99
+    if (formatted.length <= 3) {
+      return formatted.length > 0 ? "+" + formatted : "";
+    } else if (formatted.length <= 5) {
+      return "+" + formatted.slice(0, 3) + " " + formatted.slice(3);
+    } else if (formatted.length <= 8) {
+      return "+" + formatted.slice(0, 3) + " " + formatted.slice(3, 5) + " " + formatted.slice(5);
+    } else if (formatted.length <= 10) {
+      return "+" + formatted.slice(0, 3) + " " + formatted.slice(3, 5) + " " + formatted.slice(5, 8) + " " + formatted.slice(8);
+    } else {
+      return "+" + formatted.slice(0, 3) + " " + formatted.slice(3, 5) + " " + formatted.slice(5, 8) + " " + formatted.slice(8, 10) + " " + formatted.slice(10, 12);
+    }
+  }, []);
+
   // Form maydonlarini yangilash
   const changeHandler = useCallback((e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  }, []);
+    
+    // Telefon raqami uchun formatlash
+    if (name === "telefon") {
+      const formatted = formatPhoneNumber(value);
+      setFormData((prev) => ({ ...prev, [name]: formatted }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+  }, [formatPhoneNumber]);
 
   // Formani tozalash
   const resetForm = useCallback(() => {

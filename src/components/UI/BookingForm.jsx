@@ -11,12 +11,71 @@ const BookingForm = () => {
     email: "",
     telefon: "",
     sana: "",
-    vaqt: "",
     izoh: "",
   });
 
+  // Telefon raqamini formatlash
+  const formatPhoneNumber = (value) => {
+    // Faqat raqamlarni olib tashlash
+    const numbers = value.replace(/\D/g, "");
+
+    // +998 bilan boshlanmasa, qo'shish
+    let formatted = numbers;
+    if (numbers.length > 0 && !numbers.startsWith("998")) {
+      formatted = numbers.startsWith("9") ? "998" + numbers : numbers;
+    }
+
+    // Formatlash: +998 99 999 99 99
+    if (formatted.length <= 3) {
+      return formatted.length > 0 ? "+" + formatted : "";
+    } else if (formatted.length <= 5) {
+      return "+" + formatted.slice(0, 3) + " " + formatted.slice(3);
+    } else if (formatted.length <= 8) {
+      return (
+        "+" +
+        formatted.slice(0, 3) +
+        " " +
+        formatted.slice(3, 5) +
+        " " +
+        formatted.slice(5)
+      );
+    } else if (formatted.length <= 10) {
+      return (
+        "+" +
+        formatted.slice(0, 3) +
+        " " +
+        formatted.slice(3, 5) +
+        " " +
+        formatted.slice(5, 8) +
+        " " +
+        formatted.slice(8)
+      );
+    } else {
+      return (
+        "+" +
+        formatted.slice(0, 3) +
+        " " +
+        formatted.slice(3, 5) +
+        " " +
+        formatted.slice(5, 8) +
+        " " +
+        formatted.slice(8, 10) +
+        " " +
+        formatted.slice(10, 12)
+      );
+    }
+  };
+
   const changeHandler = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    // Telefon raqami uchun formatlash
+    if (name === "telefon") {
+      const formatted = formatPhoneNumber(value);
+      setFormData({ ...formData, [name]: formatted });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const isEmpty = (value) => !value.trim();
@@ -30,8 +89,7 @@ const BookingForm = () => {
       isEmpty(formData.familiya) ||
       isEmpty(formData.email) ||
       isEmpty(formData.telefon) ||
-      isEmpty(formData.sana) ||
-      isEmpty(formData.vaqt)
+      isEmpty(formData.sana)
     ) {
       toast.error("❗ Iltimos, barcha majburiy maydonlarni to‘ldiring.");
       return;
@@ -47,21 +105,23 @@ const BookingForm = () => {
 📧 Email: ${formData.email}
 📱 Telefon: ${formData.telefon}
 📅 Sana: ${formData.sana}
-⏰ Vaqt: ${formData.vaqt}
 💬 Izoh: ${formData.izoh || "Yo'q"}
     `;
 
     try {
-      const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const res = await fetch(
+        `https://api.telegram.org/bot${token}/sendMessage`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: message,
+          }),
         },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: message,
-        }),
-      });
+      );
 
       if (!res.ok) throw new Error("Telegramga yuborishda xatolik yuz berdi.");
 
@@ -73,7 +133,6 @@ const BookingForm = () => {
         email: "",
         telefon: "",
         sana: "",
-        vaqt: "",
         izoh: "",
       });
     } catch (err) {
@@ -107,7 +166,8 @@ const BookingForm = () => {
         </FormGroup>
         <FormGroup className="booking__form d-inline-block ms-1 mb-4">
           <input
-            type="number"
+            style={{ marginLeft: "-4px" }}
+            type="tel"
             name="telefon"
             value={formData.telefon}
             onChange={changeHandler}
@@ -117,20 +177,11 @@ const BookingForm = () => {
         </FormGroup>
         <FormGroup className="booking__form d-inline-block me-4 mb-4">
           <input
+            style={{ marginLeft: "20px" }}
             type="date"
             name="sana"
             value={formData.sana}
             onChange={changeHandler}
-            required
-          />
-        </FormGroup>
-        <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-          <input
-            type="time"
-            name="vaqt"
-            value={formData.vaqt}
-            onChange={changeHandler}
-            className="time__picker"
             required
           />
         </FormGroup>

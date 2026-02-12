@@ -2,6 +2,9 @@
   padding: 10px 0px;
   background: #000d6b;
   color: #fff;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .header__top__left {
@@ -104,6 +107,9 @@
 .main__navbar {
   padding: 15px 0px;
   background: #000d6b;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .mobile__menu i {
@@ -175,15 +181,18 @@
   .navigation {
     background: rgba(0, 13, 107, 0.9);
     width: 100%;
+    max-width: 100vw;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     z-index: 9999;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
 
     transform: translateY(-100%);
     opacity: 0;
