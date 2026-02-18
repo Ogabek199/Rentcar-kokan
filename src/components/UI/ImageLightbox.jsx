@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ImageMagnifier from "./ImageMagnifier";
 import "../../styles/image-lightbox.css";
 
 const ImageLightbox = ({ images, currentIndex = 0, onClose }) => {
@@ -70,10 +71,12 @@ const ImageLightbox = ({ images, currentIndex = 0, onClose }) => {
       )}
 
       <div className="lightbox__content">
-        <img
+        <ImageMagnifier
           src={images[activeIndex]}
           alt={`Rasm ${activeIndex + 1}`}
-          className="lightbox__image"
+          className="lightbox__magnifier"
+          zoomLevel={2.2}
+          lensSize={180}
         />
         {images.length > 1 && (
           <div className="lightbox__counter">
@@ -117,10 +120,16 @@ export const ImageGallery = ({ images, className = "" }) => {
       <>
         <div className={`image-gallery ${className}`}>
           <div
-            className="image-gallery__item"
+            className="image-gallery__item image-gallery__item--magnifier"
             onClick={() => openLightbox(0)}
           >
-            <img src={images[0]} alt="Gallery" loading="lazy" />
+            <ImageMagnifier
+              src={images[0]}
+              alt="Gallery"
+              zoomLevel={2}
+              lensSize={140}
+              className="image-gallery__magnifier"
+            />
             <div className="image-gallery__overlay">
               <i className="ri-zoom-in-line"></i>
             </div>

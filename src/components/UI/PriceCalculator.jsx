@@ -11,17 +11,15 @@ const PriceCalculator = ({ basePrice = 500000, discountPercent = 0 }) => {
   useEffect(() => {
     const handleFocus = () => setIsDateFocused(true);
     const handleBlur = () => setTimeout(() => setIsDateFocused(false), 200);
-
     const inputs = dateRowRef.current?.querySelectorAll('input[type="date"]');
     inputs?.forEach((input) => {
-      input.addEventListener('focus', handleFocus);
-      input.addEventListener('blur', handleBlur);
+      input.addEventListener("focus", handleFocus);
+      input.addEventListener("blur", handleBlur);
     });
-
     return () => {
       inputs?.forEach((input) => {
-        input.removeEventListener('focus', handleFocus);
-        input.removeEventListener('blur', handleBlur);
+        input.removeEventListener("focus", handleFocus);
+        input.removeEventListener("blur", handleBlur);
       });
     };
   }, []);
@@ -91,8 +89,8 @@ const PriceCalculator = ({ basePrice = 500000, discountPercent = 0 }) => {
           </div>
         </div>
 
-        <div 
-          className={`price-calculator__row ${isDateFocused ? 'price-calculator__row--date-focused' : ''}`}
+        <div
+          className={`price-calculator__row ${isDateFocused ? "price-calculator__row--date-focused" : ""}`}
           ref={dateRowRef}
         >
           <label className="price-calculator__label">Yoki sanalarni tanlang</label>

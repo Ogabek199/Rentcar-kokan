@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
     >
       <CommonSection title="Maxfiylik siyosati" />
       
-      <section style={{ padding: "60px 0" }}>
+      <section style={{ padding: "60px 0" }} className="animate-on-scroll animate-fade-in-up">
         <Container>
           <div style={{ maxWidth: "900px", margin: "0 auto" }}>
             <div style={{ marginBottom: "30px" }}>

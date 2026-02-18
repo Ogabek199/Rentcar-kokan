@@ -36,11 +36,11 @@ const BlogDetails = () => {
       image={blog.imgUrl}
       type="article"
     >
-      <section>
+      <section className="animate-page-enter">
         <Container>
           <Row>
             <Col lg="8" md="8">
-              <div className="blog__details">
+              <div className="blog__details animate-on-scroll animate-fade-in-up">
                 <img src={blog.imgUrl} alt="" className="w-100" />
                 <h2 className="section__title mt-4">{blog.title}</h2>
 

@@ -21,9 +21,9 @@ const Prices = () => {
       canonicalPath="/prices"
     >
       <CommonSection title="Narxlar" />
-      <section className="prices-page">
+      <section className="prices-page animate-page-enter">
         <Container>
-          <div className="prices-promo">
+          <div className="prices-promo animate-on-scroll animate-scale-in">
             <div className="prices-promo__icon">
               <i className="ri-gift-line"></i>
             </div>
@@ -33,12 +33,12 @@ const Prices = () => {
             </div>
           </div>
 
-          <div className="section-head section-head--center mb-5">
+          <div className="section-head section-head--center mb-5 animate-on-scroll animate-fade-in-down">
             <h2 className="section-head__title">Kunlik ijara narxlari</h2>
             <p className="section-head__sub">BARCHA MODELLAR</p>
             <span className="section-head__line" />
           </div>
-          <Row>
+          <Row className="animate-on-scroll animate-stagger">
             {carData.map((item) => {
               const { discounted, original } = applyRamadanDiscount(item.price);
               return (

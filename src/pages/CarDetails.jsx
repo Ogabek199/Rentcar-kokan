@@ -51,7 +51,7 @@ const CarDetails = () => {
     );
   }
 
-  const similarCars = carData.filter((c) => c.id !== singleCarItem.id).slice(0, 3);
+  const similarCars = carData.filter((c) => c.id !== singleCarItem.id).slice(0, 4);
   const { discounted: discountedPrice, original: originalPrice } = applyRamadanDiscount(singleCarItem.price);
 
   return (
@@ -62,13 +62,13 @@ const CarDetails = () => {
       image={singleCarItem.imgUrl}
       type="product"
     >
-      <section className="car-details-page">
+      <section className="car-details-page animate-page-enter">
         <Container>
           <Row>
             <Col lg="8">
               <div className="car-details__main">
-                <p className="car-details__badge">Yangi avlod</p>
-                <div className="car-details__rating-row">
+                <p className="car-details__badge animate-on-scroll animate-fade-in-down">Yangi avlod</p>
+                <div className="car-details__rating-row animate-on-scroll animate-fade-in-up">
                   <span className="car-details__stars">
                     {[1, 2, 3, 4, 5].map((i) => (
                       <i key={i} className="ri-star-fill"></i>
@@ -82,7 +82,7 @@ const CarDetails = () => {
                   Qo'qon markazida mavjud
                 </p>
 
-                <div className="car-details__hero-img-wrap">
+                <div className="car-details__hero-img-wrap animate-on-scroll animate-scale-in">
                   <span className="car-details__price-label">BOSHLANG'ICH NARX</span>
                   <span className="car-details__price-value">
                     {formatCurrency(discountedPrice)} so'm / kun
@@ -94,7 +94,7 @@ const CarDetails = () => {
                   <span className="car-details__tag">Premium tanlov</span>
                 </div>
 
-                <div className="car-details__specs">
+                <div className="car-details__specs animate-on-scroll animate-fade-in-up">
                   <h3 className="car-details__heading">
                     <i className="ri-key-2-line"></i>
                     Asosiy xususiyatlar
@@ -123,12 +123,12 @@ const CarDetails = () => {
                   </div>
                 </div>
 
-                <div className="car-details__block">
+                <div className="car-details__block animate-on-scroll animate-fade-in-up">
                   <h3 className="car-details__heading">Ushbu avtomobil haqida</h3>
                   <p className="car-details__description">{singleCarItem.description}</p>
                 </div>
 
-                <div className="car-details__block">
+                <div className="car-details__block animate-on-scroll animate-fade-in-up">
                   <h3 className="car-details__heading">Nimalar kiradi</h3>
                   <ul className="car-details__included">
                     {INCLUDED.map((item, i) => (
@@ -137,7 +137,7 @@ const CarDetails = () => {
                   </ul>
                 </div>
 
-                <div className="car-details__block">
+                <div className="car-details__block animate-on-scroll animate-fade-in-up">
                   <div className="car-details__reviews-head">
                     <h3 className="car-details__heading mb-0">Foydalanuvchi sharhlari</h3>
                     <button type="button" className="car-details__write-review">Sharh yozish</button>
@@ -163,21 +163,24 @@ const CarDetails = () => {
                 </div>
 
                 {similarCars.length > 0 && (
-                  <div className="car-details__block">
-                    <h3 className="car-details__heading">O'xshash avtomobillar</h3>
+                  <div className="car-details__block animate-on-scroll animate-fade-in-up">
+                    <h3 className="car-details__heading">Sizga ham yoqishi mumkin</h3>
                     <p className="car-details__similar-sub">Avtoparkimizdan yana premium variantlar.</p>
                     <Row>
                       {similarCars.map((car) => (
                         <CarItem key={car.id} item={car} colProps={{ lg: "6", md: "6", sm: "6" }} />
                       ))}
                     </Row>
+                    <div className="text-center mt-3">
+                      <Link to="/cars" className="btn-outline">Barcha avtomobillar</Link>
+                    </div>
                   </div>
                 )}
               </div>
             </Col>
 
             <Col lg="4" className="mt-4">
-              <div className="car-details__sidebar">
+              <div className="car-details__sidebar animate-on-scroll animate-fade-in-left">
                 <PriceCalculator 
                   basePrice={discountedPrice} 
                   discountPercent={10}

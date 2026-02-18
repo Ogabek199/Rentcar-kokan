@@ -8,6 +8,7 @@ const navLinks = [
   { path: "/cars", display: "Avtomobillar" },
   { path: "/prices", display: "Narxlar" },
   { path: "/about", display: "Biz haqimizda" },
+  { path: "/about-me", display: "Dasturchi haqida" },
   { path: "/contact", display: "Bog'lanish" },
 ];
 

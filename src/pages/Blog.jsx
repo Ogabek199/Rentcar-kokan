@@ -12,9 +12,9 @@ const Blog = () => {
       canonicalPath="/blogs"
     >
       <CommonSection title="Bloglar" />
-      <section>
+      <section className="animate-on-scroll animate-fade-in-up">
         <Container>
-          <Row>
+          <Row className="animate-on-scroll animate-stagger">
             <BlogList />
             <BlogList />
           </Row>

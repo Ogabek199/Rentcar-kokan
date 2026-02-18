@@ -5,6 +5,7 @@ import Footer from "../Footer/Footer";
 import Routers from "../../routers/Routers";
 import RamadanPromoModal from "../UI/RamadanPromoModal";
 import ScrollToTop from "../UI/ScrollToTop";
+import ScrollProgress from "../UI/ScrollProgress";
 import BottomNavbar from "../UI/BottomNavbar";
 // import FavoritesCounter from "../UI/FavoritesCounter";
 import { initScrollAnimations } from "../../utils/scrollAnimations";
@@ -16,9 +17,10 @@ const Layout = () => {
 
   return (
     <Fragment>
+      <ScrollProgress />
       <Header />
       <RamadanPromoModal />
-      <div>
+      <div className="layout__content">
         <Routers />
       </div>
       <Footer />

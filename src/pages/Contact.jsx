@@ -199,8 +199,8 @@ const Contact = () => {
       description="Ziyo Rent Car bilan bog‘lanish: savollar, bron qilish va hamkorlik bo‘yicha murojaat qiling. Telefon, email va onlayn forma orqali tez javob oling."
       canonicalPath="/contact"
     >
-      <section className="contact-page">
-        <div className="contact-page__header">
+      <section className="contact-page animate-page-enter">
+        <div className="contact-page__header animate-on-scroll animate-fade-in-down">
           <Container>
             <h1 className="contact-page__title">Bog'lanish</h1>
             <p className="contact-page__sub">Biz bilan bog'laning</p>
@@ -209,7 +209,7 @@ const Contact = () => {
         <Container className="contact-page__content">
           <Row>
             <Col lg="7" md="7">
-              <div className="contact-card">
+              <div className="contact-card animate-on-scroll animate-fade-in-left">
                 <h2 className="contact-card__title">Xabar yuborish</h2>
                 <form onSubmit={submitHandler} className="contact-form">
                   <div className="contact-form__group">
@@ -255,7 +255,7 @@ const Contact = () => {
               </div>
             </Col>
             <Col lg="5" md="5">
-              <div className="contact-info-card">
+              <div className="contact-info-card animate-on-scroll animate-fade-in-right">
                 <h2 className="contact-info-card__title">Bog'lanish ma'lumotlari</h2>
                 <ul className="contact-info-card__list">
                   <li>

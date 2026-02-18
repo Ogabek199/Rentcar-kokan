@@ -71,22 +71,24 @@ const CarListing = () => {
     >
       <CommonSection title="Avtomobil ro'yxati" />
 
-      <section className="section--cars">
+      <section className="section--cars animate-on-scroll animate-fade-in-up">
         <Container>
-          <FilterSort 
-            onFilterChange={setFilters} 
-            onSortChange={setSortBy}
-            searchComponent={<SearchBar onSearch={setSearchTerm} />}
-          />
+          <div className="animate-on-scroll animate-fade-in-down">
+            <FilterSort 
+              onFilterChange={setFilters} 
+              onSortChange={setSortBy}
+              searchComponent={<SearchBar onSearch={setSearchTerm} />}
+            />
+          </div>
           
           {filteredAndSortedCars.length > 0 ? (
-            <Row>
+            <Row className="animate-on-scroll animate-stagger">
               {filteredAndSortedCars.map((item) => (
                 <CarItem item={item} key={item.id} />
               ))}
             </Row>
           ) : (
-            <div className="no-results">
+            <div className="no-results animate-on-scroll animate-fade-in">
               <i className="ri-search-line"></i>
               <h3>Natija topilmadi</h3>
               <p>Qidiruv shartlariga mos avtomobil topilmadi. Filtrlarni o'zgartirib ko'ring.</p>

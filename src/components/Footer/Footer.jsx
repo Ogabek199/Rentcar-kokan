@@ -5,7 +5,9 @@ import "../../styles/footer.css";
 const quickLinks = [
   { path: "/cars", display: "Avtopark" },
   { path: "/prices", display: "Narxlar" },
+  { path: "/blogs", display: "Bloglar" },
   { path: "/about", display: "Biz haqimizda" },
+  { path: "/about-me", display: "Men haqimda" },
   { path: "/privacy-policy", display: "Maxfiylik siyosati" },
   { path: "/contact", display: "Bog'lanish" },
 ];

@@ -12,7 +12,9 @@ const About = () => {
       canonicalPath="/about"
     >
       <CommonSection title="Biz haqimizda" />
-      <AboutSection aboutClass="aboutPage" />
+      <div className="animate-on-scroll animate-fade-in-up">
+        <AboutSection aboutClass="aboutPage" />
+      </div>
     </Helmet>
   );
 };
