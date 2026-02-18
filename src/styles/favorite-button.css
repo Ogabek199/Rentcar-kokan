@@ -56,24 +56,6 @@
   font-size: 1.3rem;
 }
 
-.dark-mode .favorite-btn {
-  background: rgba(45, 45, 45, 0.9);
-  border-color: rgba(255, 255, 255, 0.1);
-  color: var(--dark-text-muted);
-}
-
-.dark-mode .favorite-btn:hover {
-  background: rgba(45, 45, 45, 1);
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-
-.dark-mode .favorite-btn.favorited {
-  background: rgba(255, 87, 87, 0.2);
-  border-color: #ff5757;
-  color: #ff5757;
-}
-
 .favorite-btn__count {
   position: absolute;
   top: -6px;
@@ -116,7 +98,3 @@
   right: -8px;
 }
 
-.dark-mode .favorite-btn__count {
-  background: rgba(255, 87, 87, 0.9);
-  border-color: rgba(255, 255, 255, 0.2);
-}

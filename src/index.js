@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import "./styles/dark-mode.css";
 import "./styles/scroll-to-top.css";
 import "./styles/loading-skeleton.css";
 import "./styles/price-calculator.css";

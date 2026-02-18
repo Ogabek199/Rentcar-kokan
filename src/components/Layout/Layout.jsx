@@ -5,7 +5,6 @@ import Footer from "../Footer/Footer";
 import Routers from "../../routers/Routers";
 import RamadanPromoModal from "../UI/RamadanPromoModal";
 import ScrollToTop from "../UI/ScrollToTop";
-import DarkModeToggle from "../UI/DarkModeToggle";
 import BottomNavbar from "../UI/BottomNavbar";
 // import FavoritesCounter from "../UI/FavoritesCounter";
 import { initScrollAnimations } from "../../utils/scrollAnimations";
@@ -24,7 +23,6 @@ const Layout = () => {
       </div>
       <Footer />
       <ScrollToTop />
-      <DarkModeToggle />
       <BottomNavbar />
       {/* <FavoritesCounter /> */}
     </Fragment>

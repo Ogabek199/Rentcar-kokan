@@ -50,11 +50,6 @@
   }
 }
 
-.dark-mode .favorites-counter {
-  background: rgba(255, 87, 87, 0.9);
-  border-color: rgba(255, 87, 87, 0.4);
-}
-
 @media (max-width: 768px) {
   .favorites-counter {
     bottom: 90px;

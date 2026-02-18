@@ -211,31 +211,6 @@
   color: var(--color-primary);
 }
 
-.dark-mode .filter-sort {
-  background: rgba(45, 45, 45, 0.6);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode .filter-sort__select,
-.dark-mode .filter-sort__option,
-.dark-mode .filter-sort__price-input {
-  background: rgba(30, 30, 30, 0.8);
-  border-color: rgba(255, 255, 255, 0.1);
-  color: var(--dark-text);
-}
-
-.dark-mode .filter-sort__select:focus,
-.dark-mode .filter-sort__price-input:focus {
-  background: rgba(30, 30, 30, 0.95);
-  border-color: var(--color-primary);
-}
-
-.dark-mode .filter-sort__reset {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
-  color: var(--dark-text);
-}
-
 .filter-sort__search .search-bar {
   margin-bottom: 0;
   width: 100%;

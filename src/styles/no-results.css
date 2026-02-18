@@ -30,15 +30,6 @@
   margin: 0 auto;
 }
 
-.dark-mode .no-results {
-  background: rgba(45, 45, 45, 0.6);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode .no-results h3 {
-  color: var(--dark-text);
-}
-
 @media (max-width: 768px) {
   .no-results {
     padding: 40px 16px;

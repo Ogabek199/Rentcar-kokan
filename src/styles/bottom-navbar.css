@@ -121,24 +121,6 @@
   transform: scale(1.05);
 }
 
-/* Dark Mode Support */
-.dark-mode .bottom-navbar {
-  background: rgba(26, 26, 26, 0.9);
-  border-color: rgba(255, 255, 255, 0.15);
-}
-
-.dark-mode .bottom-navbar__item.active {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.dark-mode .bottom-navbar__item.active i {
-  color: #4A9EFF;
-}
-
-.dark-mode .bottom-navbar__item.active .bottom-navbar__label {
-  color: #4A9EFF;
-}
-
 /* Mobile Only - Show bottom navbar */
 @media (max-width: 768px) {
   .bottom-navbar {
