@@ -189,6 +189,10 @@
     font-size: 1rem;
   }
 
+  .header__logo-img {
+    height: 32px;
+  }
+
   .header__cta {
     padding: 8px 14px;
     font-size: 0.85rem;
