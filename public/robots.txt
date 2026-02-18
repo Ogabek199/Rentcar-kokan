@@ -1,4 +1,9 @@
 User-agent: *
+Allow: /
+
+Sitemap: https://rentcar-kokand.uz/sitemap.xml
+
+User-agent: *
 Disallow:
 
 Sitemap: https://www.rentcar-kokand.uz/sitemap.xml

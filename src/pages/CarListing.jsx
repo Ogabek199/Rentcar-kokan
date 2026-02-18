@@ -6,10 +6,14 @@ import carData from "../assets/data/carData";
 
 const CarListing = () => {
   return (
-    <Helmet title="Cars">
+    <Helmet
+      title="Avtopark"
+      description="Ziyo Rent Car avtoparki: turli modellardagi avtomobillar, kunlik ijara va qulay shartlar. O‘zingizga mos mashinani tanlab, tez bron qiling."
+      canonicalPath="/cars"
+    >
       <CommonSection title="Avtomobil ro'yxati" />
 
-      <section>
+      <section className="section--cars">
         <Container>
           <Row>
             {carData.map((item) => (

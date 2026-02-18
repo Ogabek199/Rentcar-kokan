@@ -1,228 +1,194 @@
-.find__cars-left {
-  background: linear-gradient(rgb(249, 168, 38, 0.9), rgb(249, 168, 38, 0.9)),
-    url("../assets/all-images/toyota-offer-2.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  padding: 65px 35px;
-}
-
-.find__cars-left h2 {
-  font-weight: 600;
-  font-size: 2.8rem;
-}
-
-.form__group {
-  width: 30%;
-  margin-bottom: 0;
-}
-
-.form__group input {
-  border: 1px solid #7c8a972a;
-  padding: 8px 12px;
-
-  width: 100%;
-  outline: none;
-}
-.form__group input::placeholder {
-  color: #7c8a97;
-}
-
-.form {
-  background: #fff;
-  padding-top: 55px;
-  padding-bottom: 50px;
-  padding-left: 15px;
-  padding-right: 15px;
-  overflow: visible;
+/* ========== New UI Find Car Form (floating card) ========== */
+.find-car-form--new {
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 28px 32px;
+  margin-bottom: 20px;
   width: 100%;
   max-width: 100%;
-}
-
-.select__group {
-  width: 30%;
-}
-
-.select__group select {
-  width: 100%;
-  padding: 10px 15px;
-  border: 1px solid #7c8a972a;
-  outline: none;
-  color: #7c8a97;
-}
-
-.hero__slider-section {
+  overflow: visible;
   position: relative;
   z-index: 10;
-  margin-bottom: 200px;
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
 }
 
-.hero__form {
-  position: absolute;
-  bottom: -150px;
-  z-index: 11;
+.find-car-form__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr minmax(200px, auto);
+  gap: 20px;
+  align-items: end;
   width: 100%;
-  max-width: 100%;
-  left: 0;
-  right: 0;
 }
 
-.form__row {
-  background: #fff;
-  box-shadow: 5px 5px 15px -5px #7c8a97;
+.find-car-form__group {
+  min-width: 0;
 }
 
+.find-car-form__label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #d8d6d6;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
 
-.find__car-btn {
-  background: #000d6b !important;
-  color: #fff !important;
-  padding: 8px 15px;
-  width: 100%;
-  border: none;
+.find-car-form__input-wrap {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s;
+  min-width: 0;
+}
+
+.find-car-form__input-wrap:focus-within {
+  border-color: var(--color-primary);
   outline: none;
 }
 
-@media only screen and (max-width: 992px) {
-  .find__cars-left {
-    padding: 65px 22px;
+.find-car-form__input-wrap i {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+.find-car-form__input-wrap input,
+.find-car-form__input-wrap select {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: transparent;
+  min-width: 0;
+}
+
+.find-car-form__input-wrap select {
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 30px;
+}
+
+.find-car-form__input-wrap--select {
+  position: relative;
+}
+
+.find-car-form__input-wrap--select::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid var(--color-text-muted);
+  pointer-events: none;
+}
+
+.find-car-form__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 14px 24px;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.find-car-form__submit:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Tablet styles */
+@media (max-width: 992px) {
+  .find-car-form__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
   }
 
-  .find__cars-left h2 {
-    font-size: 1.5rem;
-  }
-
-  .form {
-    padding: 30px 10px;
-  }
-
-  .form__group input,
-  .select__group select {
-    padding: 7px 10px;
-    font-size: 0.8rem;
-  }
-
-  .hero__form {
-    bottom: -100px;
+  .find-car-form--new {
+    padding: 24px 20px;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .find__cars-left {
-    padding-top: 20px;
-    padding-bottom: 15px;
-    background: #fff;
-    text-align: center;
-  }
-
-  .form {
-    padding: 20px 15px 30px 15px;
-  }
-
-  .hero__form {
-    position: relative;
-    bottom: 0;
-    margin-top: 20px;
-    margin-bottom: 15px;
+/* Mobile styles */
+@media (max-width: 768px) {
+  .find-car-form--new {
+    padding: 20px 16px;
+    margin-top: 0;
+    margin-bottom: 0;
     width: 100%;
     max-width: 100%;
-    left: 0;
-    right: 0;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
   }
 
-  .hero__slider-section {
-    margin-bottom: 40px;
+  .find-car-form__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .find-car-form__group {
     width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
   }
 
-  .form__group,
-  .select__group {
-    margin-bottom: 12px;
+  .find-car-form__group--btn {
+    margin-top: 0;
+  }
+
+  .find-car-form__label {
+    color: #d8d6d6;
+  }
+
+  .find-car-form__submit {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
   }
 }
 
-@media only screen and (max-width: 576px) {
-  .form__group {
-    width: 100%;
-    margin: auto;
-    margin-bottom: 15px;
-  }
-
-  .form__group input {
-    font-size: 0.9rem !important;
-    padding: 10px 12px;
-  }
-
-  .select__group {
-    width: 100%;
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-  }
-
-  .select__group select {
-    padding: 10px 12px;
-    font-size: 0.9rem;
-  }
-
-  .find__car-btn {
-    font-size: 1rem;
-    padding: 12px 15px;
-    margin-top: 10px;
-  }
-
-  .find__cars-left h2 {
-    font-size: 1rem;
-  }
-
-  .hero__form {
-    position: relative;
-    bottom: 0;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    width: 100%;
-    max-width: 100%;
-    left: 0;
-    right: 0;
-  }
-
-  .hero__slider-section {
-    margin-bottom: 30px;
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-  }
-
-  .form {
-    padding: 20px 15px 25px 15px;
-    margin-bottom: 15px;
-  }
-
-  .form__row {
-    padding-bottom: 20px;
+/* Small mobile styles */
+@media (max-width: 576px) {
+  .find-car-form--new {
+    padding: 18px 14px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    margin-top: 0;
     margin-bottom: 0;
   }
 
-  .d-flex.gap-3 {
-    gap: 12px !important;
-    flex-direction: column;
+  .find-car-form__grid {
+    gap: 14px;
   }
 
-  .hero__form .container {
-    padding-left: 15px;
-    padding-right: 15px;
+  .find-car-form__label {
+    font-size: 0.65rem;
+    margin-bottom: 6px;
   }
 
-  .hero__form .row {
-    margin-left: 0;
-    margin-right: 0;
+  .find-car-form__input-wrap {
+    padding: 10px 12px;
   }
 
-  .hero__form [class*="col-"] {
-    padding-left: 0;
-    padding-right: 0;
+  .find-car-form__submit {
+    padding: 12px 18px;
+    font-size: 0.9rem;
   }
 }

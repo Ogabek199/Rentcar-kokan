@@ -1,94 +1,169 @@
-.footer {
-  background: #000d6b;
-  padding-top: 50px;
-  padding-bottom: 15px;
+/* ========== New UI Footer (rasmdagi dizayn) ========== */
+.footer--new {
+  background: var(--color-dark);
+  padding: 56px 0 0;
+  color: #fff;
+}
+
+.footer__brand {
+  max-width: 280px;
+}
+
+.footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+  margin-bottom: 14px;
 }
 
 .footer__logo i {
-  color: #fff;
-  font-weight: 400;
+  color: var(--color-primary);
+  font-size: 1.5rem;
 }
 
-.footer__logo span {
-  color: #fff;
-  font-weight: 500;
+.footer__desc {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
-.footer__logo-content {
-  color: rgba(255, 255, 255, 0.715);
-  margin-top: 15px;
-  line-height: 30px;
+.footer__social {
+  display: flex;
+  gap: 12px;
 }
 
-.quick__link {
-  border: none !important;
-  background: transparent !important;
-}
-
-.quick__link a {
-  color: rgba(255, 255, 255, 0.715);
-  text-decoration: none;
-  font-weight: 300;
-  transition: 0.3s;
-}
-
-.quick__link a:hover {
-  color: #f9a826;
-}
-
-.footer__link-title {
-  color: #fff;
-}
-
-.office__info {
-  color: rgba(255, 255, 255, 0.715);
-  font-weight: 300;
-}
-
-.newsletter {
+.footer__social a {
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
-  border: 1px solid #7c8a972f;
-  border-radius: 50px;
-  background: #020a4de9;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  transition: color 0.2s;
 }
 
-.newsletter input {
-  background: transparent;
-  color: #fff;
-  border: none;
-  outline: none;
+.footer__social a:hover {
+  color: var(--color-primary);
 }
 
-.newsletter span i {
+.footer__title {
   color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__links li {
+  margin-bottom: 10px;
+}
+
+.footer__links a {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer__links a:hover {
+  color: var(--color-primary);
+}
+
+.footer__contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+}
+
+.footer__contact i {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.footer__contact a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+
+.footer__contact a:hover {
+  color: var(--color-primary);
+}
+
+.footer__map-placeholder {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.footer__map-placeholder span {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+
+.footer__map-link {
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.footer__map-link:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
 }
 
 .footer__bottom {
-  border-top: 1px solid #7c8a972f;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px 0;
+  margin-top: 40px;
+  text-align: center;
 }
 
-@media only screen and (max-width: 768px) {
-  .footer__logo-content {
-    font-size: 0.8rem;
+.footer__bottom p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .footer--new {
+    padding: 40px 0 0;
   }
 
-  .quick__link,
-  .office__info {
-    font-size: 0.8rem;
-    line-height: 1.5rem;
+  .footer__brand {
+    max-width: 100%;
   }
 
-  .footer__link-title {
-    font-size: 1rem;
-    margin-top: 15px;
+  .footer__map-placeholder {
+    min-height: 120px;
   }
-
-  .footer__bottom p {
-    font-size: 0.7rem;
-  }
-
-  
 }

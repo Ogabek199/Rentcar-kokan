@@ -1,93 +1,138 @@
-.car__item {
-  border: 1px solid #7c8a9736;
-  padding: 20px;
-  border-radius: 5px;
+/* ========== New UI Car Card (Featured Luxury Cars style) ========== */
+.car__item--new {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-.car__item-info span i {
-  color: #f9a826;
-  font-size: 1.1rem;
+.car__item--new:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.car__item-img-wrap {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--color-bg-light);
+}
+
+.car__item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.car__item-price-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(26, 32, 44, 0.85);
+  color: var(--color-primary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.car__item-price-row {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.car__item-price-new {
+  color: var(--color-primary);
+  font-weight: 800;
+  font-size: 0.85rem;
+  line-height: 1.1;
+  opacity: 1;
+}
+
+.car__item-price-per {
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.84);
+  opacity: 1;
+  white-space: nowrap;
+}
+
+.car__item-price-old {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(229, 160, 13, 0.9);
+  opacity: 1;
+  white-space: nowrap;
+}
+
+.car__item-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.car__item-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.car__item-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.car__item-features i {
+  color: var(--color-primary);
+  margin-right: 4px;
+  font-size: 0.95rem;
 }
 
 .car__item-btn {
-  border-radius: 0;
-  border: none;
-  outline: none;
-  background: #000d6b;
-  padding: 8px 0px;
-}
-
-.car__item-btn a {
-  text-decoration: none;
+  display: block;
+  text-align: center;
+  background: var(--color-primary);
   color: #fff;
-  font-weight: 500;
-}
-
-.car__item-btn a:hover {
-  color: #fff;
-}
-.car__btn-details {
-  background: #f9a826;
-  border-radius: 0px 4px 4px 0px;
-}
-
-.car__btn-rent {
-  border-radius: 4px 0px 0px 4px;
-}
-
-.car__item-content h4 {
-  font-size: 1.8rem;
-}
-
-.car__item-content h6 {
-  font-size: 1.2rem;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
   font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: auto;
+  transition: background 0.2s;
 }
 
-@media only screen and (max-width: 992px) {
-  .car__item h4 {
+.car__item-btn:hover {
+  background: var(--color-primary-dark);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .car__item-title {
     font-size: 1.1rem;
-    margin-bottom: 0;
   }
 
-  .car__item h6 {
-    font-size: 1rem;
-    margin-top: 10px;
-  }
-
-  .car__item-info {
-    flex-wrap: wrap;
-  }
-
-  .car__item-info span {
-    font-size: 0.8rem;
-    justify-content: space-between;
-  }
-
-  .car__item-btn {
-    padding: 5px 10px;
-    font-size: 0.9rem;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .car__item h4 {
-    font-size: 1rem;
-  }
-
-  .car__item h6 {
-    font-size: 0.9rem;
-  }
-
-  .car__item-info span {
-    font-size: 0.7rem;
-  }
-
-  .car__item-info span i {
-    font-size: 0.9rem;
-  }
-
-  .car__item-btn {
+  .car__item-features {
     font-size: 0.8rem;
   }
 }

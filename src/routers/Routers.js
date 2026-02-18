@@ -8,6 +8,9 @@ import Blog from "../pages/Blog";
 import BlogDetails from "../pages/BlogDetails";
 import NotFound from "../pages/NotFound";
 import Contact from "../pages/Contact";
+import Prices from "../pages/Prices";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import AboutMe from "../pages/AboutMe";
 
 const Routers = () => {
   return (
@@ -17,9 +20,13 @@ const Routers = () => {
       <Route path="/about" element={<About />} />
       <Route path="/cars" element={<CarListing />} />
       <Route path="/cars/:slug" element={<CarDetails />} />
+      <Route path="/prices" element={<Prices />} />
       <Route path="/blogs" element={<Blog />} />
       <Route path="/blogs/:slug" element={<BlogDetails />} />
       <Route path="/contact" element={<Contact />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+      <Route path="/about-me" element={<AboutMe />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

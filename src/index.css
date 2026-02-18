@@ -1,12 +1,28 @@
 /* ======== google fonts ======== */
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+
+/* ======= design tokens (rasmdagi dizayn) ======= */
+:root {
+  --color-primary: #E5A00D;
+  --color-primary-dark: #d4920a;
+  --color-dark: #1A202C;
+  --color-dark-soft: #2D3748;
+  --color-text: #2D3748;
+  --color-text-muted: #718096;
+  --color-bg: #FFFFFF;
+  --color-bg-light: #F8F9FB;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+}
 
 /* ======= base style ====== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Plus Jakarta Sans", "Source Sans Pro", sans-serif;
 }
 
 html,
@@ -15,6 +31,7 @@ body {
   max-width: 100%;
   width: 100%;
   position: relative;
+  background: var(--color-bg);
 }
 
 body {
@@ -53,7 +70,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: #000d6b;
+  color: var(--color-dark);
   font-weight: 600;
   margin-bottom: 0;
 }
@@ -83,19 +100,19 @@ ul {
 }
 
 .section__title {
-  color: #000d6b;
-  font-weight: 600;
+  color: var(--color-dark);
+  font-weight: 700;
   font-size: 2rem;
 }
 
 .section__subtitle {
-  color: #f9a826;
+  color: var(--color-primary);
   font-weight: 600;
   font-size: 1.2rem;
 }
 
 .section__description {
-  color: #7c8a97;
+  color: var(--color-text-muted);
   font-size: 0.9rem;
   line-height: 30px;
   text-decoration: none;
@@ -109,18 +126,149 @@ section {
 }
 
 .btn {
-  padding: 7px 15px;
-  background: #000d6b;
+  padding: 10px 20px;
+  background: var(--color-primary);
   color: #fff;
   border: none;
   outline: none;
-  border-radius: 5px;
+  border-radius: var(--radius-sm);
   transition: 0.3s;
+  font-weight: 600;
 }
 
 .btn:hover {
   color: #fff !important;
-  background: #000c6bd0;
+  background: var(--color-primary-dark);
+}
+
+/* ========== Section headings (new UI) ========== */
+.section-head__title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 6px;
+}
+
+.section-head__sub {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.section-head__line {
+  display: inline-block;
+  width: 45px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.section-head--center {
+  text-align: center;
+}
+
+.section-head--center .section-head__line {
+  margin: 0 auto;
+}
+
+.section--cars {
+  padding-top: 48px;
+  padding-bottom: 56px;
+  background: var(--color-bg-light);
+}
+
+.hero__slider-section--new {
+  margin-bottom: 160px;
+  overflow: visible;
+  position: relative;
+}
+
+/* ========== CTA box (Ready to start...) ========== */
+.cta-box {
+  background: var(--color-dark);
+  border-radius: 24px;
+  padding: 56px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box__title {
+  color: #fff;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.cta-box__text {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  max-width: 560px;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+}
+
+.cta-box__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+
+.cta-box__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.cta-box__btn--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.cta-box__btn--primary:hover {
+  background: var(--color-primary-dark);
+  color: #fff;
+}
+
+.cta-box__btn--outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid var(--color-primary);
+}
+
+.cta-box__btn--outline:hover {
+  background: rgba(229, 160, 13, 0.2);
+  color: #fff;
+}
+
+.section--cta {
+  padding: 64px 0;
+}
+
+/* ========== Button outline (View All Cars) ========== */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 28px;
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background: var(--color-primary);
+  color: #fff;
 }
 
 @media only screen and (max-width: 768px) {
@@ -134,5 +282,22 @@ section {
 
   .section__subtitle {
     font-size: 1.1rem;
+  }
+
+  .hero__slider-section--new {
+    margin-bottom: 0;
+  }
+
+  .cta-box {
+    padding: 40px 24px;
+  }
+
+  .cta-box__buttons {
+    flex-direction: column;
+  }
+
+  .cta-box__btn {
+    width: 100%;
+    justify-content: center;
   }
 }

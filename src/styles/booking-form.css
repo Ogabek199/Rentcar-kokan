@@ -1,43 +1,110 @@
+/* Booking form – rasmdagi “Mashinani band qilish” uslubi */
+.booking-form--card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.booking-form__group {
+  margin-bottom: 14px;
+}
+
+.booking-form__group--full {
+  width: 100%;
+}
+
+.booking-form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.booking-form__input,
+.booking-form__textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.booking-form__input::placeholder,
+.booking-form__textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+.booking-form__input:focus,
+.booking-form__textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.booking-form__group--date {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.booking-form__group--date .booking-form__input {
+  padding-left: 40px;
+}
+
+.booking-form__icon {
+  position: absolute;
+  left: 12px;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  pointer-events: none;
+}
+
+.booking-form__textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.booking-form__btn {
+  padding: 10px 20px;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+.booking-form__btn:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Eski klasslar (boshqa sahifalarda ishlatilishi mumkin) */
 .booking__form {
-  width: 47.5%;
+  width: 100%;
 }
 
 .booking__form input {
-  padding: 8px 15px;
-  border: 1px solid #7c8a972a;
-  color: #7c8a97;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-sm);
   width: 100%;
+  font-size: 0.95rem;
 }
 
-.booking__form select,
 .textarea {
   width: 100%;
-  padding: 10px 15px;
-  color: #7c8a97;
-  border: 1px solid #7c8a972a;
-  border-radius: 4px;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
 }
 
-.time__picker::before {
-  content: "Journey Time";
-  color: #7c8a97;
-  margin-right: 0.5rem;
-}
-
-.textarea:focus,
-.booking__form input:focus,
-.booking__form select:focus {
-  outline: none;
-}
-
-@media only screen and (max-width: 768px) {
-  .booking__form {
-    width: 100%;
-  }
-
-  .booking__form input,
-  .textarea,
-  .booking__form select {
-    font-size: 0.8rem;
+@media (max-width: 576px) {
+  .booking-form__row {
+    grid-template-columns: 1fr;
   }
 }

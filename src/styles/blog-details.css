@@ -1,5 +1,5 @@
 .blog__publisher span i {
-  color: #f9a826;
+  color: var(--color-primary);
 }
 
 blockquote {
@@ -10,37 +10,38 @@ blockquote {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  border: 2px solid #000d6b;
+  border: 2px solid var(--color-dark);
   object-fit: cover;
 }
 
 .replay i {
-  color: #f9a826;
+  color: var(--color-primary);
 }
 
 .replay {
-  color: #000d6b;
+  color: var(--color-dark);
   font-weight: 600;
   cursor: pointer;
 }
 
 .leave__comment-form input,
 .leave__comment-form textarea {
-  border: 1px solid rgba(0, 12, 107, 0.118);
+  border: 1px solid #e2e8f0;
 }
 
 .leave__comment-form textarea:focus {
   outline: none;
+  border-color: var(--color-primary);
 }
 
 .comment__btn {
-  background: #000d6b !important;
+  background: var(--color-primary) !important;
   color: #fff !important;
 }
 
 .recent__blog-item h6 a {
   text-decoration: none;
-  color: #000d6b;
+  color: var(--color-dark);
   font-weight: 600;
 }
 

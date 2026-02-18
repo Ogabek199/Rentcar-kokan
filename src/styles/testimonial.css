@@ -1,18 +1,69 @@
-@media only screen and (max-width: 768px) {
-  .testimonial p {
-    font-size: 0.8rem;
-    line-height: 1.5rem;
-  }
-
-  .testimonial h6 {
-    font-size: 1rem;
-  }
+/* ========== New UI Testimonials (What Our Clients Say) ========== */
+.testimonial-slider--new {
+  padding: 10px 0 40px;
 }
 
-@media only screen and (max-width: 576px) {
-  .testimonial img {
-    width: 60px !important;
-    height: 60px !important;
-    object-fit: cover;
+.testimonial-slider--new .slick-list {
+  margin: 0 -12px;
+}
+
+.testimonial-slider--new .slick-slide > div {
+  padding: 0 12px;
+}
+
+.testimonial-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  height: 100%;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.testimonial-card__stars {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+}
+
+.testimonial-card__text {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-card__name {
+  display: block;
+  color: var(--color-dark);
+  font-size: 0.95rem;
+}
+
+.testimonial-card__role {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 22px 18px;
+  }
+
+  .testimonial-card__text {
+    font-size: 0.9rem;
   }
 }

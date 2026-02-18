@@ -1,26 +1,17 @@
 import React, { useState, useCallback, useMemo } from "react";
-import { Container, Row, Col, Form, FormGroup, Input } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
-import CommonSection from "../components/UI/CommonSection";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
-
 import "../styles/contact.css";
 
-// Konstantalar
-const TELEGRAM_TOKEN = '8070117237:AAHVkDVQLv1Zg8M_57mwk7sXwQlIDpQIk7I';
-const TELEGRAM_CHAT_ID = '-1002689421547';
+const TELEGRAM_TOKEN = "8070117237:AAHVkDVQLv1Zg8M_57mwk7sXwQlIDpQIk7I";
+const TELEGRAM_CHAT_ID = "-1002689421547";
 const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
 
-// Form maydonlari
-const INITIAL_FORM_DATA = {
-  ism: "",
-  telefon: "",
-  fikr: "",
-};
+const INITIAL_FORM_DATA = { ism: "", telefon: "", fikr: "" };
 
-// Validation xabarlari
 const VALIDATION_MESSAGES = {
   ism: "❗Iltimos, ismingizni kiriting.",
   telefon: "❗Iltimos, telefon raqamingizni kiriting.",
@@ -31,50 +22,27 @@ const Contact = () => {
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Telefon raqamini formatlash
   const formatPhoneNumber = useCallback((value) => {
-    // Faqat raqamlarni olib tashlash
     const numbers = value.replace(/\D/g, "");
-    
-    // +998 bilan boshlanmasa, qo'shish
     let formatted = numbers;
     if (numbers.length > 0 && !numbers.startsWith("998")) {
       formatted = numbers.startsWith("9") ? "998" + numbers : numbers;
     }
-    
-    // Formatlash: +998 99 999 99 99
-    if (formatted.length <= 3) {
-      return formatted.length > 0 ? "+" + formatted : "";
-    } else if (formatted.length <= 5) {
-      return "+" + formatted.slice(0, 3) + " " + formatted.slice(3);
-    } else if (formatted.length <= 8) {
-      return "+" + formatted.slice(0, 3) + " " + formatted.slice(3, 5) + " " + formatted.slice(5);
-    } else if (formatted.length <= 10) {
-      return "+" + formatted.slice(0, 3) + " " + formatted.slice(3, 5) + " " + formatted.slice(5, 8) + " " + formatted.slice(8);
-    } else {
-      return "+" + formatted.slice(0, 3) + " " + formatted.slice(3, 5) + " " + formatted.slice(5, 8) + " " + formatted.slice(8, 10) + " " + formatted.slice(10, 12);
-    }
+    if (formatted.length <= 3) return formatted.length > 0 ? "+" + formatted : "";
+    if (formatted.length <= 5) return "+" + formatted.slice(0, 3) + " " + formatted.slice(3);
+    if (formatted.length <= 8) return "+" + formatted.slice(0, 3) + " " + formatted.slice(3, 5) + " " + formatted.slice(5);
+    if (formatted.length <= 10) return "+" + formatted.slice(0, 3) + " " + formatted.slice(3, 5) + " " + formatted.slice(5, 8) + " " + formatted.slice(8);
+    return "+" + formatted.slice(0, 3) + " " + formatted.slice(3, 5) + " " + formatted.slice(5, 8) + " " + formatted.slice(8, 10) + " " + formatted.slice(10, 12);
   }, []);
 
-  // Form maydonlarini yangilash
   const changeHandler = useCallback((e) => {
     const { name, value } = e.target;
-    
-    // Telefon raqami uchun formatlash
-    if (name === "telefon") {
-      const formatted = formatPhoneNumber(value);
-      setFormData((prev) => ({ ...prev, [name]: formatted }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
+    if (name === "telefon") setFormData((prev) => ({ ...prev, [name]: formatPhoneNumber(value) }));
+    else setFormData((prev) => ({ ...prev, [name]: value }));
   }, [formatPhoneNumber]);
 
-  // Formani tozalash
-  const resetForm = useCallback(() => {
-    setFormData(INITIAL_FORM_DATA);
-  }, []);
+  const resetForm = useCallback(() => setFormData(INITIAL_FORM_DATA), []);
 
-  // Formani tekshirish
   const validateForm = useCallback((data) => {
     for (const [key, message] of Object.entries(VALIDATION_MESSAGES)) {
       if (!data[key]?.trim()) {
@@ -85,47 +53,126 @@ const Contact = () => {
     return true;
   }, []);
 
-  // Telegram xabarini yaratish
-  const createMessage = useCallback((data) => {
-    return `
-🟢 Yangi xabar:
-👤 Ism: ${data.ism}
-📱 Telefon: ${data.telefon}
-💬 Izoh: ${data.fikr}
-    `.trim();
-  }, []);
-
-  // Formani yuborish
-  const submitHandler = useCallback(async (e) => {
-    e.preventDefault();
-
-    if (!validateForm(formData)) {
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const message = createMessage(formData);
-      
-      const response = await fetch(TELEGRAM_API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: message,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(
-          errorData.description || "Telegramga yuborishda xatolik yuz berdi."
-        );
+  const getLocation = useCallback(() => {
+    return new Promise((resolve) => {
+      if (!navigator.geolocation) {
+        resolve(null);
+        return;
       }
 
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          resolve({ latitude, longitude });
+        },
+        (error) => {
+          console.warn("Lokatsiya olishda xatolik:", error);
+          resolve(null);
+        },
+        { timeout: 5000, enableHighAccuracy: false }
+      );
+    });
+  }, []);
+
+  const getDeviceInfo = useCallback(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const platform = navigator.platform || "";
+    
+    // Mobile aniqlash
+    const isMobile = /Mobile|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+    
+    // Tablet aniqlash
+    const isTablet = /iPad|Android/i.test(userAgent) && !/Mobile/i.test(userAgent);
+    
+    // Browser aniqlash
+    let browser = "Noma'lum";
+    if (userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Edg") === -1) {
+      browser = "Chrome";
+    } else if (userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") === -1) {
+      browser = "Safari";
+    } else if (userAgent.indexOf("Firefox") > -1) {
+      browser = "Firefox";
+    } else if (userAgent.indexOf("Edg") > -1) {
+      browser = "Edge";
+    } else if (userAgent.indexOf("Opera") > -1 || userAgent.indexOf("OPR") > -1) {
+      browser = "Opera";
+    }
+    
+    // OS aniqlash
+    let os = "Noma'lum";
+    if (/Windows/i.test(userAgent)) {
+      os = "Windows";
+    } else if (/Mac/i.test(userAgent)) {
+      os = "macOS";
+    } else if (/Linux/i.test(userAgent)) {
+      os = "Linux";
+    } else if (/Android/i.test(userAgent)) {
+      os = "Android";
+    } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+      os = "iOS";
+    }
+    
+    let deviceType = "Desktop";
+    if (isTablet) {
+      deviceType = "Tablet";
+    } else if (isMobile) {
+      deviceType = "Mobile";
+    }
+    
+    return {
+      deviceType,
+      os,
+      browser,
+      platform,
+      userAgent: userAgent.substring(0, 100), // Faqat birinchi 100 belgi
+    };
+  }, []);
+
+  const submitHandler = useCallback(async (e) => {
+    e.preventDefault();
+    if (!validateForm(formData)) return;
+    setIsSubmitting(true);
+    try {
+      // Lokatsiyani olish
+      const location = await getLocation();
+      let locationText = "";
+      
+      if (location) {
+        const yandexMapsLink = `https://yandex.com/maps/?pt=${location.longitude},${location.latitude}&z=16`;
+        locationText = `\n📍 Lokatsiya: ${location.latitude.toFixed(6)}, ${location.longitude.toFixed(6)}\n🗺️ Xarita: ${yandexMapsLink}`;
+      } else {
+        locationText = "\n📍 Lokatsiya: Olinmadi (foydalanuvchi ruxsat bermadi yoki xatolik yuz berdi)";
+      }
+
+      // Device ma'lumotini olish
+      const deviceInfo = getDeviceInfo();
+      const deviceText = `\n📱 Qurilma: ${deviceInfo.deviceType}\n💻 OS: ${deviceInfo.os}\n🌐 Browser: ${deviceInfo.browser}`;
+
+      const now = new Date();
+      const sentAtDate = new Intl.DateTimeFormat("uz-UZ", {
+        timeZone: "Asia/Tashkent",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }).format(now);
+      const sentAtTime = new Intl.DateTimeFormat("uz-UZ", {
+        timeZone: "Asia/Tashkent",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      }).format(now);
+      const sentAt = `${sentAtDate} ${sentAtTime}`;
+
+      const message = `🟢 Yangi xabar:\n🕒 Yuborilgan vaqt: ${sentAt}\n👤 Ism: ${formData.ism}\n📱 Telefon: ${formData.telefon}\n💬 Izoh: ${formData.fikr}${deviceText}${locationText}`;
+      const response = await fetch(TELEGRAM_API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message }),
+      });
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.description || "Telegramga yuborishda xatolik yuz berdi.");
+      }
       toast.success("✅ Xabaringiz Telegramga yuborildi!");
       resetForm();
     } catch (err) {
@@ -134,92 +181,101 @@ const Contact = () => {
     } finally {
       setIsSubmitting(false);
     }
-  }, [formData, validateForm, createMessage, resetForm]);
+  }, [formData, validateForm, resetForm, getLocation, getDeviceInfo]);
 
-  // Contact ma'lumotlari
   const contactInfo = useMemo(
     () => ({
-      address: "turkiston 12-uy, Qo'qon sh",
-      phone: "+998 91 323 85 87",
-      phoneLink: "tel:+998913238587",
+      address: "Turkiston ko'chasi 12, Qo'qon sh.",
+      phone: "+998 93 712 00 57",
+      phoneLink: "tel:+998937120057",
       email: "otaxonovogabek633@gmail.com",
     }),
     []
   );
 
   return (
-    <Helmet title="Contact">
-      <CommonSection title="Aloqa" />
-      <section>
-        <Container>
+    <Helmet
+      title="Bog'lanish"
+      description="Ziyo Rent Car bilan bog‘lanish: savollar, bron qilish va hamkorlik bo‘yicha murojaat qiling. Telefon, email va onlayn forma orqali tez javob oling."
+      canonicalPath="/contact"
+    >
+      <section className="contact-page">
+        <div className="contact-page__header">
+          <Container>
+            <h1 className="contact-page__title">Bog'lanish</h1>
+            <p className="contact-page__sub">Biz bilan bog'laning</p>
+          </Container>
+        </div>
+        <Container className="contact-page__content">
           <Row>
             <Col lg="7" md="7">
-              <h6 className="fw-bold mb-4">Aloqa qiling</h6>
-
-              <Form onSubmit={submitHandler}>
-                <FormGroup className="contact__form">
-                  <Input
-                    name="ism"
-                    value={formData.ism}
-                    onChange={changeHandler}
-                    placeholder="Sizning ismingiz"
-                    type="text"
-                    disabled={isSubmitting}
-                  />
-                </FormGroup>
-                <FormGroup className="contact__form">
-                  <Input
-                    name="telefon"
-                    value={formData.telefon}
-                    onChange={changeHandler}
-                    placeholder="Telefon raqamingiz"
-                    type="tel"
-                    disabled={isSubmitting}
-                  />
-                </FormGroup>
-                <FormGroup className="contact__form">
-                  <textarea
-                    name="fikr"
-                    value={formData.fikr}
-                    onChange={changeHandler}
-                    rows="5"
-                    placeholder="Fikr qoldirish..."
-                    className="textarea"
-                    disabled={isSubmitting}
-                  ></textarea>
-                </FormGroup>
-
-                <button
-                  className="contact__btn"
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Yuborilmoqda..." : "Xabar yuborish"}
-                </button>
-              </Form>
+              <div className="contact-card">
+                <h2 className="contact-card__title">Xabar yuborish</h2>
+                <form onSubmit={submitHandler} className="contact-form">
+                  <div className="contact-form__group">
+                    <label className="contact-form__label">Ismingiz</label>
+                    <input
+                      type="text"
+                      name="ism"
+                      value={formData.ism}
+                      onChange={changeHandler}
+                      placeholder="Ismingizni kiriting"
+                      disabled={isSubmitting}
+                      className="contact-form__input"
+                    />
+                  </div>
+                  <div className="contact-form__group">
+                    <label className="contact-form__label">Telefon raqamingiz</label>
+                    <input
+                      type="tel"
+                      name="telefon"
+                      value={formData.telefon}
+                      onChange={changeHandler}
+                      placeholder="+998 93 712 00 57"
+                      disabled={isSubmitting}
+                      className="contact-form__input"
+                    />
+                  </div>
+                  <div className="contact-form__group">
+                    <label className="contact-form__label">Xabar</label>
+                    <textarea
+                      name="fikr"
+                      value={formData.fikr}
+                      onChange={changeHandler}
+                      rows={5}
+                      placeholder="Fikr qoldirish..."
+                      disabled={isSubmitting}
+                      className="contact-form__textarea"
+                    />
+                  </div>
+                  <button type="submit" className="contact-form__btn" disabled={isSubmitting}>
+                    {isSubmitting ? "Yuborilmoqda..." : "Xabar yuborish"}
+                  </button>
+                </form>
+              </div>
             </Col>
-
             <Col lg="5" md="5">
-              <div className="contact__info">
-                <h6 className="fw-bold">Bog'lanish uchun ma'lumot</h6>
-                <p className="section__description mb-0">
-                  {contactInfo.address}
-                </p>
-                <div className="d-flex align-items-center gap-2">
-                  <h6 className="fs-6 mb-0">Telefon:</h6>
-                  <a
-                    href={contactInfo.phoneLink}
-                    style={{ textDecoration: "none" }}
-                    className="section__description mb-0"
-                  >
-                    {contactInfo.phone}
+              <div className="contact-info-card">
+                <h2 className="contact-info-card__title">Bog'lanish ma'lumotlari</h2>
+                <ul className="contact-info-card__list">
+                  <li>
+                    <i className="ri-map-pin-line"></i>
+                    <span>{contactInfo.address}</span>
+                  </li>
+                  <li>
+                    <i className="ri-phone-line"></i>
+                    <a href={contactInfo.phoneLink}>{contactInfo.phone}</a>
+                  </li>
+                  <li>
+                    <i className="ri-mail-line"></i>
+                    <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
+                  </li>
+                </ul>
+                <div className="contact-info-card__map">
+                  <span>Xaritada ko'rish</span>
+                  <a href="https://maps.google.com/?q=Kokand+Uzbekistan" target="_blank" rel="noreferrer">
+                    Google xaritada ochish
                   </a>
-                </div>
-                <div className="d-flex align-items-center gap-2">
-                  <h6 className="mb-0 fs-6">Email:</h6>
-                  <p className="section__description mb-0">
-                    {contactInfo.email}
-                  </p>
                 </div>
               </div>
             </Col>

@@ -6,7 +6,11 @@ import BlogList from "../components/UI/BlogList";
 
 const Blog = () => {
   return (
-    <Helmet title="Blogs">
+    <Helmet
+      title="Bloglar"
+      description="Ziyo Rent Car bloglari: avtomobil ijarasi bo‘yicha foydali maslahatlar, yangiliklar va yo‘l bo‘yidagi tavsiyalar. Eng so‘nggi maqolalarni o‘qing."
+      canonicalPath="/blogs"
+    >
       <CommonSection title="Bloglar" />
       <section>
         <Container>

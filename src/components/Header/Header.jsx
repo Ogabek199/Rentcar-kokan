@@ -1,152 +1,75 @@
 import React, { useRef } from "react";
-
-import { Container, Row, Col } from "reactstrap";
+import { Container } from "reactstrap";
 import { Link, NavLink } from "react-router-dom";
 import "../../styles/header.css";
 
 const navLinks = [
-  {
-    path: "/home",
-    display: "Bosh sahifa",
-  },
-  {
-    path: "/about",
-    display: "Biz haqimizda",
-  },
-  {
-    path: "/cars",
-    display: "Avtomobillar",
-  },
-
-  {
-    path: "/blogs",
-    display: "Blog / Yangiliklar",
-  },
-  {
-    path: "/contact",
-    display: "Bog'lanish / Aloqa",
-  },
+  { path: "/home", display: "Bosh sahifa" },
+  { path: "/cars", display: "Avtomobillar" },
+  { path: "/prices", display: "Narxlar" },
+  { path: "/about", display: "Biz haqimizda" },
+  { path: "/contact", display: "Bog'lanish" },
 ];
 
 const Header = () => {
   const menuRef = useRef(null);
-
-  const toggleMenu = () => menuRef.current.classList.toggle("menu__active");
+  const toggleMenu = () => menuRef.current?.classList.toggle("menu__active");
 
   return (
-    <header className="header">
-      {/* ============ header top ============ */}
-      <div className="header__top">
-        <Container>
-          <Row>
-            <Col lg="6" md="6" sm="6">
-              <div className="header__top__left">
-                <span>Yordam kerakmi?</span>
-                <span className="header__top__help">
-                  <i className="ri-phone-fill"></i> <a href="tel:+998913238587" style={{ color: "white", textDecoration: "none" }}>+998 91 323 85 87</a>
-                </span>
-              </div>
-            </Col>
+    <header className="header header--new">
+      <Container>
+        <div className="header__inner">
+          <Link to="/home" className="header__logo">
+            <i className="ri-car-line"></i>
+            <span>Ziyo Rent Car</span>
+          </Link>
 
-            <Col lg="6" md="6" sm="6">
-            </Col>
-          </Row>
-        </Container>
-      </div>
-
-      {/* =============== header middle =========== */}
-      <div className="header__middle">
-        <Container>
-          <Row>
-            <Col lg="4" md="3" sm="4">
-              <div className="logo">
-                <h1>
-                  <Link to="/home" className=" d-flex align-items-center gap-2">
-                    <i class="ri-car-line"></i>
-                    <span>
-                      Avtomobil ijarasi <br /> xizmati
-                    </span>
-                  </Link>
-                </h1>
-              </div>
-            </Col>
-
-            <Col lg="3" md="3" sm="4">
-              <div className="header__location d-flex align-items-center gap-2">
-                <span>
-                  <i class="ri-earth-line"></i>
-                </span>
-                <div className="header__location-content">
-                  <h4>Kokand</h4>
-                  <h6>Farg'ona viloyati, Kokand</h6>
-                </div>
-              </div>
-            </Col>
-
-            <Col lg="3" md="3" sm="4">
-              <div className="header__location d-flex align-items-center gap-2">
-                <span>
-                  <i class="ri-time-line"></i>
-                </span>
-                <div className="header__location-content">
-                  <h4>Dushanbadan - Jumagacha</h4>
-                  <h6>09:00dan - 19:00gacha</h6>
-                </div>
-              </div>
-            </Col>
-
-            <Col
-              lg="2"
-              md="3"
-              sm="0"
-              className=" d-flex align-items-center justify-content-end "
+          <nav className="header__nav" ref={menuRef}>
+            <button
+              type="button"
+              className="header__close"
+              onClick={toggleMenu}
+              aria-label="Menyuni yopish"
             >
-              <button className="header__btn btn ">
-                <Link to="/contact">
-                  <i class="ri-phone-line"></i>Murojat uchun
-                </Link>
-              </button>
-            </Col>
-          </Row>
-        </Container>
-      </div>
-
-      {/* ========== main navigation =========== */}
-
-      <div className="main__navbar">
-        <Container>
-          <div className="navigation__wrapper d-flex align-items-center justify-content-between">
-            <span className="mobile__menu">
-              <i class="ri-menu-line" onClick={toggleMenu}></i>
-            </span>
-
-            <div className="navigation" ref={menuRef} onClick={toggleMenu}>
-              <div className="menu">
-                {navLinks.map((item, index) => (
-                  <NavLink
-                    to={item.path}
-                    className={(navClass) =>
-                      navClass.isActive ? "nav__active nav__item" : "nav__item"
-                    }
-                    key={index}
-                  >
-                    {item.display}
-                  </NavLink>
-                ))}
-              </div>
+              <i className="ri-close-line"></i>
+            </button>
+            <div className="header__menu">
+              {navLinks.map((item) => (
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "header__link header__link--active"
+                      : "header__link"
+                  }
+                  key={item.path}
+                  onClick={toggleMenu}
+                >
+                  {item.display}
+                </NavLink>
+              ))}
             </div>
+          </nav>
 
-            <div className="nav__right">
-              {/* <div className="search__box">
-                <input type="text" placeholder="Search" />
-                <span>
-                  <i class="ri-search-line"></i>
-                </span>
-              </div> */}
-            </div>
+          <div className="header__right">
+            <a href="tel:+998937120057" className="header__phone">
+              <i className="ri-phone-line"></i>+998 93 712 00 57
+            </a>
+            <Link to="/contact" className="header__cta">
+              Murojat uchun
+            </Link>
           </div>
-        </Container>
-      </div>
+
+          <button
+            type="button"
+            className="header__toggle"
+            onClick={toggleMenu}
+            aria-label="Menu"
+          >
+            <i className="ri-menu-line"></i>
+          </button>
+        </div>
+      </Container>
     </header>
   );
 };

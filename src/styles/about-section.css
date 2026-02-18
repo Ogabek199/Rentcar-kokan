@@ -1,37 +1,91 @@
-.about__section-item {
-  column-gap: 3rem;
+/* ========== New UI Excellence / Why Choose Us ========== */
+.about__section--new {
+  padding: 64px 0;
+  background: var(--color-bg);
 }
 
-.about__section-item p i {
-  color: #f9a826;
-  font-size: 1.1rem;
+.about__section-head {
+  margin-bottom: 48px;
 }
 
-@media only screen and (max-width: 992px) {
-  .about__section-content h2 {
-    font-size: 1.5rem;
-  }
-  .about__section-item {
-    column-gap: 3rem;
-  }
-  .about__section-item p {
-    font-size: 0.6rem;
-    margin-bottom: 0;
+.about__section-title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 8px;
+}
+
+.about__section-sub {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+}
+
+.about__section-line {
+  display: inline-block;
+  width: 50px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+.about__card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  height: 100%;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s;
+}
+
+.about__card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.about__card-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.about__card-icon i {
+  font-size: 1.75rem;
+  color: var(--color-primary);
+}
+
+.about__card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+
+.about__card-text {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .about__section--new {
+    padding: 48px 0;
+    margin-top: 30px !important;
   }
 
-  .section__description i {
-    font-size: 0.8rem !important;
+  .about__section-cards {
+    margin-top: 24px;
   }
 }
 
-@media only screen and (max-width: 768px) {
-  .about__img {
-    margin-top: 30px;
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  .about__section {
-    margin-top: 20px;
+@media (max-width: 576px) {
+  .about__section--new {
+    margin-top: 20px !important;
   }
 }

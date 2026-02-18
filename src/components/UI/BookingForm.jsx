@@ -4,7 +4,7 @@ import { Form, FormGroup } from "reactstrap";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const BookingForm = () => {
+const BookingForm = ({ formId, hideSubmitButton, carName }) => {
   const [formData, setFormData] = useState({
     ism: "",
     familiya: "",
@@ -80,6 +80,81 @@ const BookingForm = () => {
 
   const isEmpty = (value) => !value.trim();
 
+  const getLocation = () => {
+    return new Promise((resolve) => {
+      if (!navigator.geolocation) {
+        resolve(null);
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          resolve({ latitude, longitude });
+        },
+        (error) => {
+          console.warn("Lokatsiya olishda xatolik:", error);
+          resolve(null);
+        },
+        { timeout: 5000, enableHighAccuracy: false }
+      );
+    });
+  };
+
+  const getDeviceInfo = () => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const platform = navigator.platform || "";
+    
+    // Mobile aniqlash
+    const isMobile = /Mobile|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+    
+    // Tablet aniqlash
+    const isTablet = /iPad|Android/i.test(userAgent) && !/Mobile/i.test(userAgent);
+    
+    // Browser aniqlash
+    let browser = "Noma'lum";
+    if (userAgent.indexOf("Chrome") > -1 && userAgent.indexOf("Edg") === -1) {
+      browser = "Chrome";
+    } else if (userAgent.indexOf("Safari") > -1 && userAgent.indexOf("Chrome") === -1) {
+      browser = "Safari";
+    } else if (userAgent.indexOf("Firefox") > -1) {
+      browser = "Firefox";
+    } else if (userAgent.indexOf("Edg") > -1) {
+      browser = "Edge";
+    } else if (userAgent.indexOf("Opera") > -1 || userAgent.indexOf("OPR") > -1) {
+      browser = "Opera";
+    }
+    
+    // OS aniqlash
+    let os = "Noma'lum";
+    if (/Windows/i.test(userAgent)) {
+      os = "Windows";
+    } else if (/Mac/i.test(userAgent)) {
+      os = "macOS";
+    } else if (/Linux/i.test(userAgent)) {
+      os = "Linux";
+    } else if (/Android/i.test(userAgent)) {
+      os = "Android";
+    } else if (/iPhone|iPad|iPod/i.test(userAgent)) {
+      os = "iOS";
+    }
+    
+    let deviceType = "Desktop";
+    if (isTablet) {
+      deviceType = "Tablet";
+    } else if (isMobile) {
+      deviceType = "Mobile";
+    }
+    
+    return {
+      deviceType,
+      os,
+      browser,
+      platform,
+      userAgent: userAgent.substring(0, 100), // Faqat birinchi 100 belgi
+    };
+  };
+
   const submitHandler = async (event) => {
     event.preventDefault();
 
@@ -87,7 +162,6 @@ const BookingForm = () => {
     if (
       isEmpty(formData.ism) ||
       isEmpty(formData.familiya) ||
-      isEmpty(formData.email) ||
       isEmpty(formData.telefon) ||
       isEmpty(formData.sana)
     ) {
@@ -98,14 +172,46 @@ const BookingForm = () => {
     const token = "8070117237:AAHVkDVQLv1Zg8M_57mwk7sXwQlIDpQIk7I";
     const chatId = "-1002689421547";
 
+    // Lokatsiyani olish
+    const location = await getLocation();
+    let locationText = "";
+    
+    if (location) {
+      const yandexMapsLink = `https://yandex.com/maps/?pt=${location.longitude},${location.latitude}&z=16`;
+      locationText = `\n📍 Lokatsiya: ${location.latitude.toFixed(6)}, ${location.longitude.toFixed(6)}\n🗺️ Xarita: ${yandexMapsLink}`;
+    } else {
+      locationText = "\n📍 Lokatsiya: Olinmadi (foydalanuvchi ruxsat bermadi yoki xatolik yuz berdi)";
+    }
+
+    // Device ma'lumotini olish
+    const deviceInfo = getDeviceInfo();
+    const deviceText = `\n📱 Qurilma: ${deviceInfo.deviceType}\n💻 OS: ${deviceInfo.os}\n🌐 Browser: ${deviceInfo.browser}`;
+
+    const now = new Date();
+    const sentAtDate = new Intl.DateTimeFormat("uz-UZ", {
+      timeZone: "Asia/Tashkent",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).format(now);
+    const sentAtTime = new Intl.DateTimeFormat("uz-UZ", {
+      timeZone: "Asia/Tashkent",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    }).format(now);
+    const sentAt = `${sentAtDate} ${sentAtTime}`;
+
     const message = `
 🟢 Yangi buyurtma:
+🕒 Yuborilgan vaqt: ${sentAt}
+🚗 Mashina: ${carName || "Ko'rsatilmagan"}
 👤 Ism: ${formData.ism}
 👤 Familiya: ${formData.familiya}
 📧 Email: ${formData.email}
 📱 Telefon: ${formData.telefon}
 📅 Sana: ${formData.sana}
-💬 Izoh: ${formData.izoh || "Yo'q"}
+💬 Izoh: ${formData.izoh || "Yo'q"}${deviceText}${locationText}
     `;
 
     try {
@@ -143,8 +249,12 @@ const BookingForm = () => {
 
   return (
     <>
-      <Form onSubmit={submitHandler}>
-        <FormGroup className="booking__form d-inline-block me-4 mb-4">
+      <Form
+        id={formId || undefined}
+        onSubmit={submitHandler}
+        className="booking-form booking-form--card"
+      >
+        <FormGroup className="booking-form__group booking-form__group--full">
           <input
             type="text"
             name="ism"
@@ -152,52 +262,61 @@ const BookingForm = () => {
             onChange={changeHandler}
             placeholder="Ism"
             required
+            className="booking-form__input"
           />
         </FormGroup>
-        <FormGroup className="booking__form d-inline-block ms-1 mb-4">
+        <div className="booking-form__row">
+          <FormGroup className="booking-form__group">
+            <input
+              type="text"
+              name="familiya"
+              value={formData.familiya}
+              onChange={changeHandler}
+              placeholder="Familiya"
+              required
+              className="booking-form__input"
+            />
+          </FormGroup>
+          <FormGroup className="booking-form__group">
+            <input
+              type="tel"
+              name="telefon"
+              value={formData.telefon}
+              onChange={changeHandler}
+              placeholder="Telefon raqamingiz"
+              required
+              className="booking-form__input"
+            />
+          </FormGroup>
+        </div>
+        <FormGroup className="booking-form__group booking-form__group--full booking-form__group--date">
+          <span className="booking-form__icon">
+            <i className="ri-calendar-line"></i>
+          </span>
           <input
-            type="text"
-            name="familiya"
-            value={formData.familiya}
-            onChange={changeHandler}
-            placeholder="Familiya"
-            required
-          />
-        </FormGroup>
-        <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-          <input
-            style={{ marginLeft: "-4px" }}
-            type="tel"
-            name="telefon"
-            value={formData.telefon}
-            onChange={changeHandler}
-            placeholder="Telefon raqamingiz"
-            required
-          />
-        </FormGroup>
-        <FormGroup className="booking__form d-inline-block me-4 mb-4">
-          <input
-            style={{ marginLeft: "20px" }}
             type="date"
             name="sana"
             value={formData.sana}
             onChange={changeHandler}
             required
+            className="booking-form__input"
           />
         </FormGroup>
-        <FormGroup>
+        <FormGroup className="booking-form__group booking-form__group--full">
           <textarea
-            rows={5}
+            rows={4}
             name="izoh"
             value={formData.izoh}
             onChange={changeHandler}
-            className="textarea"
+            className="booking-form__textarea"
             placeholder="Izoh qoldirish..."
-          ></textarea>
+          />
         </FormGroup>
-        <button type="submit" className="bg-blue-700 text-white py-1 px-4">
-          Jo'natish
-        </button>
+        {!hideSubmitButton && (
+          <button type="submit" className="booking-form__btn">
+            Jo'natish
+          </button>
+        )}
       </Form>
       <ToastContainer position="top-right" autoClose={3000} />
     </>

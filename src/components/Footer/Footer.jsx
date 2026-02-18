@@ -1,107 +1,95 @@
-import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import "../../styles/footer.css";
 
 const quickLinks = [
-  {
-    path: "/about",
-    display: "Biz haqimizda",
-  },
-
-  {
-    path: "/PrivacyPolicy",
-    display: "Maxfiylik Siyosati",
-  },
-
-  {
-    path: "/cars",
-    display: "Avtomobillar",
-  },
-  {
-    path: "/blogs",
-    display: "Blog / Yangiliklar",
-  },
-
-  {
-    path: "/contact",
-    display: "Bog'lanish / Aloqa",
-  },
+  { path: "/cars", display: "Avtopark" },
+  { path: "/prices", display: "Narxlar" },
+  { path: "/about", display: "Biz haqimizda" },
+  { path: "/privacy-policy", display: "Maxfiylik siyosati" },
+  { path: "/contact", display: "Bog'lanish" },
 ];
 
 const Footer = () => {
-  const date = new Date();
-  const year = date.getFullYear();
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="footer">
+    <footer className="footer footer--new">
       <Container>
-        <Row>
-          <Col lg="4" md="4" sm="12">
-            <div className="logo footer__logo">
-              <h1>
-                <Link to="/home" className=" d-flex align-items-center gap-2">
-                  <i class="ri-car-line"></i>
-                  <span>
-                    Avtomobil ijarasi <br /> xizmati
-                  </span>
-                </Link>
-              </h1>
-            </div>
-            <p className="footer__logo-content">
-              Bizning avtomobil ijara xizmati sizga qulay va ishonchli transport vositalarini taqdim etadi. Har xil toifadagi mashinalarni qisqa yoki uzoq muddatga ijaraga olishingiz mumkin. Yangi, qulay va texnik jihatdan mukammal holatda bo'lgan avtomobillarimiz sizning ehtiyojlaringizga mos keladi.
-            </p>
-            <p className="footer__logo-content">Qo'shimcha ma'lumot va buyurtma uchun biz bilan bog'laning!</p>
-          </Col>
-
-          <Col lg="2" md="4" sm="6">
-            <div className="mb-4">
-              <h5 className="footer__link-title">Tez havolalar</h5>
-              <ListGroup>
-                {quickLinks.map((item, index) => (
-                  <ListGroupItem key={index} className="p-0 mt-3 quick__link">
-                    <Link to={item.path}>{item.display}</Link>
-                  </ListGroupItem>
-                ))}
-              </ListGroup>
-            </div>
-          </Col>
-
-          <Col lg="3" md="4" sm="6">
-            <div className="mb-4">
-              <h5 className="footer__link-title mb-4">Bosh idora</h5>
-              <p className="office__info">Kokand</p>
-              <p className="office__info">Telefon: +998 91 323 85 87</p>
-
-              <p className="office__info">Elektron pochta: otaxonovogabek633@gmail.com</p>
-
-              <p className="office__info">Ish vaqti: 10:00dan - 18:00gacha</p>
-            </div>
-          </Col>
-
-          <Col lg="3" md="4" sm="12">
-            <div className="mb-4">
-              <h5 className="footer__link-title">Axborotlar</h5>
-              <p className="section__description">Bizning yangiliklarimizga obuna bo'ling</p>
-              <div className="mb-4">
-                <h5 className="footer__link-title">Sayt ishlab chiquvchisi</h5>
-                <p className="section__description">
-                  Sayt ishlab chiqilgan: <strong className="footer__link">Og'abek Otaxonov</strong><br />
-                  Web dasturchi | Frontend (React.js, Next.js) & UI dizayn | Kokand, O‘zbekiston<br />
-                  <a className="section__description" href="mailto:youremail@example.com">otaxonovogabek633@gmail.com</a> <br />
-                  <a className="section__description" href="tel:+998901502657">Murojat uchun: +998 90 150 26 57</a> <br />
-                  <a className="section__description" href="https://t.me/otaxonov_o17" target="_blank" rel="noreferrer">Telegram</a>
-                </p>
-              </div>
-            </div>
-          </Col>
-
-          <Col lg="12">
-            <div className="footer__bottom">
-              <p className="section__description d-flex align-items-center justify-content-center gap-1 pt-4">
-                <i class="ri-copyright-line"></i>Mualliflik huquqi {year}, Otaxonov Og'abek tomonidan ishlab chiqilgan. Barcha huquqlar himoyalangan.
+        <Row className="footer__row">
+          <Col lg="3" md="6" sm="12" className="mb-4 mb-lg-0">
+            <div className="footer__brand">
+              <Link to="/home" className="footer__logo">
+                <i className="ri-car-line"></i>
+                <span>Ziyo Rent Car</span>
+              </Link>
+              <p className="footer__desc">
+                Kokandda premium avtomobil ijarasi. Qulaylik, ishonchlilik va eng yaxshi narxlarda hashamatni his qiling.
               </p>
+              {/* <div className="footer__social">
+                <a href="https://t.me/rentcarkokand" target="_blank" rel="noreferrer" aria-label="Telegram">
+                  <i className="ri-telegram-line"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+                  <i className="ri-instagram-line"></i>
+                </a>
+                <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
+                  <i className="ri-facebook-circle-line"></i>
+                </a>
+              </div> */}
+            </div>
+          </Col>
+
+          <Col lg="2" md="6" sm="6">
+            <h5 className="footer__title">Tez havolalar</h5>
+            <ul className="footer__links">
+              {quickLinks.map((item) => (
+                <li key={item.path}>
+                  <Link to={item.path}>{item.display}</Link>
+                </li>
+              ))}
+            </ul>
+          </Col>
+
+          <Col lg="3" md="6" sm="6">
+            <h5 className="footer__title">Bog'lanish</h5>
+            <ul className="footer__contact">
+              <li>
+                <i className="ri-map-pin-line"></i>
+                <span>Qo'qon shahar</span>
+              </li>
+              <li>
+                <i className="ri-phone-line"></i>
+                <a href="tel:+998937120057">+998 93 712 00 57</a>
+              </li>
+              <li>
+                <i className="ri-mail-line"></i>
+                <a href="mailto:otaxonovogabek633@gmail.com">otaxonovogabek633@gmail.com</a>
+              </li>
+            </ul>
+          </Col>
+
+          <Col lg="4" md="6" sm="12">
+            <h5 className="footer__title">Bizning manzilimiz</h5>
+            <div className="footer__map-placeholder">
+              <span>Xaritada ko'rsatish</span>
+              <a
+                href="https://maps.google.com/?q=Kokand+Uzbekistan"
+                target="_blank"
+                rel="noreferrer"
+                className="footer__map-link"
+              >
+                Google xaritada ochish
+              </a>
             </div>
           </Col>
         </Row>
+
+        <div className="footer__bottom">
+          <p>
+            © {year} Ziyo Rent Car. Barcha huquqlar himoyalangan. Sayt: Og'abek Otaxonov (otaxonovogabek633@gmail.com, +998 90 150 26 57)
+          </p>
+        </div>
       </Container>
     </footer>
   );

@@ -1,0 +1,134 @@
+/* ========== Prices Page ========== */
+.prices-page {
+  padding: 48px 0 60px;
+  background: var(--color-bg-light);
+}
+
+.prices-promo {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 18px;
+  margin-bottom: 22px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.prices-promo__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(229, 160, 13, 0.12);
+  color: var(--color-primary);
+  flex: 0 0 auto;
+  font-size: 1.35rem;
+}
+
+.prices-promo__title {
+  margin: 0 0 6px;
+  font-weight: 800;
+  color: var(--color-dark);
+  font-size: 1.1rem;
+}
+
+.prices-promo__desc {
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+
+.price-card {
+  display: block;
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s;
+  height: 100%;
+}
+
+.price-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.price-card__img-wrap {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  background: var(--color-bg-light);
+}
+
+.price-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.price-card__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(26, 32, 44, 0.9);
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-end;
+}
+
+.price-card__badge-new {
+  color: var(--color-primary);
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.price-card__badge-old {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgba(229, 160, 13, 0.9);
+}
+
+.price-card__body {
+  padding: 20px;
+}
+
+.price-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 6px;
+}
+
+.price-card__meta {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  margin-bottom: 12px;
+}
+
+.price-card__link {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.price-card:hover .price-card__link {
+  color: var(--color-primary-dark);
+}

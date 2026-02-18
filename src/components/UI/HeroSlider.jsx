@@ -1,60 +1,40 @@
 import React from "react";
-
-import Slider from "react-slick";
 import { Container } from "reactstrap";
 import { Link } from "react-router-dom";
-
+import FindCarForm from "./FindCarForm";
 import "../../styles/hero-slider.css";
 
 const HeroSlider = () => {
-  const settings = {
-    fade: true,
-    speed: 2000,
-    autoplaySpeed: 2000,
-    infinite: true,
-    autoplay: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    pauseOnHover: false,
-  };
   return (
-    <Slider {...settings} className="hero__slider">
-      <div className="slider__item slider__item-01 mt0">
-        <Container>
-          <div className="slider__content ">
-            <h4 className="text-light mb-3">kuniga 450 000 so'mdan ijara</h4>
-            <h1 className="text-light mb-4">Hoziroq band qiling va 50% foiz chegirmaga ega bo'ling</h1>
-            <button className="btn reserve__btn mt-4">
-              <Link to="/cars">Hozir zaxiralash</Link>
-            </button>
+    <section className="hero hero--new">
+      <div className="hero__bg" />
+      <Container className="hero__container">
+        <div className="hero__content">
+          <span className="hero__badge">2024-yildan beri</span>
+          <h1 className="hero__title">
+            Premium avtomobil ijarasi
+            <span className="hero__title-accent"> Kokandda</span>
+          </h1>
+          <p className="hero__tagline">
+            Arzon. Ishonchli. Qulay. O‘zbekistondagi eng yaxshi avtopark bilan uyigacha yetkazib berishdan bahramand bo‘ling.
+          </p>
+          <div className="hero__buttons">
+            <Link to="/cars" className="hero__btn hero__btn--primary">
+              Avtoparkni ko‘ring
+            </Link>
+            <a href="tel:+998937120057" className="hero__btn hero__btn--secondary">
+              <i className="ri-play-circle-line"></i>
+              Qo‘ng‘iroq qilish
+            </a>
           </div>
+        </div>
+      </Container>
+      <div className="hero__form-wrap">
+        <Container>
+          <FindCarForm />
         </Container>
       </div>
-
-      <div className="slider__item slider__item-02 mt0">
-        <Container>
-          <div className="slider__content ">
-            <h4 className="text-light mb-3">premium sedanlar 980 000 so'm/kun</h4>
-            <h1 className="text-light mb-4">Hoziroq band qiling va 50% foiz chegirmaga ega bo'ling</h1>
-            <button className="btn reserve__btn mt-4">
-              <Link to="/cars">Hozir zaxiralash</Link>
-            </button>
-          </div>
-        </Container>
-      </div>
-
-      <div className="slider__item slider__item-03 mt0">
-        <Container>
-          <div className="slider__content ">
-            <h4 className="text-light mb-3">ekonom klass 350 000 so'm/kun</h4>
-            <h1 className="text-light mb-4">Hoziroq band qiling va 50% foiz chegirmaga ega bo'ling</h1>
-            <button className="btn reserve__btn mt-4">
-              <Link to="/cars">Hozir zaxiralash</Link>
-            </button>
-          </div>
-        </Container>
-      </div>
-    </Slider>
+    </section>
   );
 };
 

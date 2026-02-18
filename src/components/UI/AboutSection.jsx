@@ -1,53 +1,53 @@
 import { Container, Row, Col } from "reactstrap";
 import "../../styles/about-section.css";
 
+const features = [
+  {
+    icon: "ri-time-line",
+    title: "24/7 Qo'llab-quvvatlash",
+    text: "Jamoamiz har doim sizga yordam berishga tayyor - istalgan vaqtda, istalgan joyda.",
+  },
+  {
+    icon: "ri-price-tag-3-line",
+    title: "Eng yaxshi narxlar",
+    text: "Eng raqobatbardosh narxlarda premium va qulay tajriba kafolati.",
+  },
+  {
+    icon: "ri-checkbox-circle-line",
+    title: "Toza mashinalar",
+    text: "Har bir avtomobil ijaraga berilishidan oldin puxta dezinfeksiya qilinadi va yuviladi.",
+  },
+  {
+    icon: "ri-flashlight-line",
+    title: "Tez bron qilish",
+    text: "Orzuingizdagi mashinani 60 soniyadan kamroq vaqtda onlayn bron qiling.",
+  },
+];
+
 const AboutSection = ({ aboutClass }) => {
   return (
     <section
-      className="about__section"
-      style={
-        aboutClass === "aboutPage"
-          ? { marginTop: "0px" }
-          : { marginTop: "20px" }
-      }
+      className="about__section about__section--new"
+      style={aboutClass === "aboutPage" ? { marginTop: 0 } : { marginTop: "20px" }}
     >
       <Container>
-        <Row>
-          <Col lg="6" md="6">
-            <div className="about__section-content">
-              <h4 className="section__subtitle">Biz haqimizda</h4>
-              <h2 className="section__title">Avtomobil ijarasi xizmatiga xush kelibsiz</h2>
-              <p className="section__description">
-                Bizning kompaniyamiz sizga qulay va ishonchli avtomobil ijarasi xizmatini taklif etadi. Sizga sifatli va zamonaviy avtomobillarni taqdim etish orqali yo'lingizni yanada oson va yoqimli qilamiz. Biz har bir mijozimiz uchun qulay shart-sharoitlar yaratishga intilamiz va eng yaxshi xizmat ko'rsatishga harakat qilamiz.
-              </p>
-
-              <div className="about__section-item d-flex align-items-center gap-3">
-                <p className="section__description d-flex align-items-center gap-2">
-                  <i class="ri-checkbox-circle-line"></i> Turli toifadagi avtomobillar keng tanlovi.
-                </p>
-
-                <p className="section__description d-flex align-items-center gap-2">
-                  <i class="ri-checkbox-circle-line"></i> Hamyonbop narxlar va moslashuvchan to'lov tizimi.
-                </p>
+        <div className="about__section-head text-center">
+          <h2 className="about__section-title">Har bir yolda mukammallik</h2>
+          <p className="about__section-sub">NIMA UCHUN BIZNI TANLAYDI</p>
+          <span className="about__section-line" />
+        </div>
+        <Row className="about__section-cards">
+          {features.map((item, index) => (
+            <Col key={index} lg="3" md="6" sm="6" className="mb-4">
+              <div className="about__card">
+                <div className="about__card-icon">
+                  <i className={item.icon}></i>
+                </div>
+                <h3 className="about__card-title">{item.title}</h3>
+                <p className="about__card-text">{item.text}</p>
               </div>
-
-              <div className="about__section-item d-flex align-items-center">
-                <p className="section__description d-flex align-items-center gap-2">
-                  <i class="ri-checkbox-circle-line"></i> Tez va qulay bron qilish imkoniyati.
-                </p>
-
-                <p className="section__description d-flex align-items-center gap-2">
-                  <i class="ri-checkbox-circle-line"></i> Yuqori sifatli mijozlarga xizmat ko'rsatish.
-                </p>
-              </div>
-            </div>
-          </Col>
-
-          <Col lg="6" md="6">
-            <div className="about__img">
-              <img src="https://chevrolet.uz/assets/images/malibu-xl/colors/new/G59.png" alt="" className="w-100" />
-            </div>
-          </Col>
+            </Col>
+          ))}
         </Row>
       </Container>
     </section>

@@ -15,8 +15,27 @@ const BlogDetails = () => {
     window.scrollTo(0, 0);
   }, [blog]);
 
+  if (!blog) {
+    return (
+      <Helmet title="Topilmadi" description="So‘ralgan blog topilmadi." noindex canonicalPath="/blogs">
+        <section>
+          <Container className="py-5 text-center">
+            <p>Bunday blog topilmadi.</p>
+            <Link to="/blogs">Bloglar ro'yxatiga qaytish</Link>
+          </Container>
+        </section>
+      </Helmet>
+    );
+  }
+
   return (
-    <Helmet title={blog.title}>
+    <Helmet
+      title={blog.title}
+      description={blog.description}
+      canonicalPath={`/blogs/${encodeURIComponent(blog.title)}`}
+      image={blog.imgUrl}
+      type="article"
+    >
       <section>
         <Container>
           <Row>
@@ -27,22 +46,22 @@ const BlogDetails = () => {
 
                 <div className="blog__publisher d-flex align-items-center gap-4 mb-4">
                   <span className="blog__author">
-                    <i class="ri-user-line"></i> {blog.author}
+                    <i className="ri-user-line"></i> {blog.author}
                   </span>
 
                   <span className=" d-flex align-items-center gap-1 section__description">
-                    <i class="ri-calendar-line"></i> {blog.date}
+                    <i className="ri-calendar-line"></i> {blog.date}
                   </span>
 
                   <span className=" d-flex align-items-center gap-1 section__description">
-                    <i class="ri-time-line"></i> {blog.time}
+                    <i className="ri-time-line"></i> {blog.time}
                   </span>
                 </div>
 
                 <p className="section__description">{blog.description}</p>
                 <h6 className="ps-5 fw-normal">
                   <blockquote className="fs-4">{blog.quote}</blockquote>
-                </h6>
+                </h6> 
                 <p className="section__description">{blog.description}</p>
               </div>
 

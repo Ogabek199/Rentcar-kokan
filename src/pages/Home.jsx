@@ -1,100 +1,74 @@
 import React from "react";
-
-import HeroSlider from "../components/UI/HeroSlider";
+import { Container, Row } from "reactstrap";
+import { Link } from "react-router-dom";
 import Helmet from "../components/Helmet/Helmet";
-
-import { Container, Row, Col } from "reactstrap";
-import FindCarForm from "../components/UI/FindCarForm";
+import HeroSlider from "../components/UI/HeroSlider";
 import AboutSection from "../components/UI/AboutSection";
-import ServicesList from "../components/UI/ServicesList";
 import carData from "../assets/data/carData";
 import CarItem from "../components/UI/CarItem";
-import BecomeDriverSection from "../components/UI/BecomeDriverSection";
 import Testimonial from "../components/UI/Testimonial";
-
-import BlogList from "../components/UI/BlogList";
 
 const Home = () => {
   return (
-    <Helmet title="Home">
-      {/* ============= hero section =========== */}
-      <section className="p-0 hero__slider-section">
+    <Helmet
+      title="Bosh sahifa"
+      description="Kokandda premium avtomobil ijarasi: arzon narxlar, qulay xizmat va ishonchli avtopark. Tez bron qiling va mashinani uyigacha yetkazib berishdan bahramand bo‘ling."
+      canonicalPath="/"
+    >
+      <section className="p-0 hero__slider-section hero__slider-section--new">
         <HeroSlider />
-
-        <div className="hero__form">
-          <Container>
-            <Row className="form__row">
-              <Col lg="4" md="4">
-                <div className="find__cars-left">
-                  <h2>Eng yaxshi mashinangizni shu yerda toping</h2>
-                </div>
-              </Col>
-
-              <Col lg="8" md="8" sm="12">
-                <FindCarForm />
-              </Col>
-            </Row>
-          </Container>
-        </div>
       </section>
-      {/* =========== about section ================ */}
+
       <AboutSection />
-      {/* ========== services section ============ */}
-      <section>
-        <Container>
-          <Row>
-            <Col lg="12" className="mb-5 text-center">
-              <h6 className="section__subtitle">Bizning</h6>
-              <h2 className="section__title">Ommabop xizmatlar</h2>
-            </Col>
 
-            <ServicesList />
-          </Row>
-        </Container>
-      </section>
-      {/* =========== car offer section ============= */}
-      <section>
+      <section className="section--cars">
         <Container>
+          <div className="section-head section-head--center">
+            <h2 className="section-head__title">Ommabop takliflar</h2>
+            <p className="section-head__sub">SHAHARDA ENG YAXSHI TANLOV</p>
+            <span className="section-head__line" />
+          </div>
           <Row>
-            <Col lg="12" className="text-center mb-5">
-              <h6 className="section__subtitle">Biz bilan</h6>
-              <h2 className="section__title">Zo'r takliflar</h2>
-            </Col>
-
             {carData.slice(0, 6).map((item) => (
               <CarItem item={item} key={item.id} />
             ))}
           </Row>
-        </Container>
-      </section>
-      {/* =========== become a driver section ============ */}
-      <BecomeDriverSection />
-
-      {/* =========== testimonial section =========== */}
-      <section>
-        <Container>
-          <Row>
-            <Col lg="12" className="mb-4 text-center">
-              <h6 className="section__subtitle">Bizning mijozlarimiz aytadi Guvohlar</h6>
-              <h2 className="section__title">Guvohlar</h2>
-            </Col>
-
-            <Testimonial />
-          </Row>
+          <div className="text-center mt-5">
+            <Link to="/cars" className="btn-outline">
+              Barcha avtomobillar ({carData.length}+)
+            </Link>
+          </div>
         </Container>
       </section>
 
-      {/* =============== blog section =========== */}
       <section>
         <Container>
-          <Row>
-            <Col lg="12" className="mb-5 text-center">
-              <h6 className="section__subtitle">Bloglarimiz bilan tanishing</h6>
-              <h2 className="section__title">Eng so'nggi bloglar</h2>
-            </Col>
+          <div className="section-head">
+            <h2 className="section-head__title">Mijozlarimiz fikrlari</h2>
+            <p className="section-head__sub">HAQIQI HIKOYALAR</p>
+            <span className="section-head__line" />
+          </div>
+          <Testimonial />
+        </Container>
+      </section>
 
-            <BlogList />
-          </Row>
+      <section className="section--cta">
+        <Container>
+          <div className="cta-box">
+            <h2 className="cta-box__title">Premium safaringizni boshlashga tayyormisiz?</h2>
+            <p className="cta-box__text">
+              Ziyo Rent Carga ishonadigan 5000+ dan ortiq mamnun mijozlar qo‘shildi. Premium mashinangiz bir necha bosish naridas.
+            </p>
+            <div className="cta-box__buttons">
+              <Link to="/cars" className="cta-box__btn cta-box__btn--primary">
+                Hozir bron qiling
+              </Link>
+              <a href="tel:+998937120057" className="cta-box__btn cta-box__btn--outline">
+                <i className="ri-phone-line"></i>
+                +998 93 712 00 57
+              </a>
+            </div>
+          </div>
         </Container>
       </section>
     </Helmet>
