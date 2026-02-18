@@ -52,6 +52,8 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
 }
 
 .about__card-icon i {
@@ -64,6 +66,8 @@
   font-weight: 700;
   color: var(--color-dark);
   margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
 }
 
 .about__card-text {
@@ -71,6 +75,8 @@
   color: var(--color-text-muted);
   line-height: 1.55;
   margin: 0;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {

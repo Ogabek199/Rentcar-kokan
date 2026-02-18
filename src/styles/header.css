@@ -1,11 +1,15 @@
 /* ========== New UI Header (rasmdagi dizayn) ========== */
 .header--new {
-  background: #fff;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   padding: 14px 0;
   position: sticky;
   top: 0;
   z-index: 1000;
+  transition: all 0.3s ease;
 }
 
 .header__inner {
@@ -89,18 +93,46 @@
 }
 
 .header__cta {
-  background: var(--color-primary) !important;
+  background: rgba(229, 160, 13, 0.9) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: #fff !important;
   padding: 10px 20px;
   border-radius: var(--radius-sm);
   font-weight: 600;
   font-size: 0.9rem;
-  transition: background 0.2s;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(229, 160, 13, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.header__cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.header__cta:hover::before {
+  left: 100%;
 }
 
 .header__cta:hover {
-  background: var(--color-primary-dark) !important;
+  background: rgba(212, 146, 10, 0.95) !important;
   color: #fff !important;
+  box-shadow: 0 6px 24px rgba(229, 160, 13, 0.4);
+  transform: translateY(-2px);
 }
 
 .header__toggle {
@@ -128,8 +160,11 @@
     right: 0;
     width: 280px;
     height: 100vh;
-    background: #fff;
-    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
     padding: 80px 24px 24px;
     transform: translateX(100%);
     transition: transform 0.3s ease;

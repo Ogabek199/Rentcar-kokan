@@ -21,19 +21,19 @@ const Home = () => {
 
       <AboutSection />
 
-      <section className="section--cars">
+      <section className="section--cars animate-on-scroll animate-fade-in-up">
         <Container>
-          <div className="section-head section-head--center">
+          <div className="section-head section-head--center animate-on-scroll animate-fade-in-down">
             <h2 className="section-head__title">Ommabop takliflar</h2>
             <p className="section-head__sub">SHAHARDA ENG YAXSHI TANLOV</p>
             <span className="section-head__line" />
           </div>
           <Row>
-            {carData.slice(0, 6).map((item) => (
+            {carData.slice(0, 6).map((item, index) => (
               <CarItem item={item} key={item.id} />
             ))}
           </Row>
-          <div className="text-center mt-5">
+          <div className="text-center mt-5 animate-on-scroll animate-fade-in">
             <Link to="/cars" className="btn-outline">
               Barcha avtomobillar ({carData.length}+)
             </Link>
@@ -41,20 +41,22 @@ const Home = () => {
         </Container>
       </section>
 
-      <section>
+      <section className="animate-on-scroll animate-fade-in-up">
         <Container>
-          <div className="section-head">
+          <div className="section-head animate-on-scroll animate-fade-in-down">
             <h2 className="section-head__title">Mijozlarimiz fikrlari</h2>
             <p className="section-head__sub">HAQIQI HIKOYALAR</p>
             <span className="section-head__line" />
           </div>
-          <Testimonial />
+          <div className="animate-on-scroll animate-scale-in">
+            <Testimonial />
+          </div>
         </Container>
       </section>
 
-      <section className="section--cta">
+      <section className="section--cta animate-on-scroll animate-fade-in-up">
         <Container>
-          <div className="cta-box">
+          <div className="cta-box animate-on-scroll animate-scale-in">
             <h2 className="cta-box__title">Premium safaringizni boshlashga tayyormisiz?</h2>
             <p className="cta-box__text">
               Ziyo Rent Carga ishonadigan 5000+ dan ortiq mamnun mijozlar qo‘shildi. Premium mashinangiz bir necha bosish naridas.
@@ -63,8 +65,8 @@ const Home = () => {
               <Link to="/cars" className="cta-box__btn cta-box__btn--primary">
                 Hozir bron qiling
               </Link>
-              <a href="tel:+998937120057" className="cta-box__btn cta-box__btn--outline">
-                <i className="ri-phone-line"></i>
+              <a href="tel:+998937120057" className="cta-box__btn cta-box__btn--outline text-white bg-transparent">
+                <i className="ri-phone-line text-white"></i>
                 +998 93 712 00 57
               </a>
             </div>

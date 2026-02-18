@@ -4,6 +4,9 @@ import { Container, Row, Col } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import { useParams, Link } from "react-router-dom";
 import BookingForm from "../components/UI/BookingForm";
+import PriceCalculator from "../components/UI/PriceCalculator";
+import { ImageGallery } from "../components/UI/ImageLightbox";
+import CarItem from "../components/UI/CarItem";
 import "../styles/car-details.css";
 import { applyRamadanDiscount } from "../utils/ramadanPromo";
 
@@ -85,7 +88,9 @@ const CarDetails = () => {
                     {formatCurrency(discountedPrice)} so'm / kun
                     <span className="car-details__price-old">{formatCurrency(originalPrice)} so'm</span>
                   </span>
-                  <img src={singleCarItem.imgUrl} alt={singleCarItem.carName} className="car-details__hero-img" />
+                  <div className="car-details__image-wrapper">
+                    <ImageGallery images={[singleCarItem.imgUrl]} className="single-image" />
+                  </div>
                   <span className="car-details__tag">Premium tanlov</span>
                 </div>
 
@@ -163,26 +168,7 @@ const CarDetails = () => {
                     <p className="car-details__similar-sub">Avtoparkimizdan yana premium variantlar.</p>
                     <Row>
                       {similarCars.map((car) => (
-                        <Col key={car.id} md="4" className="mb-3">
-                          <Link to={`/cars/${car.carName}`} className="car-details__similar-card">
-                            <img src={car.imgUrl} alt={car.carName} />
-                            <div className="car-details__similar-info">
-                              <span className="car-details__similar-name">{car.carName}</span>
-                              {(() => {
-                                const { discounted, original } = applyRamadanDiscount(car.price);
-                                return (
-                                  <span className="car-details__similar-price">
-                                    {formatCurrency(discounted)} so'm / kun{" "}
-                                    <span className="car-details__similar-price-old">
-                                      {formatCurrency(original)} so'm
-                                    </span>
-                                  </span>
-                                );
-                              })()}
-                            </div>
-                            <i className="ri-arrow-right-line"></i>
-                          </Link>
-                        </Col>
+                        <CarItem key={car.id} item={car} colProps={{ lg: "6", md: "6", sm: "6" }} />
                       ))}
                     </Row>
                   </div>
@@ -192,6 +178,12 @@ const CarDetails = () => {
 
             <Col lg="4" className="mt-4">
               <div className="car-details__sidebar">
+                <PriceCalculator 
+                  basePrice={discountedPrice} 
+                  discountPercent={10}
+                  className="mb-4"
+                />
+                
                 <div className="reserve-card">
                   <h3 className="reserve-card__title">Mashinani band qilish</h3>
                   <p className="reserve-card__price">

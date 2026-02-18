@@ -156,7 +156,7 @@
 
 @media (max-width: 768px) {
   .footer--new {
-    padding: 40px 0 0;
+    padding: 40px 0 80px;
   }
 
   .footer__brand {

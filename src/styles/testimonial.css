@@ -18,6 +18,13 @@
   height: 100%;
   box-shadow: var(--shadow);
   border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.testimonial-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
 }
 
 .testimonial-card__stars {
@@ -25,6 +32,8 @@
   font-size: 1.1rem;
   margin-bottom: 14px;
   letter-spacing: 2px;
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial-card__text {
@@ -32,12 +41,16 @@
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial-card__author {
   display: flex;
   align-items: center;
   gap: 12px;
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial-card__avatar {
