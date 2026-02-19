@@ -163,6 +163,17 @@
   animation: fadeInUp 0.6s var(--ease-out-expo) forwards;
 }
 
+/* Cars va Prices sahifalarida tezroq ko‘rinish */
+.section--cars .animate-on-scroll.animated,
+.prices-page .animate-on-scroll.animated {
+  animation-duration: 0.4s !important;
+}
+.section--cars .animate-stagger.animated > *,
+.prices-page .animate-stagger.animated > * {
+  animation-duration: 0.4s !important;
+  animation-delay: 0.03s !important;
+}
+
 /* Kartochka/tugma hover – ozgina ko'tarilish */
 .animate-hover-lift {
   transition: transform 0.3s var(--ease-out-quart), box-shadow 0.3s ease;

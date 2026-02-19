@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Container, Row } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/CommonSection";
@@ -61,6 +61,16 @@ const CarListing = () => {
     }
 
     return filtered;
+  }, [searchTerm, filters, sortBy]);
+
+  useEffect(() => {
+    const timer = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const section = document.querySelector(".section--cars");
+        if (section) section.querySelectorAll(".animate-on-scroll").forEach((el) => el.classList.add("animated"));
+      });
+    });
+    return () => cancelAnimationFrame(timer);
   }, [searchTerm, filters, sortBy]);
 
   return (

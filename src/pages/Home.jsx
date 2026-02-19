@@ -1,14 +1,12 @@
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row } from "reactstrap";
 import { Link } from "react-router-dom";
 import Helmet from "../components/Helmet/Helmet";
 import HeroSlider from "../components/UI/HeroSlider";
 import AboutSection from "../components/UI/AboutSection";
 import carData from "../assets/data/carData";
-import blogData from "../assets/data/blogData";
 import CarItem from "../components/UI/CarItem";
 import Testimonial from "../components/UI/Testimonial";
-import "../styles/home-blog.css";
 
 const Home = () => {
   return (
@@ -39,37 +37,6 @@ const Home = () => {
             <Link to="/cars" className="btn-outline">
               Barcha avtomobillar ({carData.length}+)
             </Link>
-          </div>
-        </Container>
-      </section>
-
-      <section className="section--blog animate-on-scroll animate-fade-in-up">
-        <Container>
-          <div className="section-head section-head--center animate-on-scroll animate-fade-in-down">
-            <h2 className="section-head__title">So'nggi maqolalar</h2>
-            <p className="section-head__sub">FOYDALI MASLAHATLAR VA YANGILIKLAR</p>
-            <span className="section-head__line" />
-          </div>
-          <Row>
-            {blogData.slice(0, 3).map((item) => (
-              <Col key={item.id} lg="4" md="6" className="mb-4">
-                <Link to={`/blogs/${item.title}`} className="home-blog-card">
-                  <div className="home-blog-card__img-wrap">
-                    <img src={item.imgUrl} alt="" className="home-blog-card__img" />
-                  </div>
-                  <div className="home-blog-card__body">
-                    <h3 className="home-blog-card__title">{item.title}</h3>
-                    <p className="home-blog-card__excerpt">
-                      {item.description.length > 90 ? item.description.slice(0, 90) + "…" : item.description}
-                    </p>
-                    <span className="home-blog-card__link">Ko'proq o'qish <i className="ri-arrow-right-line" /></span>
-                  </div>
-                </Link>
-              </Col>
-            ))}
-          </Row>
-          <div className="text-center mt-4 animate-on-scroll animate-fade-in">
-            <Link to="/blogs" className="btn-outline">Barcha maqolalar</Link>
           </div>
         </Container>
       </section>

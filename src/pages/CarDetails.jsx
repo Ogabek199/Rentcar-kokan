@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import carData from "../assets/data/carData";
 import { Container, Row, Col } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
@@ -9,6 +9,31 @@ import { ImageGallery } from "../components/UI/ImageLightbox";
 import CarItem from "../components/UI/CarItem";
 import "../styles/car-details.css";
 import { applyRamadanDiscount } from "../utils/ramadanPromo";
+
+const REVIEWS_STORAGE_KEY = "car_reviews";
+
+const getStoredReviews = (carSlug) => {
+  try {
+    const data = localStorage.getItem(REVIEWS_STORAGE_KEY);
+    if (!data) return [];
+    const all = JSON.parse(data);
+    return Array.isArray(all[carSlug]) ? all[carSlug] : [];
+  } catch {
+    return [];
+  }
+};
+
+const saveReview = (carSlug, review) => {
+  try {
+    const data = localStorage.getItem(REVIEWS_STORAGE_KEY);
+    const all = data ? JSON.parse(data) : {};
+    if (!Array.isArray(all[carSlug])) all[carSlug] = [];
+    all[carSlug].unshift(review);
+    localStorage.setItem(REVIEWS_STORAGE_KEY, JSON.stringify(all));
+  } catch (e) {
+    console.warn("Sharh saqlanmadi:", e);
+  }
+};
 
 const formatCurrency = (value) =>
   new Intl.NumberFormat("uz-UZ", {
@@ -32,12 +57,110 @@ const MOCK_REVIEWS = [
   { name: "Dilnoza Rahimova", date: "5 oktyabr, 2023", stars: 5, text: "Ishonchli va samimiy. Yana ham foydalanaman.", avatar: "https://ui-avatars.com/api/?name=Dilnoza&background=E5A00D&color=fff" },
 ];
 
+const ReviewFormInline = ({ onClose, onSubmit }) => {
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [stars, setStars] = useState(5);
+  const [text, setText] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const trimmedName = name.trim();
+    const trimmedText = text.trim();
+    if (!trimmedName) {
+      setError("Ismni kiriting");
+      return;
+    }
+    if (!trimmedText) {
+      setError("Sharh matnini yozing");
+      return;
+    }
+    setError("");
+    onSubmit({ name: trimmedName, phone: phone.trim(), stars, text: trimmedText });
+  };
+
+  return (
+    <div className="review-form-inline">
+      <h3 className="review-form-inline__title">Sharh yozish</h3>
+      <form className="review-form-inline__form" onSubmit={handleSubmit}>
+        <label className="review-form-inline__label">
+          Ism <span className="review-form-inline__required">*</span>
+        </label>
+        <input
+          type="text"
+          className="review-form-inline__input"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Ismingiz"
+          required
+        />
+        <label className="review-form-inline__label">Telefon (ixtiyoriy)</label>
+        <input
+          type="tel"
+          className="review-form-inline__input"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="+998 90 123 45 67"
+        />
+        <label className="review-form-inline__label">Baholash</label>
+        <div className="review-form-inline__stars">
+          {[1, 2, 3, 4, 5].map((i) => (
+            <button
+              key={i}
+              type="button"
+              className="review-form-inline__star-btn"
+              onClick={() => setStars(i)}
+              aria-label={`${i} yulduz`}
+            >
+              <i className={i <= stars ? "ri-star-fill" : "ri-star-line"} />
+            </button>
+          ))}
+        </div>
+        <label className="review-form-inline__label">
+          Sharh <span className="review-form-inline__required">*</span>
+        </label>
+        <textarea
+          className="review-form-inline__textarea"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+          placeholder="Mashina va xizmat haqida fikringiz..."
+          rows={4}
+          required
+        />
+        {error && <p className="review-form-inline__error">{error}</p>}
+        <div className="review-form-inline__actions">
+          <button type="button" className="review-form-inline__btn review-form-inline__btn--ghost" onClick={onClose}>
+            Bekor qilish
+          </button>
+          <button type="submit" className="review-form-inline__btn review-form-inline__btn--primary">
+            Yuborish
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
 const CarDetails = () => {
   const { slug } = useParams();
   const singleCarItem = carData.find((item) => item.carName === slug);
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [showAllReviews, setShowAllReviews] = useState(false);
+  const [reviews, setReviews] = useState(() => {
+    const stored = singleCarItem ? getStoredReviews(slug) : [];
+    return [...MOCK_REVIEWS, ...stored];
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, [slug]);
+
+  useEffect(() => {
+    if (slug) {
+      const stored = getStoredReviews(slug);
+      setReviews([...MOCK_REVIEWS, ...stored]);
+    }
   }, [slug]);
 
   if (!singleCarItem) {
@@ -140,9 +263,32 @@ const CarDetails = () => {
                 <div className="car-details__block animate-on-scroll animate-fade-in-up">
                   <div className="car-details__reviews-head">
                     <h3 className="car-details__heading mb-0">Foydalanuvchi sharhlari</h3>
-                    <button type="button" className="car-details__write-review">Sharh yozish</button>
+                    <button
+                      type="button"
+                      className="car-details__write-review"
+                      onClick={() => setShowReviewForm(true)}
+                    >
+                      Sharh yozish
+                    </button>
                   </div>
-                  {MOCK_REVIEWS.map((r, i) => (
+                  {showReviewForm && (
+                    <ReviewFormInline
+                      onClose={() => setShowReviewForm(false)}
+                      onSubmit={(review) => {
+                        const newReview = {
+                          name: review.name,
+                          date: new Date().toLocaleDateString("uz-UZ", { day: "numeric", month: "long", year: "numeric" }),
+                          stars: review.stars,
+                          text: review.text,
+                          avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(review.name)}&background=E5A00D&color=fff`,
+                        };
+                        setReviews((prev) => [newReview, ...prev]);
+                        saveReview(slug, newReview);
+                        setShowReviewForm(false);
+                      }}
+                    />
+                  )}
+                  {(showAllReviews ? reviews : reviews.slice(0, 3)).map((r, i) => (
                     <div key={i} className="car-details__review-card">
                       <div className="car-details__review-header">
                         <img src={r.avatar} alt="" className="car-details__review-avatar" />
@@ -159,7 +305,15 @@ const CarDetails = () => {
                       <p className="car-details__review-text">"{r.text}"</p>
                     </div>
                   ))}
-                  <Link to="/contact" className="car-details__view-all">Barcha sharhlar ({singleCarItem.rating})</Link>
+                  {reviews.length > 3 && (
+                    <button
+                      type="button"
+                      className="car-details__view-all car-details__view-all-btn"
+                      onClick={() => setShowAllReviews((v) => !v)}
+                    >
+                      {showAllReviews ? "Kamroq ko'rsatish" : `Barcha sharhlar (${reviews.length})`}
+                    </button>
+                  )}
                 </div>
 
                 {similarCars.length > 0 && (

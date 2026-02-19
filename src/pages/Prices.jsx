@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import Helmet from "../components/Helmet/Helmet";
@@ -14,6 +14,11 @@ const formatCurrency = (value) =>
   }).format(value);
 
 const Prices = () => {
+  useEffect(() => {
+    const section = document.querySelector(".prices-page");
+    if (section) section.querySelectorAll(".animate-on-scroll").forEach((el) => el.classList.add("animated"));
+  }, []);
+
   return (
     <Helmet
       title="Narxlar"
