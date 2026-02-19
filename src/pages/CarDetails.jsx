@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import carData from "../assets/data/carData";
 import { Container, Row, Col } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
@@ -144,7 +144,12 @@ const ReviewFormInline = ({ onClose, onSubmit }) => {
 
 const CarDetails = () => {
   const { slug } = useParams();
-  const singleCarItem = carData.find((item) => item.carName === slug);
+  
+  // Car item'ni memoize qilish
+  const singleCarItem = useMemo(
+    () => carData.find((item) => item.carName === slug),
+    [slug]
+  );
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
   const [reviews, setReviews] = useState(() => {
@@ -208,8 +213,8 @@ const CarDetails = () => {
                 <div className="car-details__hero-img-wrap animate-on-scroll animate-scale-in">
                   <span className="car-details__price-label">BOSHLANG'ICH NARX</span>
                   <span className="car-details__price-value">
-                    {formatCurrency(discountedPrice)} so'm / kun
-                    <span className="car-details__price-old">{formatCurrency(originalPrice)} so'm</span>
+                    {discountedPrice} so'm / kun
+                    <span className="car-details__price-old">{originalPrice} so'm</span>
                   </span>
                   <div className="car-details__image-wrapper">
                     <ImageGallery images={[singleCarItem.imgUrl]} className="single-image" />
@@ -275,23 +280,22 @@ const CarDetails = () => {
                     <ReviewFormInline
                       onClose={() => setShowReviewForm(false)}
                       onSubmit={(review) => {
-                        const newReview = {
-                          name: review.name,
-                          date: new Date().toLocaleDateString("uz-UZ", { day: "numeric", month: "long", year: "numeric" }),
-                          stars: review.stars,
-                          text: review.text,
-                          avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(review.name)}&background=E5A00D&color=fff`,
-                        };
-                        setReviews((prev) => [newReview, ...prev]);
-                        saveReview(slug, newReview);
-                        setShowReviewForm(false);
+                        setReviews([review, ...reviews]);
+                        // Save to localStorage associated with this car slug
+                        saveReview(slug, review);
                       }}
                     />
                   )}
                   {(showAllReviews ? reviews : reviews.slice(0, 3)).map((r, i) => (
                     <div key={i} className="car-details__review-card">
                       <div className="car-details__review-header">
-                        <img src={r.avatar} alt="" className="car-details__review-avatar" />
+                        <img 
+                          src={r.avatar} 
+                          alt="" 
+                          className="car-details__review-avatar" 
+                          loading="lazy"
+                          decoding="async"
+                        />
                         <div>
                           <strong>{r.name}</strong>
                           <span className="car-details__review-date">{r.date}</span>
@@ -309,7 +313,7 @@ const CarDetails = () => {
                     <button
                       type="button"
                       className="car-details__view-all car-details__view-all-btn"
-                      onClick={() => setShowAllReviews((v) => !v)}
+                      onClick={() => setShowAllReviews(!showAllReviews)}
                     >
                       {showAllReviews ? "Kamroq ko'rsatish" : `Barcha sharhlar (${reviews.length})`}
                     </button>
@@ -344,8 +348,8 @@ const CarDetails = () => {
                 <div className="reserve-card">
                   <h3 className="reserve-card__title">Mashinani band qilish</h3>
                   <p className="reserve-card__price">
-                    {formatCurrency(discountedPrice)} <span>/ kun</span>
-                    <span className="reserve-card__price-old">{formatCurrency(originalPrice)} so'm</span>
+                    {discountedPrice} <span>/ kun</span>
+                    <span className="reserve-card__price-old">{originalPrice} so'm</span>
                   </p>
                   <BookingForm formId="booking-form" hideSubmitButton carName={singleCarItem.carName} />
                   <button type="submit" form="booking-form" className="reserve-card__submit">
@@ -363,7 +367,7 @@ const CarDetails = () => {
                   <p className="need-help-card__text">Konsiyerj jamoamiz 24/7 maxsus so'rovlaringiz uchun xizmatda.</p>
                   <a href="tel:+998937120057" className="need-help-card__btn">
                     <i className="ri-phone-line"></i>
-                    Qo'llab-quvvatlash bilan bog'lanish
+                    Qo'llab-quvvatlash bilan bog'lanish →
                   </a>
                 </div>
               </div>

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 
 import Header from "../Header/Header";
@@ -14,19 +14,34 @@ import { initScrollAnimations } from "../../utils/scrollAnimations";
 
 const Layout = () => {
   const location = useLocation();
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
+    // Birinchi marta yuklanganda animatsiyalarni ishga tushirish
     initScrollAnimations();
   }, []);
 
-  // Avtopark va Narxlar sahifalariga o'tganda yangi elementlar ko'rinsin (SPA da observer qayta ishlashi uchun)
+  // Route o'zgarganda faqat yangi elementlarni kuzatish
   useEffect(() => {
-    const timer = requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
+    // Oldingi timeout'ni tozalash
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Kichik kechikish bilan yangi elementlarni kuzatish (DOM yangilanishi uchun)
+    timeoutRef.current = setTimeout(() => {
+      // Faqat yangi elementlarni topish va animatsiya qo'shish
+      const newElements = document.querySelectorAll(".animate-on-scroll:not(.animated)");
+      if (newElements.length > 0) {
         initScrollAnimations();
-      });
-    });
-    return () => cancelAnimationFrame(timer);
+      }
+    }, 100);
+
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, [location.pathname]);
 
   return (

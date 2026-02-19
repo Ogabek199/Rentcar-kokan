@@ -95,7 +95,12 @@ const ImageLightbox = ({ images, currentIndex = 0, onClose }) => {
               }`}
               onClick={() => setActiveIndex(index)}
             >
-              <img src={img} alt={`Thumbnail ${index + 1}`} />
+              <img 
+                src={img} 
+                alt={`Thumbnail ${index + 1}`} 
+                loading="lazy"
+                decoding="async"
+              />
             </button>
           ))}
         </div>

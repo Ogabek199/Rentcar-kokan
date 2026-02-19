@@ -1,6 +1,6 @@
+import React, { useState, useMemo, useCallback } from "react";
 import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import "../../styles/car-item.css";
 import { applyRamadanDiscount } from "../../utils/ramadanPromo";
 import FavoriteButton from "./FavoriteButton";
@@ -12,34 +12,61 @@ const formatCurrency = (value) =>
     maximumFractionDigits: 0,
   }).format(value);
 
-const CarItem = (props) => {
+const CarItem = React.memo((props) => {
   const { imgUrl, carName, automatic, price, rating = 4.8 } = props.item;
-  const { discounted, original } = applyRamadanDiscount(price);
+  
+  // Narxlarni memoize qilish - faqat price o'zgarganda qayta hisoblash
+  const { discounted, original } = useMemo(
+    () => applyRamadanDiscount(price),
+    [price]
+  );
+
   const [showQuickView, setShowQuickView] = useState(false);
   
   // Use custom col props if provided, otherwise use default
   const colProps = props.colProps || { lg: "4", md: "6", sm: "6" };
+
+  // Formatlangan narxlarni memoize qilish
+  const formattedDiscounted = useMemo(() => formatCurrency(discounted), [discounted]);
+  const formattedOriginal = useMemo(() => formatCurrency(original), [original]);
+
+  // Handler'larni memoize qilish
+  const handleQuickViewOpen = useCallback(() => {
+    setShowQuickView(true);
+  }, []);
+
+  const handleQuickViewClose = useCallback(() => {
+    setShowQuickView(false);
+  }, []);
 
   return (
     <>
       <Col {...colProps} className="mb-4 animate-on-scroll animate-fade-in-up">
         <div className="car__item car__item--new">
           <div className="car__item-img-wrap">
-            <img src={imgUrl} alt={carName} className="car__item-img" loading="lazy" />
+            <img 
+              src={imgUrl} 
+              alt={carName} 
+              className="car__item-img" 
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="300"
+            />
             <div className="car__item-price-tag">
               <div className="car__item-price-row">
                 <span className="car__item-price-new">
-                  {formatCurrency(discounted)} so'm
+                  {formattedDiscounted} so'm
                 </span>
                 <span className="car__item-price-per">/ kun</span>
               </div>
-              <span className="car__item-price-old">{formatCurrency(original)} so'm</span>
+              <span className="car__item-price-old">{formattedOriginal} so'm</span>
             </div>
             <div className="car__item-actions">
               <FavoriteButton carId={props.item.id} size="medium" />
               <button
                 className="car__item-quick-view"
-                onClick={() => setShowQuickView(true)}
+                onClick={handleQuickViewOpen}
                 aria-label="Tezkor ko'rish"
                 title="Tezkor ko'rish"
               >
@@ -63,10 +90,12 @@ const CarItem = (props) => {
       <QuickViewModal
         car={props.item}
         isOpen={showQuickView}
-        onClose={() => setShowQuickView(false)}
+        onClose={handleQuickViewClose}
       />
     </>
   );
-};
+});
+
+CarItem.displayName = "CarItem";
 
 export default CarItem;

@@ -73,7 +73,15 @@ const ImageMagnifier = ({
       onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
     >
-      <img ref={imgRef} src={src} alt={alt} className="image-magnifier__img" draggable={false} />
+      <img 
+        ref={imgRef} 
+        src={src} 
+        alt={alt} 
+        className="image-magnifier__img" 
+        draggable={false}
+        loading="lazy"
+        decoding="async"
+      />
       {showLens && lensStyle && (
         <div
           className="image-magnifier__lens"
