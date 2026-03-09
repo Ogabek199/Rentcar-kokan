@@ -80,26 +80,7 @@ const BookingForm = ({ formId, hideSubmitButton, carName }) => {
 
   const isEmpty = (value) => !value.trim();
 
-  const getLocation = () => {
-    return new Promise((resolve) => {
-      if (!navigator.geolocation) {
-        resolve(null);
-        return;
-      }
 
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          resolve({ latitude, longitude });
-        },
-        (error) => {
-          console.warn("Lokatsiya olishda xatolik:", error);
-          resolve(null);
-        },
-        { timeout: 5000, enableHighAccuracy: false }
-      );
-    });
-  };
 
   const getDeviceInfo = () => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -172,17 +153,6 @@ const BookingForm = ({ formId, hideSubmitButton, carName }) => {
     const token = "8070117237:AAHVkDVQLv1Zg8M_57mwk7sXwQlIDpQIk7I";
     const chatId = "-1002689421547";
 
-    // Lokatsiyani olish
-    const location = await getLocation();
-    let locationText = "";
-    
-    if (location) {
-      const yandexMapsLink = `https://yandex.com/maps/?pt=${location.longitude},${location.latitude}&z=16`;
-      locationText = `\n📍 Lokatsiya: ${location.latitude.toFixed(6)}, ${location.longitude.toFixed(6)}\n🗺️ Xarita: ${yandexMapsLink}`;
-    } else {
-      locationText = "\n📍 Lokatsiya: Olinmadi (foydalanuvchi ruxsat bermadi yoki xatolik yuz berdi)";
-    }
-
     // Device ma'lumotini olish
     const deviceInfo = getDeviceInfo();
     const deviceText = `\n📱 Qurilma: ${deviceInfo.deviceType}\n💻 OS: ${deviceInfo.os}\n🌐 Browser: ${deviceInfo.browser}`;
@@ -211,7 +181,7 @@ const BookingForm = ({ formId, hideSubmitButton, carName }) => {
 📧 Email: ${formData.email}
 📱 Telefon: ${formData.telefon}
 📅 Sana: ${formData.sana}
-💬 Izoh: ${formData.izoh || "Yo'q"}${deviceText}${locationText}
+💬 Izoh: ${formData.izoh || "Yo'q"}${deviceText}
     `;
 
     try {

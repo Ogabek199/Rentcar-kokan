@@ -113,7 +113,7 @@ const ReviewFormInline = ({ onClose, onSubmit }) => {
               onClick={() => setStars(i)}
               aria-label={`${i} yulduz`}
             >
-              <i className={i <= stars ? "ri-star-fill" : "ri-star-line"} />
+              <i className={i <= stars ? "ri-star-fill" : "ri-star-line"} /> 
             </button>
           ))}
         </div>

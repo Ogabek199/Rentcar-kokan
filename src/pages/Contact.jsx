@@ -53,27 +53,6 @@ const Contact = () => {
     return true;
   }, []);
 
-  const getLocation = useCallback(() => {
-    return new Promise((resolve) => {
-      if (!navigator.geolocation) {
-        resolve(null);
-        return;
-      }
-
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          resolve({ latitude, longitude });
-        },
-        (error) => {
-          console.warn("Lokatsiya olishda xatolik:", error);
-          resolve(null);
-        },
-        { timeout: 5000, enableHighAccuracy: false }
-      );
-    });
-  }, []);
-
   const getDeviceInfo = useCallback(() => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
     const platform = navigator.platform || "";
@@ -133,17 +112,6 @@ const Contact = () => {
     if (!validateForm(formData)) return;
     setIsSubmitting(true);
     try {
-      // Lokatsiyani olish
-      const location = await getLocation();
-      let locationText = "";
-      
-      if (location) {
-        const yandexMapsLink = `https://yandex.com/maps/?pt=${location.longitude},${location.latitude}&z=16`;
-        locationText = `\n📍 Lokatsiya: ${location.latitude.toFixed(6)}, ${location.longitude.toFixed(6)}\n🗺️ Xarita: ${yandexMapsLink}`;
-      } else {
-        locationText = "\n📍 Lokatsiya: Olinmadi (foydalanuvchi ruxsat bermadi yoki xatolik yuz berdi)";
-      }
-
       // Device ma'lumotini olish
       const deviceInfo = getDeviceInfo();
       const deviceText = `\n📱 Qurilma: ${deviceInfo.deviceType}\n💻 OS: ${deviceInfo.os}\n🌐 Browser: ${deviceInfo.browser}`;
@@ -163,7 +131,7 @@ const Contact = () => {
       }).format(now);
       const sentAt = `${sentAtDate} ${sentAtTime}`;
 
-      const message = `🟢 Yangi xabar:\n🕒 Yuborilgan vaqt: ${sentAt}\n👤 Ism: ${formData.ism}\n📱 Telefon: ${formData.telefon}\n💬 Izoh: ${formData.fikr}${deviceText}${locationText}`;
+      const message = `🟢 Yangi xabar:\n🕒 Yuborilgan vaqt: ${sentAt}\n👤 Ism: ${formData.ism}\n📱 Telefon: ${formData.telefon}\n💬 Izoh: ${formData.fikr}${deviceText}`;
       const response = await fetch(TELEGRAM_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -181,7 +149,7 @@ const Contact = () => {
     } finally {
       setIsSubmitting(false);
     }
-  }, [formData, validateForm, resetForm, getLocation, getDeviceInfo]);
+  }, [formData, validateForm, resetForm, getDeviceInfo]);
 
   const contactInfo = useMemo(
     () => ({
