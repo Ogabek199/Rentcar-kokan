@@ -4,6 +4,7 @@ import Helmet from "../components/Helmet/Helmet";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { logError } from "../utils/errorLogger";
 import "../styles/contact.css";
 
 const TELEGRAM_TOKEN = "8070117237:AAHVkDVQLv1Zg8M_57mwk7sXwQlIDpQIk7I";
@@ -146,6 +147,17 @@ const Contact = () => {
     } catch (err) {
       toast.error("❌ Xabar yuborishda muammo bo'ldi.");
       console.error("Xatolik:", err);
+      
+      // Error logga yuborish
+      logError({
+        errorType: "Contact Form Submission Error",
+        message: err.message,
+        stack: err.stack,
+        page: "Contact Page",
+        additionalInfo: {
+          formDataKeys: Object.keys(formData),
+        },
+      });
     } finally {
       setIsSubmitting(false);
     }

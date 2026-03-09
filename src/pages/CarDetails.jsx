@@ -7,6 +7,7 @@ import BookingForm from "../components/UI/BookingForm";
 import PriceCalculator from "../components/UI/PriceCalculator";
 import { ImageGallery } from "../components/UI/ImageLightbox";
 import CarItem from "../components/UI/CarItem";
+import { logError } from "../utils/errorLogger";
 import "../styles/car-details.css";
 import { applyRamadanDiscount } from "../utils/ramadanPromo";
 
@@ -18,7 +19,14 @@ const getStoredReviews = (carSlug) => {
     if (!data) return [];
     const all = JSON.parse(data);
     return Array.isArray(all[carSlug]) ? all[carSlug] : [];
-  } catch {
+  } catch (err) {
+    console.warn("Sharhlar o'qilishda xatolik:", err);
+    logError({
+      errorType: "Storage Read Error",
+      message: err.message,
+      page: "CarDetails - getStoredReviews",
+      additionalInfo: { carSlug },
+    });
     return [];
   }
 };
@@ -30,8 +38,14 @@ const saveReview = (carSlug, review) => {
     if (!Array.isArray(all[carSlug])) all[carSlug] = [];
     all[carSlug].unshift(review);
     localStorage.setItem(REVIEWS_STORAGE_KEY, JSON.stringify(all));
-  } catch (e) {
-    console.warn("Sharh saqlanmadi:", e);
+  } catch (err) {
+    console.warn("Sharh saqlanmadi:", err);
+    logError({
+      errorType: "Storage Write Error",
+      message: err.message,
+      page: "CarDetails - saveReview",
+      additionalInfo: { carSlug, reviewExists: !!review },
+    });
   }
 };
 

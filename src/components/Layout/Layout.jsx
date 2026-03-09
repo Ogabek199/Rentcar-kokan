@@ -11,6 +11,7 @@ import BottomNavbar from "../UI/BottomNavbar";
 import FloatingOrbits from "../UI/FloatingOrbits";
 // import FavoritesCounter from "../UI/FavoritesCounter";
 import { initScrollAnimations } from "../../utils/scrollAnimations";
+import { logError } from "../../utils/errorLogger";
 
 const Layout = () => {
   const location = useLocation();
@@ -18,7 +19,17 @@ const Layout = () => {
 
   useEffect(() => {
     // Birinchi marta yuklanganda animatsiyalarni ishga tushirish
-    initScrollAnimations();
+    try {
+      initScrollAnimations();
+    } catch (err) {
+      logError({
+        errorType: "Animation Initialization Error",
+        message: err.message,
+        stack: err.stack,
+        page: "Layout Component",
+        additionalInfo: { component: "initScrollAnimations" },
+      });
+    }
   }, []);
 
   // Route o'zgarganda faqat yangi elementlarni kuzatish
@@ -30,10 +41,20 @@ const Layout = () => {
 
     // Kichik kechikish bilan yangi elementlarni kuzatish (DOM yangilanishi uchun)
     timeoutRef.current = setTimeout(() => {
-      // Faqat yangi elementlarni topish va animatsiya qo'shish
-      const newElements = document.querySelectorAll(".animate-on-scroll:not(.animated)");
-      if (newElements.length > 0) {
-        initScrollAnimations();
+      try {
+        // Faqat yangi elementlarni topish va animatsiya qo'shish
+        const newElements = document.querySelectorAll(".animate-on-scroll:not(.animated)");
+        if (newElements.length > 0) {
+          initScrollAnimations();
+        }
+      } catch (err) {
+        logError({
+          errorType: "Route Change Animation Error",
+          message: err.message,
+          stack: err.stack,
+          page: location.pathname,
+          additionalInfo: { route: location.pathname },
+        });
       }
     }, 100);
 

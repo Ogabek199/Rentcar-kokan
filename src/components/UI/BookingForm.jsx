@@ -3,6 +3,7 @@ import "../../styles/booking-form.css";
 import { Form, FormGroup } from "reactstrap";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { logError } from "../../utils/errorLogger";
 
 const BookingForm = ({ formId, hideSubmitButton, carName }) => {
   const [formData, setFormData] = useState({
@@ -212,8 +213,20 @@ const BookingForm = ({ formId, hideSubmitButton, carName }) => {
         izoh: "",
       });
     } catch (err) {
-      toast.error("❌ Xabar yuborishda muammo bo‘ldi.");
+      toast.error("❌ Xabar yuborishda muammo bo'ldi.");
       console.error(err);
+      
+      // Error logga yuborish
+      logError({
+        errorType: "Booking Form Submission Error",
+        message: err.message,
+        stack: err.stack,
+        page: "BookingForm",
+        additionalInfo: {
+          carName,
+          formDataKeys: Object.keys(formData),
+        },
+      });
     }
   };
 

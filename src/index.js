@@ -21,6 +21,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { BrowserRouter as Router } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { setupNetworkMonitoring } from "./utils/apiErrorHandler";
+
+// Network monitoring o'rnatish
+setupNetworkMonitoring();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
