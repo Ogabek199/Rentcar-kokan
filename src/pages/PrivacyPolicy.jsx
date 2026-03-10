@@ -253,9 +253,9 @@ const PrivacyPolicy = () => {
                 <li style={{ marginBottom: "10px", lineHeight: "1.7", color: "var(--color-text)" }}>
                   <strong>Telefon:</strong> <a href="tel:+998937120057" style={{ color: "var(--color-primary)", textDecoration: "none" }}>+998 93 712 00 57</a>
                 </li>
-                <li style={{ marginBottom: "10px", lineHeight: "1.7", color: "var(--color-text)" }}>
-                  <strong>Elektron pochta:</strong> <a href="mailto:otaxonovogabek633@gmail.com" style={{ color: "var(--color-primary)", textDecoration: "none" }}>otaxonovogabek633@gmail.com</a>
-                </li>
+                {/*<li style={{ marginBottom: "10px", lineHeight: "1.7", color: "var(--color-text)" }}>*/}
+                {/*  <strong>Elektron pochta:</strong> <a href="mailto:otaxonovogabek633@gmail.com" style={{ color: "var(--color-primary)", textDecoration: "none" }}>otaxonovogabek633@gmail.com</a>*/}
+                {/*</li>*/}
                 <li style={{ marginBottom: "10px", lineHeight: "1.7", color: "var(--color-text)" }}>
                   <strong>Manzil:</strong> Qo'qon shahar, Farg'ona viloyati, O'zbekiston
                 </li>
