@@ -168,7 +168,6 @@ const Contact = () => {
       address: "Turkiston ko'chasi 12, Qo'qon sh.",
       phone: "+998 93 712 00 57",
       phoneLink: "tel:+998937120057",
-      email: "otaxonovogabek633@gmail.com",
     }),
     []
   );
@@ -245,10 +244,6 @@ const Contact = () => {
                   <li>
                     <i className="ri-phone-line"></i>
                     <a href={contactInfo.phoneLink}>{contactInfo.phone}</a>
-                  </li>
-                  <li>
-                    <i className="ri-mail-line"></i>
-                    <a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a>
                   </li>
                 </ul>
                 <div className="contact-info-card__map">

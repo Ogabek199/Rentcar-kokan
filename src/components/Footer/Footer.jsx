@@ -7,7 +7,7 @@ const quickLinks = [
   { path: "/prices", display: "Narxlar" },
   { path: "/blogs", display: "Bloglar" },
   { path: "/about", display: "Biz haqimizda" },
-  { path: "/about-me", display: "Men haqimda" },
+  // { path: "/about-me", display: "Men haqimda" },
   { path: "/privacy-policy", display: "Maxfiylik siyosati" },
   { path: "/contact", display: "Bog'lanish" },
 ];
@@ -64,10 +64,6 @@ const Footer = () => {
                 <i className="ri-phone-line"></i>
                 <a href="tel:+998937120057">+998 93 712 00 57</a>
               </li>
-              <li>
-                <i className="ri-mail-line"></i>
-                <a href="mailto:otaxonovogabek633@gmail.com">otaxonovogabek633@gmail.com</a>
-              </li>
             </ul>
           </Col>
 
@@ -89,7 +85,7 @@ const Footer = () => {
 
         <div className="footer__bottom">
           <p>
-            © {year} Ziyo Rent Car. Barcha huquqlar himoyalangan. Sayt: Og'abek Otaxonov (otaxonovogabek633@gmail.com, +998 90 150 26 57)
+            © {year} Ziyo Rent Car. Barcha huquqlar himoyalangan.
           </p>
         </div>
       </Container>
