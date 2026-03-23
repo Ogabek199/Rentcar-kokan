@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Routers from "../../routers/Routers";
-import PromoModal from "../UI/PromoModal";
 import ScrollToTop from "../UI/ScrollToTop";
 import ScrollProgress from "../UI/ScrollProgress";
 import BottomNavbar from "../UI/BottomNavbar";
@@ -71,7 +70,6 @@ const Layout = () => {
       <div className="layout__wrap">
         <ScrollProgress />
         <Header />
-        <PromoModal />
         <div className="layout__content">
           <Routers />
         </div>

@@ -1,6 +1,5 @@
 export const CAR_PROMO = {
   discountPercent: 10,
-  storageKey: "car_promo_modal_dismissed_v1",
 };
 
 export function applyCarDiscount(price) {
