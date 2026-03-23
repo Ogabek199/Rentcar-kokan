@@ -67,11 +67,11 @@ const AboutMe = () => {
                     <span>otaxonovogabek633@gmail.com</span>
                   </a>
                   <a 
-                    href="tel:+998901502657" 
+                    href="tel:+998912008550" 
                     className="about-me__contact-item"
                   >
                     <i className="ri-phone-line"></i>
-                    <span>+998 90 150 26 57</span>
+                    <span>+998 91 200 85 50</span>
                   </a>
                 </div>
               </div>
@@ -145,7 +145,7 @@ const AboutMe = () => {
                     Kontakt forma
                   </Link>
                   <a 
-                    href="tel:+998901502657"
+                    href="tel:+998912008550"
                     className="btn btn-outline about-me__cta-btn"
                   >
                     <i className="ri-phone-line"></i>

@@ -65,9 +65,9 @@ const Home = () => {
               <Link to="/cars" className="cta-box__btn cta-box__btn--primary">
                 Hozir bron qiling
               </Link>
-              <a href="tel:+998937120057" className="cta-box__btn cta-box__btn--outline text-white bg-transparent">
+              <a href="tel:+998912008550" className="cta-box__btn cta-box__btn--outline text-white bg-transparent">
                 <i className="ri-phone-line text-white"></i>
-                +998 93 712 00 57
+                +998 91 200 85 50
               </a>
             </div>
           </div>

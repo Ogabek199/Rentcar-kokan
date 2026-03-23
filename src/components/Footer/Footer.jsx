@@ -62,7 +62,7 @@ const Footer = () => {
               </li>
               <li>
                 <i className="ri-phone-line"></i>
-                <a href="tel:+998937120057">+998 93 712 00 57</a>
+                <a href="tel:+998912008550">+998 91 200 85 50</a>
               </li>
             </ul>
           </Col>

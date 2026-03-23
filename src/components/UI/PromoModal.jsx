@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../../styles/ramadan-promo-modal.css";
-import { RAMADAN_PROMO } from "../../utils/ramadanPromo";
+import "../../styles/promo-modal.css";
+import { CAR_PROMO } from "../../utils/carPromo";
 
-const RamadanPromoModal = () => {
+const PromoModal = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     try {
-      const dismissed = localStorage.getItem(RAMADAN_PROMO.storageKey) === "1";
+      const dismissed = localStorage.getItem(CAR_PROMO.storageKey) === "1";
       if (!dismissed) setOpen(true);
     } catch {
       setOpen(true);
@@ -24,7 +24,7 @@ const RamadanPromoModal = () => {
   const close = useCallback(() => {
     setOpen(false);
     try {
-      localStorage.setItem(RAMADAN_PROMO.storageKey, "1");
+      localStorage.setItem(CAR_PROMO.storageKey, "1");
     } catch {
       // ignore
     }
@@ -51,7 +51,7 @@ const RamadanPromoModal = () => {
       className="promo-modal__backdrop"
       role="dialog"
       aria-modal="true"
-      aria-label={RAMADAN_PROMO.title}
+      aria-label="Chegirma"
       onMouseDown={onBackdropMouseDown}
       onKeyDown={onKeyDown}
       tabIndex={-1}
@@ -68,11 +68,8 @@ const RamadanPromoModal = () => {
 
         <div className="promo-modal__badge">
           <i className="ri-gift-line" />
-          <span>{RAMADAN_PROMO.discountPercent}% chegirma</span>
+          <span>{CAR_PROMO.discountPercent}% chegirma</span>
         </div>
-
-        <h2 className="promo-modal__title">{RAMADAN_PROMO.title}</h2>
-        <p className="promo-modal__desc">{RAMADAN_PROMO.description}</p>
 
         <div className="promo-modal__actions">
           <Link to="/prices" className="promo-modal__btn promo-modal__btn--primary" onClick={close}>
@@ -87,5 +84,4 @@ const RamadanPromoModal = () => {
   );
 };
 
-export default RamadanPromoModal;
-
+export default PromoModal;

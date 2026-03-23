@@ -116,7 +116,7 @@
               "image": "https://rentcar-kokand.uz/og-image.jpg",
               "description": "Farg'ona vodiysida tez va oson avtomobil ijarasi. Arzon narxlar, qulay xizmat va keng avtomobil tanlovi.",
               "url": "https://rentcar-kokand.uz/",
-              "telephone": "+998-90-150-26-57",
+              "telephone": "+998-91-200-85-50",
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Kokand shahar",
@@ -215,7 +215,7 @@
           "
         >
           <h3 style="color: #333">📞 Bog'lanish</h3>
-          <p style="margin: 5px 0">Telefon: +998-90-150-26-57</p>
+          <p style="margin: 5px 0">Telefon: +998-91-200-85-50</p>
           <p style="margin: 5px 0">Manzil: Kokand shahar</p>
           <p style="margin: 5px 0">Ish vaqti: 08:00 - 20:00</p>
         </div>
@@ -235,13 +235,16 @@
     <div id="root"></div>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script>
-      setTimeout(() => {
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ["#667eea", "#764ba2", "#f093fb", "#f5576c"],
-        });
+      setTimeout(function () {
+        var run = typeof window.confetti === "function" ? window.confetti : typeof confetti === "function" ? confetti : null;
+        if (run) {
+          run({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ["#667eea", "#764ba2", "#f093fb", "#f5576c"],
+          });
+        }
       }, 2500);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>

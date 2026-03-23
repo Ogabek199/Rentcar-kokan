@@ -53,8 +53,8 @@ const Header = () => {
           </nav>
 
           <div className="header__right">
-            <a href="tel:+998937120057" className="header__phone">
-              <i className="ri-phone-line"></i>+998 93 712 00 57
+            <a href="tel:+998912008550" className="header__phone">
+              <i className="ri-phone-line"></i>+998 91 200 85 50
             </a>
             <Link to="/contact" className="header__cta">
               Murojat uchun

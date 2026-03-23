@@ -9,7 +9,7 @@ import { ImageGallery } from "../components/UI/ImageLightbox";
 import CarItem from "../components/UI/CarItem";
 import { logError } from "../utils/errorLogger";
 import "../styles/car-details.css";
-import { applyRamadanDiscount } from "../utils/ramadanPromo";
+import { applyCarDiscount } from "../utils/carPromo";
 
 const REVIEWS_STORAGE_KEY = "car_reviews";
 
@@ -115,7 +115,7 @@ const ReviewFormInline = ({ onClose, onSubmit }) => {
           className="review-form-inline__input"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
-          placeholder="+998 90 123 45 67"
+          placeholder="+998 91 200 85 50"
         />
         <label className="review-form-inline__label">Baholash</label>
         <div className="review-form-inline__stars">
@@ -194,7 +194,7 @@ const CarDetails = () => {
   }
 
   const similarCars = carData.filter((c) => c.id !== singleCarItem.id).slice(0, 4);
-  const { discounted: discountedPrice, original: originalPrice } = applyRamadanDiscount(singleCarItem.price);
+  const { discounted: discountedPrice, original: originalPrice } = applyCarDiscount(singleCarItem.price);
 
   return (
     <Helmet
@@ -379,7 +379,7 @@ const CarDetails = () => {
                 <div className="need-help-card">
                   <h3 className="need-help-card__title">Yordam kerakmi?</h3>
                   <p className="need-help-card__text">Konsiyerj jamoamiz 24/7 maxsus so'rovlaringiz uchun xizmatda.</p>
-                  <a href="tel:+998937120057" className="need-help-card__btn">
+                  <a href="tel:+998912008550" className="need-help-card__btn">
                     <i className="ri-phone-line"></i>
                     Qo'llab-quvvatlash bilan bog'lanish →
                   </a>

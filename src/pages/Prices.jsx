@@ -5,7 +5,7 @@ import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/CommonSection";
 import carData from "../assets/data/carData";
 import "../styles/prices.css";
-import { applyRamadanDiscount, RAMADAN_PROMO } from "../utils/ramadanPromo";
+import { applyCarDiscount } from "../utils/carPromo";
 
 const formatCurrency = (value) =>
   new Intl.NumberFormat("uz-UZ", {
@@ -28,16 +28,6 @@ const Prices = () => {
       <CommonSection title="Narxlar" />
       <section className="prices-page animate-page-enter">
         <Container>
-          <div className="prices-promo animate-on-scroll animate-scale-in">
-            <div className="prices-promo__icon">
-              <i className="ri-gift-line"></i>
-            </div>
-            <div className="prices-promo__content">
-              <h2 className="prices-promo__title">{RAMADAN_PROMO.title}</h2>
-              <p className="prices-promo__desc">{RAMADAN_PROMO.description}</p>
-            </div>
-          </div>
-
           <div className="section-head section-head--center mb-5 animate-on-scroll animate-fade-in-down">
             <h2 className="section-head__title">Kunlik ijara narxlari</h2>
             <p className="section-head__sub">BARCHA MODELLAR</p>
@@ -45,7 +35,7 @@ const Prices = () => {
           </div>
           <Row className="animate-on-scroll animate-stagger">
             {carData.map((item) => {
-              const { discounted, original } = applyRamadanDiscount(item.price);
+              const { discounted, original } = applyCarDiscount(item.price);
               return (
                 <Col key={item.id} lg="4" md="6" className="mb-4">
                 <Link to={`/cars/${item.carName}`} className="price-card">

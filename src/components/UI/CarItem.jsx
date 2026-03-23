@@ -2,7 +2,7 @@ import React, { useState, useMemo, useCallback } from "react";
 import { Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import "../../styles/car-item.css";
-import { applyRamadanDiscount } from "../../utils/ramadanPromo";
+import { applyCarDiscount } from "../../utils/carPromo";
 import FavoriteButton from "./FavoriteButton";
 import QuickViewModal from "./QuickViewModal";
 
@@ -17,7 +17,7 @@ const CarItem = React.memo((props) => {
   
   // Narxlarni memoize qilish - faqat price o'zgarganda qayta hisoblash
   const { discounted, original } = useMemo(
-    () => applyRamadanDiscount(price),
+    () => applyCarDiscount(price),
     [price]
   );
 

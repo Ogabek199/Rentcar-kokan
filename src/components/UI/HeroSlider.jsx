@@ -22,7 +22,7 @@ const HeroSlider = () => {
             <Link to="/cars" className="hero__btn hero__btn--primary">
               Avtoparkni ko‘ring
             </Link>
-            <a href="tel:+998937120057" className="hero__btn hero__btn--secondary">
+            <a href="tel:+998912008550" className="hero__btn hero__btn--secondary">
               <i className="ri-play-circle-line"></i>
               Qo‘ng‘iroq qilish
             </a>

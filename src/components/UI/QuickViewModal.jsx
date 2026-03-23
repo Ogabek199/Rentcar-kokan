@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { applyRamadanDiscount } from "../../utils/ramadanPromo";
+import { applyCarDiscount } from "../../utils/carPromo";
 import "../../styles/quick-view-modal.css";
 
 const QuickViewModal = ({ car, isOpen, onClose }) => {
@@ -31,7 +31,7 @@ const QuickViewModal = ({ car, isOpen, onClose }) => {
 
   if (!isOpen || !car) return null;
 
-  const { discounted, original } = applyRamadanDiscount(car.price);
+  const { discounted, original } = applyCarDiscount(car.price);
   const formatCurrency = (value) => {
     return new Intl.NumberFormat("uz-UZ").format(value);
   };

@@ -166,8 +166,8 @@ const Contact = () => {
   const contactInfo = useMemo(
     () => ({
       address: "Turkiston ko'chasi 12, Qo'qon sh.",
-      phone: "+998 93 712 00 57",
-      phoneLink: "tel:+998937120057",
+      phone: "+998 91 200 85 50",
+      phoneLink: "tel:+998912008550",
     }),
     []
   );
@@ -210,7 +210,7 @@ const Contact = () => {
                       name="telefon"
                       value={formData.telefon}
                       onChange={changeHandler}
-                      placeholder="+998 93 712 00 57"
+                      placeholder="+998 91 200 85 50"
                       disabled={isSubmitting}
                       className="contact-form__input"
                     />
