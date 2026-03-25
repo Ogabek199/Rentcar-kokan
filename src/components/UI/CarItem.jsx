@@ -5,6 +5,7 @@ import "../../styles/car-item.css";
 import { applyCarDiscount } from "../../utils/carPromo";
 import FavoriteButton from "./FavoriteButton";
 import QuickViewModal from "./QuickViewModal";
+import { slugify } from "../../utils/slugify";
 
 const formatCurrency = (value) =>
   new Intl.NumberFormat("uz-UZ", {
@@ -13,7 +14,7 @@ const formatCurrency = (value) =>
   }).format(value);
 
 const CarItem = React.memo((props) => {
-  const { imgUrl, carName, automatic, price, rating = 4.8 } = props.item;
+  const { imgUrl, carName, automatic, price, rating = 4.8, slug } = props.item;
   
   // Narxlarni memoize qilish - faqat price o'zgarganda qayta hisoblash
   const { discounted, original } = useMemo(
@@ -81,7 +82,7 @@ const CarItem = React.memo((props) => {
               <span><i className="ri-user-line"></i> 4 o'rin</span>
               <span><i className="ri-star-fill"></i> {rating}</span>
             </div>
-            <Link to={`/cars/${carName}`} className="car__item-btn">
+            <Link to={`/cars/${slug || slugify(carName)}`} className="car__item-btn">
               Ijara
             </Link>
           </div>

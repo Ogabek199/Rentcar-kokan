@@ -10,6 +10,7 @@ import CarItem from "../components/UI/CarItem";
 import { logError } from "../utils/errorLogger";
 import "../styles/car-details.css";
 import { applyCarDiscount } from "../utils/carPromo";
+import { slugify } from "../utils/slugify";
 
 const REVIEWS_STORAGE_KEY = "car_reviews";
 
@@ -161,7 +162,23 @@ const CarDetails = () => {
   
   // Car item'ni memoize qilish
   const singleCarItem = useMemo(
-    () => carData.find((item) => item.carName === slug),
+    () => {
+      const raw = String(slug ?? "");
+      const decoded = (() => {
+        try {
+          return decodeURIComponent(raw);
+        } catch {
+          return raw;
+        }
+      })();
+
+      // New canonical: match by item.slug (or derived slugify)
+      const bySlug = carData.find((item) => (item.slug || slugify(item.carName)) === raw);
+      if (bySlug) return bySlug;
+
+      // Backward compatibility: old URLs used carName in the path
+      return carData.find((item) => item.carName === decoded);
+    },
     [slug]
   );
   const [showReviewForm, setShowReviewForm] = useState(false);
@@ -193,16 +210,41 @@ const CarDetails = () => {
     );
   }
 
+  const canonicalSlug = singleCarItem.slug || slugify(singleCarItem.carName);
   const similarCars = carData.filter((c) => c.id !== singleCarItem.id).slice(0, 4);
   const { discounted: discountedPrice, original: originalPrice } = applyCarDiscount(singleCarItem.price);
+  const origin =
+    typeof window !== "undefined" && window.location?.origin
+      ? window.location.origin
+      : "https://rentcar-kokand.uz";
+  const pageUrl = `${origin}/cars/${canonicalSlug}`;
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: singleCarItem.carName,
+    image: [singleCarItem.imgUrl],
+    description: singleCarItem.description,
+    brand: {
+      "@type": "Brand",
+      name: singleCarItem.brand || "Ziyo Rent Car",
+    },
+    offers: {
+      "@type": "Offer",
+      url: pageUrl,
+      priceCurrency: "UZS",
+      price: discountedPrice,
+      availability: "https://schema.org/InStock",
+    },
+  };
 
   return (
     <Helmet
       title={singleCarItem.carName}
       description={`${singleCarItem.carName} avtomobilini Kokandda ijaraga oling. Chegirmali kunlik narx: ${formatCurrency(discountedPrice)} so‘m. Qulay shartlar, 24/7 xizmat va tez bron qilish.`}
-      canonicalPath={`/cars/${encodeURIComponent(singleCarItem.carName)}`}
+      canonicalPath={`/cars/${canonicalSlug}`}
       image={singleCarItem.imgUrl}
       type="product"
+      structuredData={productJsonLd}
     >
       <section className="car-details-page animate-page-enter">
         <Container>

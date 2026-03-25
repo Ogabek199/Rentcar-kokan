@@ -26,6 +26,13 @@ import { setupNetworkMonitoring } from "./utils/apiErrorHandler";
 // Network monitoring o'rnatish
 setupNetworkMonitoring();
 
+// PWA service worker (static /public/service-worker.js)
+if (process.env.NODE_ENV === "production" && "serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/service-worker.js").catch(() => {});
+  });
+}
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

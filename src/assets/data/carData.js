@@ -1,6 +1,7 @@
 const carData = [
   {
     id: 1,
+    slug: "chevrolet-malibu",
     brand: "Malibu",
     rating: 112,
     carName: "Chevrolet Malibu",
@@ -17,6 +18,7 @@ const carData = [
 
   {
     id: 2,
+    slug: "chevrolet-jentra",
     brand: "Jentra",
     rating: 102,
     carName: "Chevrolet Jentra",
@@ -33,6 +35,7 @@ const carData = [
 
   {
     id: 3,
+    slug: "chevrolet-equinox",
     brand: "Equinox",
     rating: 132,
     carName: "Chevrolet Equinox",
@@ -49,6 +52,7 @@ const carData = [
 
   {
     id: 4,
+    slug: "chevrolet-onix",
     brand: "Onix",
     rating: 102,
     carName: "Chevrolet Onix",
@@ -65,6 +69,7 @@ const carData = [
 
   {
     id: 5,
+    slug: "chevrolet-tahoe",
     brand: "Tahoe",
     rating: 94,
     carName: "Chevrolet Tahoe",
@@ -81,6 +86,7 @@ const carData = [
 
   {
     id: 6,
+    slug: "chevrolet-captiva",
     brand: "Captiva",
     rating: 119,
     carName: "Chevrolet Captiva",

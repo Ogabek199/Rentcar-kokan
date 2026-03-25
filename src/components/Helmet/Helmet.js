@@ -23,6 +23,7 @@ const Helmet = ({
   image,
   type = "website",
   noindex = false,
+  structuredData,
   children,
 }) => {
   const location = useLocation();
@@ -35,6 +36,11 @@ const Helmet = ({
   const pageDescription = description || DEFAULT_DESCRIPTION;
   const canonicalUrl = normalizeUrl(origin, canonicalPath || location.pathname);
   const imageUrl = normalizeUrl(origin, image || DEFAULT_IMAGE);
+  const structuredDataList = structuredData
+    ? Array.isArray(structuredData)
+      ? structuredData
+      : [structuredData]
+    : [];
 
   return (
     <div className="w-100">
@@ -57,6 +63,15 @@ const Helmet = ({
         <meta name="twitter:image" content={imageUrl} />
 
         {noindex ? <meta name="robots" content="noindex, nofollow" /> : null}
+
+        {structuredDataList.map((data, idx) => (
+          <script
+            key={idx}
+            type="application/ld+json"
+          >
+            {JSON.stringify(data)}
+          </script>
+        ))}
       </ReactHelmet>
       {children}
     </div>

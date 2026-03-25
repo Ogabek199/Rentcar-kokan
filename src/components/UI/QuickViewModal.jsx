@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { applyCarDiscount } from "../../utils/carPromo";
 import "../../styles/quick-view-modal.css";
+import { slugify } from "../../utils/slugify";
 
 const QuickViewModal = ({ car, isOpen, onClose }) => {
   useEffect(() => {
@@ -32,6 +33,7 @@ const QuickViewModal = ({ car, isOpen, onClose }) => {
   if (!isOpen || !car) return null;
 
   const { discounted, original } = applyCarDiscount(car.price);
+  const carSlug = car.slug || slugify(car.carName);
   const formatCurrency = (value) => {
     return new Intl.NumberFormat("uz-UZ").format(value);
   };
@@ -91,14 +93,14 @@ const QuickViewModal = ({ car, isOpen, onClose }) => {
 
             <div className="quick-view-modal__actions">
               <Link
-                to={`/cars/${car.carName}`}
+                to={`/cars/${carSlug}`}
                 className="btn btn-primary quick-view-modal__btn"
                 onClick={onClose}
               >
                 Batafsil ma'lumot
               </Link>
               <Link
-                to={`/cars/${car.carName}?booking=true`}
+                to={`/cars/${carSlug}?booking=true`}
                 className="btn btn-outline quick-view-modal__btn"
                 onClick={onClose}
               >

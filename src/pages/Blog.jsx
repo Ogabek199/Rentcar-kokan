@@ -16,7 +16,6 @@ const Blog = () => {
         <Container>
           <Row className="animate-on-scroll animate-stagger">
             <BlogList />
-            <BlogList />
           </Row>
         </Container>
       </section>

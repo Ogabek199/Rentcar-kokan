@@ -6,6 +6,7 @@ import CommonSection from "../components/UI/CommonSection";
 import carData from "../assets/data/carData";
 import "../styles/prices.css";
 import { applyCarDiscount } from "../utils/carPromo";
+import { slugify } from "../utils/slugify";
 
 const formatCurrency = (value) =>
   new Intl.NumberFormat("uz-UZ", {
@@ -36,9 +37,10 @@ const Prices = () => {
           <Row className="animate-on-scroll animate-stagger">
             {carData.map((item) => {
               const { discounted, original } = applyCarDiscount(item.price);
+              const carSlug = item.slug || slugify(item.carName);
               return (
                 <Col key={item.id} lg="4" md="6" className="mb-4">
-                <Link to={`/cars/${item.carName}`} className="price-card">
+                <Link to={`/cars/${carSlug}`} className="price-card">
                   <div className="price-card__img-wrap">
                     <img src={item.imgUrl} alt={item.carName} className="price-card__img" loading="lazy" />
                     <span className="price-card__badge">
