@@ -1,18 +1,19 @@
-import React, { lazy, Suspense } from "react";
+import React, { Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import lazyWithRetry from "../utils/lazyWithRetry";
 
-// Lazy load sahifalar - faqat kerak bo'lganda yuklanadi
-const Home = lazy(() => import("../pages/Home"));
-const About = lazy(() => import("../pages/About"));
-const CarListing = lazy(() => import("../pages/CarListing"));
-const CarDetails = lazy(() => import("../pages/CarDetails"));
-const Blog = lazy(() => import("../pages/Blog"));
-const BlogDetails = lazy(() => import("../pages/BlogDetails"));
-const NotFound = lazy(() => import("../pages/NotFound"));
-const Contact = lazy(() => import("../pages/Contact"));
-const Prices = lazy(() => import("../pages/Prices"));
-const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"));
-const AboutMe = lazy(() => import("../pages/AboutMe"));
+// Lazy load sahifalar - faqat kerak bo'lganda yuklanadi (chunk xatolarida qayta urinish + bitta reload)
+const Home = lazyWithRetry(() => import("../pages/Home"));
+const About = lazyWithRetry(() => import("../pages/About"));
+const CarListing = lazyWithRetry(() => import("../pages/CarListing"));
+const CarDetails = lazyWithRetry(() => import("../pages/CarDetails"));
+const Blog = lazyWithRetry(() => import("../pages/Blog"));
+const BlogDetails = lazyWithRetry(() => import("../pages/BlogDetails"));
+const NotFound = lazyWithRetry(() => import("../pages/NotFound"));
+const Contact = lazyWithRetry(() => import("../pages/Contact"));
+const Prices = lazyWithRetry(() => import("../pages/Prices"));
+const PrivacyPolicy = lazyWithRetry(() => import("../pages/PrivacyPolicy"));
+const AboutMe = lazyWithRetry(() => import("../pages/AboutMe"));
 
 // Loading komponenti
 const PageLoader = () => (

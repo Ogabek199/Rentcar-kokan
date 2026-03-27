@@ -180,17 +180,28 @@ export const wrapFetch = async (fetchFunction, functionName = "API Call") => {
   }
 };
 
+function isChunkRelatedError(error) {
+  if (!error) return false;
+  if (error.name === "ChunkLoadError") return true;
+  const msg = String(error.message || error);
+  return (
+    /loading chunk [\d]+ failed/i.test(msg) ||
+    /failed to fetch dynamically imported module/i.test(msg) ||
+    /importing a module script failed/i.test(msg)
+  );
+}
+
 /**
  * React Component xatolarini tortish
  */
 export class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { hasError: false };
+    this.state = { hasError: false, error: null };
   }
 
   static getDerivedStateFromError(error) {
-    return { hasError: true };
+    return { hasError: true, error };
   }
 
   componentDidCatch(error, errorInfo) {
@@ -207,16 +218,43 @@ export class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
+      const chunkError = isChunkRelatedError(this.state.error);
       return (
-        <div style={{
-          padding: "20px",
-          textAlign: "center",
-          backgroundColor: "#f8d7da",
-          borderRadius: "4px",
-          margin: "20px",
-        }}>
-          <h2>❌ Muammo yuz berdi!</h2>
-          <p>Sahifa yuklanishda xatolik yuz berdi. Iltimos, sahifani yangilang.</p>
+        <div
+          style={{
+            padding: "24px",
+            textAlign: "center",
+            backgroundColor: "#f8d7da",
+            borderRadius: "8px",
+            margin: "20px",
+            maxWidth: "420px",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          <h2 style={{ fontSize: "1.25rem", marginBottom: "12px" }}>
+            ❌ Muammo yuz berdi!
+          </h2>
+          <p style={{ marginBottom: "16px", color: "#333", lineHeight: 1.5 }}>
+            {chunkError
+              ? "Sayt yangilangan bo‘lishi mumkin. Sahifani yangilab, qayta urinib ko‘ring."
+              : "Sahifa yuklanishda xatolik yuz berdi. Sahifani yangilang yoki keyinroq qayta urinib ko‘ring."}
+          </p>
+          <button
+            type="button"
+            onClick={() => window.location.reload()}
+            style={{
+              padding: "10px 20px",
+              fontSize: "1rem",
+              cursor: "pointer",
+              backgroundColor: "#0d6efd",
+              color: "#fff",
+              border: "none",
+              borderRadius: "6px",
+            }}
+          >
+            Sahifani yangilash
+          </button>
         </div>
       );
     }
