@@ -8,6 +8,7 @@ import ScrollToTop from "../UI/ScrollToTop";
 import ScrollProgress from "../UI/ScrollProgress";
 import BottomNavbar from "../UI/BottomNavbar";
 import FloatingOrbits from "../UI/FloatingOrbits";
+import ChatMessageWidget from "../UI/ChatMessageWidget";
 // import FavoritesCounter from "../UI/FavoritesCounter";
 import { initScrollAnimations } from "../../utils/scrollAnimations";
 import { logError } from "../../utils/errorLogger";
@@ -75,6 +76,7 @@ const Layout = () => {
         </div>
         <Footer />
         <ScrollToTop />
+        <ChatMessageWidget />
         <BottomNavbar />
         {/* <FavoritesCounter /> */}
       </div>

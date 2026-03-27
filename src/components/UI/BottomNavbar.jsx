@@ -1,17 +1,18 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import "../../styles/bottom-navbar.css";
+import { useTranslation } from "../../i18n/LanguageContext";
 
 const BottomNavbar = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   const navItems = [
-    { path: "/home", icon: "ri-home-line", activeIcon: "ri-home-fill", label: "Bosh" },
-    { path: "/cars", icon: "ri-car-line", activeIcon: "ri-car-fill", label: "Avto" },
-    { path: "/prices", icon: "ri-price-tag-3-line", activeIcon: "ri-price-tag-3-fill", label: "Narxlar" },
-    { path: "/about", icon: "ri-information-line", activeIcon: "ri-information-fill", label: "Biz" },
-    { path: "/about-me", icon: "ri-user-smile-line", activeIcon: "ri-user-smile-fill", label: "Dasturchi" },
-    { path: "/contact", icon: "ri-phone-line", activeIcon: "ri-phone-fill", label: "Bog'lanish" },
+    { path: "/home", icon: "ri-home-line", activeIcon: "ri-home-fill", key: "bottomNav.home" },
+    { path: "/cars", icon: "ri-car-line", activeIcon: "ri-car-fill", key: "bottomNav.cars" },
+    { path: "/prices", icon: "ri-price-tag-3-line", activeIcon: "ri-price-tag-3-fill", key: "bottomNav.prices" },
+    { path: "/about", icon: "ri-information-line", activeIcon: "ri-information-fill", key: "bottomNav.about" },
+    { path: "/contact", icon: "ri-phone-line", activeIcon: "ri-phone-fill", key: "bottomNav.contact" },
   ];
 
   const isActive = (path) => {
@@ -33,7 +34,7 @@ const BottomNavbar = () => {
               <div className="bottom-navbar__icon-wrapper">
                 <i className={active ? item.activeIcon : item.icon}></i>
               </div>
-              <span className="bottom-navbar__label">{item.label}</span>
+              <span className="bottom-navbar__label">{t(item.key)}</span>
             </NavLink>
           );
         })}

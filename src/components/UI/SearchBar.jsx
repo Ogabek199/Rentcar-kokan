@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "../../styles/search-bar.css";
+import { useTranslation } from "../../i18n/LanguageContext";
 
-const SearchBar = ({ onSearch, placeholder = "Avtomobil nomi bo'yicha qidirish..." }) => {
+const SearchBar = ({ onSearch, placeholder }) => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = (e) => {
@@ -22,7 +24,7 @@ const SearchBar = ({ onSearch, placeholder = "Avtomobil nomi bo'yicha qidirish..
         <input
           type="text"
           className="search-bar__input"
-          placeholder={placeholder}
+          placeholder={placeholder || t("filter.searchPlaceholder")}
           value={searchTerm}
           onChange={handleChange}
         />
@@ -31,7 +33,7 @@ const SearchBar = ({ onSearch, placeholder = "Avtomobil nomi bo'yicha qidirish..
             type="button"
             className="search-bar__clear"
             onClick={handleClear}
-            aria-label="Tozalash"
+            aria-label={t("filter.clear")}
           >
             <i className="ri-close-line"></i>
           </button>

@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { applyCarDiscount } from "../../utils/carPromo";
 import "../../styles/quick-view-modal.css";
 import { slugify } from "../../utils/slugify";
+import { useTranslation } from "../../i18n/LanguageContext";
 
 const QuickViewModal = ({ car, isOpen, onClose }) => {
+  const { t } = useTranslation();
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -41,7 +43,7 @@ const QuickViewModal = ({ car, isOpen, onClose }) => {
   return (
     <div className="quick-view-modal" onClick={onClose}>
       <div className="quick-view-modal__content" onClick={(e) => e.stopPropagation()}>
-        <button className="quick-view-modal__close" onClick={onClose} aria-label="Yopish">
+        <button className="quick-view-modal__close" onClick={onClose} aria-label={t("header.closeMenu")}>
           <i className="ri-close-line"></i>
         </button>
 
@@ -76,13 +78,13 @@ const QuickViewModal = ({ car, isOpen, onClose }) => {
             <div className="quick-view-modal__price">
               <div className="quick-view-modal__price-current">
                 <span className="quick-view-modal__price-value">
-                  {formatCurrency(discounted)} so'm
+                  {formatCurrency(discounted)} {t("common.som")}
                 </span>
-                <span className="quick-view-modal__price-period">/ kun</span>
+                <span className="quick-view-modal__price-period">{t("common.perDay")}</span>
               </div>
               {discounted < original && (
                 <div className="quick-view-modal__price-old">
-                  {formatCurrency(original)} so'm
+                  {formatCurrency(original)} {t("common.som")}
                 </div>
               )}
             </div>
@@ -97,14 +99,14 @@ const QuickViewModal = ({ car, isOpen, onClose }) => {
                 className="btn btn-primary quick-view-modal__btn"
                 onClick={onClose}
               >
-                Batafsil ma'lumot
+                {t("common.details")}
               </Link>
               <Link
                 to={`/cars/${carSlug}?booking=true`}
                 className="btn btn-outline quick-view-modal__btn"
                 onClick={onClose}
               >
-                Bron qilish
+                {t("home.bookNow")}
               </Link>
             </div>
           </div>

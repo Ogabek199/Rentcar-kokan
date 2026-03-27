@@ -22,7 +22,7 @@ const formatErrorMessage = (errorData) => {
     message = "",
     stack = "",
     page = "Unknown",
-    timestamp = new Date().toISOString(),
+    // timestamp = new Date().toISOString(),
     userAgent = navigator.userAgent || "Unknown",
     url = window.location.href || "Unknown",
     additionalInfo = {},

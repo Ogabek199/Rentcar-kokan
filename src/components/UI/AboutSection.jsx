@@ -1,30 +1,16 @@
 import { Container, Row, Col } from "reactstrap";
 import "../../styles/about-section.css";
-
-const features = [
-  {
-    icon: "ri-time-line",
-    title: "24/7 Qo'llab-quvvatlash",
-    text: "Jamoamiz har doim sizga yordam berishga tayyor - istalgan vaqtda, istalgan joyda.",
-  },
-  {
-    icon: "ri-price-tag-3-line",
-    title: "Eng yaxshi narxlar",
-    text: "Eng raqobatbardosh narxlarda premium va qulay tajriba kafolati.",
-  },
-  {
-    icon: "ri-checkbox-circle-line",
-    title: "Toza mashinalar",
-    text: "Har bir avtomobil ijaraga berilishidan oldin puxta dezinfeksiya qilinadi va yuviladi.",
-  },
-  {
-    icon: "ri-flashlight-line",
-    title: "Tez bron qilish",
-    text: "Orzuingizdagi mashinani 60 soniyadan kamroq vaqtda onlayn bron qiling.",
-  },
-];
+import { useTranslation } from "../../i18n/LanguageContext";
 
 const AboutSection = ({ aboutClass }) => {
+  const { t } = useTranslation();
+  const features = [
+    { icon: "ri-time-line", title: t("aboutSection.f1t"), text: t("aboutSection.f1d") },
+    { icon: "ri-price-tag-3-line", title: t("aboutSection.f2t"), text: t("aboutSection.f2d") },
+    { icon: "ri-checkbox-circle-line", title: t("aboutSection.f3t"), text: t("aboutSection.f3d") },
+    { icon: "ri-flashlight-line", title: t("aboutSection.f4t"), text: t("aboutSection.f4d") },
+  ];
+
   return (
     <section
       className="about__section about__section--new"
@@ -32,8 +18,8 @@ const AboutSection = ({ aboutClass }) => {
     >
       <Container>
         <div className="about__section-head text-center">
-          <h2 className="about__section-title">Har bir yolda mukammallik</h2>
-          <p className="about__section-sub">NIMA UCHUN BIZNI TANLAYDI</p>
+          <h2 className="about__section-title">{t("aboutSection.title")}</h2>
+          <p className="about__section-sub">{t("aboutSection.subtitle")}</p>
           <span className="about__section-line" />
         </div>
         <Row className="about__section-cards">

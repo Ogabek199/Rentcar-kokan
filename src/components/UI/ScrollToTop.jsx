@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/scroll-to-top.css";
+import { useTranslation } from "../../i18n/LanguageContext";
 
 const ScrollToTop = () => {
+  const { t } = useTranslation();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const ScrollToTop = () => {
         <button
           className="scroll-to-top"
           onClick={scrollToTop}
-          aria-label="Yuqoriga qaytish"
+          aria-label={t("common.backToTop")}
         >
           <i className="ri-arrow-up-line"></i>
         </button>

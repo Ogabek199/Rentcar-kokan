@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { logError } from "../utils/errorLogger";
 import "../styles/contact.css";
+import { useTranslation } from "../i18n/LanguageContext";
 
 const TELEGRAM_TOKEN = "8070117237:AAHVkDVQLv1Zg8M_57mwk7sXwQlIDpQIk7I";
 const TELEGRAM_CHAT_ID = "-1002689421547";
@@ -13,15 +14,18 @@ const TELEGRAM_API_URL = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMess
 
 const INITIAL_FORM_DATA = { ism: "", telefon: "", fikr: "" };
 
-const VALIDATION_MESSAGES = {
-  ism: "❗Iltimos, ismingizni kiriting.",
-  telefon: "❗Iltimos, telefon raqamingizni kiriting.",
-  fikr: "❗Iltimos, fikr bildirishingiz shart.",
-};
-
 const Contact = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState(INITIAL_FORM_DATA);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const validationMessages = useMemo(
+    () => ({
+      ism: t("contactPage.validationName"),
+      telefon: t("contactPage.validationPhone"),
+      fikr: t("contactPage.validationMessage"),
+    }),
+    [t]
+  );
 
   const formatPhoneNumber = useCallback((value) => {
     const numbers = value.replace(/\D/g, "");
@@ -45,14 +49,14 @@ const Contact = () => {
   const resetForm = useCallback(() => setFormData(INITIAL_FORM_DATA), []);
 
   const validateForm = useCallback((data) => {
-    for (const [key, message] of Object.entries(VALIDATION_MESSAGES)) {
+    for (const [key, message] of Object.entries(validationMessages)) {
       if (!data[key]?.trim()) {
         toast.error(message);
         return false;
       }
     }
     return true;
-  }, []);
+  }, [validationMessages]);
 
   const getDeviceInfo = useCallback(() => {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
@@ -142,10 +146,10 @@ const Contact = () => {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.description || "Telegramga yuborishda xatolik yuz berdi.");
       }
-      toast.success("✅ Xabaringiz Telegramga yuborildi!");
+      toast.success(t("contactPage.success"));
       resetForm();
     } catch (err) {
-      toast.error("❌ Xabar yuborishda muammo bo'ldi.");
+      toast.error(t("contactPage.error"));
       console.error("Xatolik:", err);
       
       // Error logga yuborish
@@ -161,50 +165,50 @@ const Contact = () => {
     } finally {
       setIsSubmitting(false);
     }
-  }, [formData, validateForm, resetForm, getDeviceInfo]);
+  }, [formData, validateForm, resetForm, getDeviceInfo, t]);
 
   const contactInfo = useMemo(
     () => ({
-      address: "Turkiston ko'chasi 12, Qo'qon sh.",
+      address: t("contactPage.address"),
       phone: "+998 91 200 85 50",
       phoneLink: "tel:+998912008550",
     }),
-    []
+    [t]
   );
 
   return (
     <Helmet
-      title="Bog'lanish"
+      title={t("contactPage.title")}
       description="Ziyo Rent Car bilan bog‘lanish: savollar, bron qilish va hamkorlik bo‘yicha murojaat qiling. Telefon, email va onlayn forma orqali tez javob oling."
       canonicalPath="/contact"
     >
       <section className="contact-page animate-page-enter">
         <div className="contact-page__header animate-on-scroll animate-fade-in-down">
           <Container>
-            <h1 className="contact-page__title">Bog'lanish</h1>
-            <p className="contact-page__sub">Biz bilan bog'laning</p>
+            <h1 className="contact-page__title">{t("contactPage.title")}</h1>
+            <p className="contact-page__sub">{t("contactPage.subtitle")}</p>
           </Container>
         </div>
         <Container className="contact-page__content">
           <Row>
             <Col lg="7" md="7">
               <div className="contact-card animate-on-scroll animate-fade-in-left">
-                <h2 className="contact-card__title">Xabar yuborish</h2>
+                <h2 className="contact-card__title">{t("contactPage.sendMessage")}</h2>
                 <form onSubmit={submitHandler} className="contact-form">
                   <div className="contact-form__group">
-                    <label className="contact-form__label">Ismingiz</label>
+                    <label className="contact-form__label">{t("contactPage.name")}</label>
                     <input
                       type="text"
                       name="ism"
                       value={formData.ism}
                       onChange={changeHandler}
-                      placeholder="Ismingizni kiriting"
+                      placeholder={t("contactPage.namePlaceholder")}
                       disabled={isSubmitting}
                       className="contact-form__input"
                     />
                   </div>
                   <div className="contact-form__group">
-                    <label className="contact-form__label">Telefon raqamingiz</label>
+                    <label className="contact-form__label">{t("contactPage.phone")}</label>
                     <input
                       type="tel"
                       name="telefon"
@@ -216,26 +220,26 @@ const Contact = () => {
                     />
                   </div>
                   <div className="contact-form__group">
-                    <label className="contact-form__label">Xabar</label>
+                    <label className="contact-form__label">{t("contactPage.message")}</label>
                     <textarea
                       name="fikr"
                       value={formData.fikr}
                       onChange={changeHandler}
                       rows={5}
-                      placeholder="Fikr qoldirish..."
+                      placeholder={t("contactPage.messagePlaceholder")}
                       disabled={isSubmitting}
                       className="contact-form__textarea"
                     />
                   </div>
                   <button type="submit" className="contact-form__btn" disabled={isSubmitting}>
-                    {isSubmitting ? "Yuborilmoqda..." : "Xabar yuborish"}
+                    {isSubmitting ? t("contactPage.sending") : t("contactPage.send")}
                   </button>
                 </form>
               </div>
             </Col>
             <Col lg="5" md="5">
               <div className="contact-info-card animate-on-scroll animate-fade-in-right">
-                <h2 className="contact-info-card__title">Bog'lanish ma'lumotlari</h2>
+                <h2 className="contact-info-card__title">{t("contactPage.infoTitle")}</h2>
                 <ul className="contact-info-card__list">
                   <li>
                     <i className="ri-map-pin-line"></i>
@@ -247,9 +251,17 @@ const Contact = () => {
                   </li>
                 </ul>
                 <div className="contact-info-card__map">
-                  <span>Xaritada ko'rish</span>
-                  <a href="https://maps.google.com/?q=Kokand+Uzbekistan" target="_blank" rel="noreferrer">
-                    Google xaritada ochish
+                  <span>{t("contactPage.mapView")}</span>
+                  <div className="contact-info-card__map-frame">
+                    <iframe
+                      title="Kokand map on Yandex"
+                      src="https://yandex.uz/map-widget/v1/?ll=70.9428%2C40.5286&z=12"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  </div>
+                  <a href="https://yandex.uz/maps/?ll=70.9428%2C40.5286&z=12" target="_blank" rel="noreferrer">
+                    {t("contactPage.openGoogleMap")}
                   </a>
                 </div>
               </div>

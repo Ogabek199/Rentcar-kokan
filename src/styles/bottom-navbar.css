@@ -128,15 +128,14 @@
   transform: scale(1.05);
 }
 
-/* Mobile Only - Show bottom navbar */
+/* Mobile - header navigation ishlatiladi, bottom navbar yopiq */
 @media (max-width: 768px) {
   .bottom-navbar {
-    display: block;
+    display: none !important;
   }
 
-  /* Add padding to body to prevent content from being hidden behind navbar */
   body {
-    padding-bottom: 80px;
+    padding-bottom: 0;
   }
 }
 
@@ -176,7 +175,7 @@
   }
 
   body {
-    padding-bottom: 70px;
+    padding-bottom: 0;
   }
 }
 
@@ -216,9 +215,4 @@
   }
 }
 
-/* Hide header on mobile when bottom navbar is visible */
-@media (max-width: 768px) {
-  .header--new {
-    display: none !important;
-  }
-}
+/* Header mobileda ochiq qoladi */

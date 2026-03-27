@@ -30,6 +30,8 @@ const PageLoader = () => (
 );
 
 const Routers = () => {
+  const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
@@ -44,8 +46,9 @@ const Routers = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-        <Route path="/about-me" element={<AboutMe />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/about-me" element={isMobile ? <Navigate to="/home" replace /> : <AboutMe />} />
+        <Route path="/404" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/404" replace />} />
       </Routes>
     </Suspense>
   );

@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Form, FormGroup } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 import "../../styles/find-car-form.css";
+import { useTranslation } from "../../i18n/LanguageContext";
 
 const FindCarForm = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     pickupDate: "",
@@ -28,7 +30,7 @@ const FindCarForm = () => {
     <Form className="find-car-form find-car-form--new" onSubmit={handleSubmit}>
       <div className="find-car-form__grid">
         <FormGroup className="find-car-form__group">
-          <label className="find-car-form__label">OLISH SANASI</label>
+          <label className="find-car-form__label">{t("findCar.pickup")}</label>
           <div className="find-car-form__input-wrap">
             <i className="ri-calendar-line text-black"></i>
             <input
@@ -40,7 +42,7 @@ const FindCarForm = () => {
           </div>
         </FormGroup>
         <FormGroup className="find-car-form__group">
-          <label className="find-car-form__label">QAYTARISH SANASI</label>
+          <label className="find-car-form__label">{t("findCar.return")}</label>
           <div className="find-car-form__input-wrap">
             <i className="ri-calendar-line text-black"></i>
             <input
@@ -52,7 +54,7 @@ const FindCarForm = () => {
           </div>
         </FormGroup>
         <FormGroup className="find-car-form__group">
-          <label className="find-car-form__label">MASHINA TURI</label>
+          <label className="find-car-form__label">{t("findCar.type")}</label>
           <div className="find-car-form__input-wrap find-car-form__input-wrap--select">
             <i className="ri-car-line text-black"></i>
             <select name="carType" value={formData.carType} onChange={handleChange}>
@@ -68,7 +70,7 @@ const FindCarForm = () => {
         <FormGroup className="find-car-form__group find-car-form__group--btn">
           <button type="submit" className="find-car-form__submit">
             <i className="ri-search-line"></i>
-            Avtoparkni qidirish
+            {t("findCar.search")}
           </button>
         </FormGroup>
       </div>

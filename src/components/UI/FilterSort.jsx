@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "../../styles/filter-sort.css";
+import { useTranslation } from "../../i18n/LanguageContext";
 
 const FilterSort = ({ onFilterChange, onSortChange, searchComponent }) => {
+  const { t } = useTranslation();
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState({
     priceRange: "all",
@@ -43,7 +45,7 @@ const FilterSort = ({ onFilterChange, onSortChange, searchComponent }) => {
           onClick={() => setShowFilters(!showFilters)}
         >
           <i className="ri-filter-line"></i>
-          Filtrlar
+          {t("filter.filters")}
           {showFilters ? (
             <i className="ri-arrow-up-s-line"></i>
           ) : (
@@ -60,7 +62,7 @@ const FilterSort = ({ onFilterChange, onSortChange, searchComponent }) => {
         <div className="filter-sort__sort">
           <label htmlFor="sort-select">
             <i className="ri-sort-desc"></i>
-            Tartiblash:
+            {t("filter.sort")}
           </label>
           <select
             id="sort-select"
@@ -68,11 +70,11 @@ const FilterSort = ({ onFilterChange, onSortChange, searchComponent }) => {
             value={sortBy}
             onChange={(e) => handleSortChange(e.target.value)}
           >
-            <option value="default">Standart</option>
-            <option value="price-low">Narx: Pastdan yuqoriga</option>
-            <option value="price-high">Narx: Yuqoridan pastga</option>
-            <option value="name-asc">Nomi: A-Z</option>
-            <option value="name-desc">Nomi: Z-A</option>
+            <option value="default">{t("filter.default")}</option>
+            <option value="price-low">{t("filter.priceLow")}</option>
+            <option value="price-high">{t("filter.priceHigh")}</option>
+            <option value="name-asc">{t("filter.nameAsc")}</option>
+            <option value="name-desc">{t("filter.nameDesc")}</option>
           </select>
         </div>
       </div>
@@ -80,7 +82,7 @@ const FilterSort = ({ onFilterChange, onSortChange, searchComponent }) => {
       {showFilters && (
         <div className="filter-sort__panel">
           <div className="filter-sort__group">
-            <label className="filter-sort__label">Uzatma turi</label>
+            <label className="filter-sort__label">{t("filter.transmission")}</label>
             <div className="filter-sort__options">
               <button
                 className={`filter-sort__option ${
@@ -88,7 +90,7 @@ const FilterSort = ({ onFilterChange, onSortChange, searchComponent }) => {
                 }`}
                 onClick={() => handleFilterChange("transmission", "all")}
               >
-                Barchasi
+                {t("filter.all")}
               </button>
               <button
                 className={`filter-sort__option ${
@@ -96,7 +98,7 @@ const FilterSort = ({ onFilterChange, onSortChange, searchComponent }) => {
                 }`}
                 onClick={() => handleFilterChange("transmission", "Automatic")}
               >
-                Avtomatik
+                {t("filter.automatic")}
               </button>
               <button
                 className={`filter-sort__option ${
@@ -104,18 +106,18 @@ const FilterSort = ({ onFilterChange, onSortChange, searchComponent }) => {
                 }`}
                 onClick={() => handleFilterChange("transmission", "Manual")}
               >
-                Mexanik
+                {t("filter.manual")}
               </button>
             </div>
           </div>
 
           <div className="filter-sort__group">
-            <label className="filter-sort__label">Narx diapazoni</label>
+            <label className="filter-sort__label">{t("filter.priceRange")}</label>
             <div className="filter-sort__price-range">
               <input
                 type="number"
                 className="filter-sort__price-input"
-                placeholder="Min"
+                placeholder={t("filter.min")}
                 value={filters.minPrice}
                 onChange={(e) => handleFilterChange("minPrice", e.target.value)}
               />
@@ -123,7 +125,7 @@ const FilterSort = ({ onFilterChange, onSortChange, searchComponent }) => {
               <input
                 type="number"
                 className="filter-sort__price-input"
-                placeholder="Max"
+                placeholder={t("filter.max")}
                 value={filters.maxPrice}
                 onChange={(e) => handleFilterChange("maxPrice", e.target.value)}
               />
@@ -132,7 +134,7 @@ const FilterSort = ({ onFilterChange, onSortChange, searchComponent }) => {
 
           <button className="filter-sort__reset" onClick={handleReset}>
             <i className="ri-refresh-line"></i>
-            Tozalash
+            {t("filter.clear")}
           </button>
         </div>
       )}

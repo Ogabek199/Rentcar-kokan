@@ -6,6 +6,7 @@ import { applyCarDiscount } from "../../utils/carPromo";
 import FavoriteButton from "./FavoriteButton";
 import QuickViewModal from "./QuickViewModal";
 import { slugify } from "../../utils/slugify";
+import { useTranslation } from "../../i18n/LanguageContext";
 
 const formatCurrency = (value) =>
   new Intl.NumberFormat("uz-UZ", {
@@ -14,6 +15,7 @@ const formatCurrency = (value) =>
   }).format(value);
 
 const CarItem = React.memo((props) => {
+  const { t } = useTranslation();
   const { imgUrl, carName, automatic, price, rating = 4.8, slug } = props.item;
   
   // Narxlarni memoize qilish - faqat price o'zgarganda qayta hisoblash
@@ -57,19 +59,19 @@ const CarItem = React.memo((props) => {
             <div className="car__item-price-tag">
               <div className="car__item-price-row">
                 <span className="car__item-price-new">
-                  {formattedDiscounted} so'm
+                  {formattedDiscounted} {t("common.som")}
                 </span>
-                <span className="car__item-price-per">/ kun</span>
+                <span className="car__item-price-per">{t("common.perDay")}</span>
               </div>
-              <span className="car__item-price-old">{formattedOriginal} so'm</span>
+              <span className="car__item-price-old">{formattedOriginal} {t("common.som")}</span>
             </div>
             <div className="car__item-actions">
               <FavoriteButton carId={props.item.id} size="medium" />
               <button
                 className="car__item-quick-view"
                 onClick={handleQuickViewOpen}
-                aria-label="Tezkor ko'rish"
-                title="Tezkor ko'rish"
+                aria-label={t("common.details")}
+                title={t("common.details")}
               >
                 <i className="ri-eye-line"></i>
               </button>
@@ -79,11 +81,11 @@ const CarItem = React.memo((props) => {
             <h4 className="car__item-title">{carName}</h4>
             <div className="car__item-features">
               <span><i className="ri-settings-3-line"></i> {automatic}</span>
-              <span><i className="ri-user-line"></i> 4 o'rin</span>
+              <span><i className="ri-user-line"></i> 4</span>
               <span><i className="ri-star-fill"></i> {rating}</span>
             </div>
             <Link to={`/cars/${slug || slugify(carName)}`} className="car__item-btn">
-              Ijara
+              {t("common.details")}
             </Link>
           </div>
         </div>

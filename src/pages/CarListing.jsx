@@ -7,8 +7,10 @@ import SearchBar from "../components/UI/SearchBar";
 import FilterSort from "../components/UI/FilterSort";
 import carData from "../assets/data/carData";
 import "../styles/no-results.css";
+import { useTranslation } from "../i18n/LanguageContext";
 
 const CarListing = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({
     priceRange: "all",
@@ -75,11 +77,11 @@ const CarListing = () => {
 
   return (
     <Helmet
-      title="Avtopark"
+      title={t("carListing.title")}
       description="Ziyo Rent Car avtoparki: turli modellardagi avtomobillar, kunlik ijara va qulay shartlar. O'zingizga mos mashinani tanlab, tez bron qiling."
       canonicalPath="/cars"
     >
-      <CommonSection title="Avtomobil ro'yxati" />
+      <CommonSection title={t("carListing.sectionTitle")} />
 
       <section className="section--cars animate-on-scroll animate-fade-in-up">
         <Container>
@@ -100,8 +102,8 @@ const CarListing = () => {
           ) : (
             <div className="no-results animate-on-scroll animate-fade-in">
               <i className="ri-search-line"></i>
-              <h3>Natija topilmadi</h3>
-              <p>Qidiruv shartlariga mos avtomobil topilmadi. Filtrlarni o'zgartirib ko'ring.</p>
+              <h3>{t("carListing.notFound")}</h3>
+              <p>{t("carListing.notFoundText")}</p>
             </div>
           )}
         </Container>

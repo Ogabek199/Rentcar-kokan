@@ -1,19 +1,19 @@
 import { Container, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import "../../styles/footer.css";
-
-const quickLinks = [
-  { path: "/cars", display: "Avtopark" },
-  { path: "/prices", display: "Narxlar" },
-  { path: "/blogs", display: "Bloglar" },
-  { path: "/about", display: "Biz haqimizda" },
-  // { path: "/about-me", display: "Men haqimda" },
-  { path: "/privacy-policy", display: "Maxfiylik siyosati" },
-  { path: "/contact", display: "Bog'lanish" },
-];
+import { useTranslation } from "../../i18n/LanguageContext";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const year = new Date().getFullYear();
+  const quickLinks = [
+    { path: "/cars", display: t("footer.fleet") },
+    { path: "/prices", display: t("nav.prices") },
+    { path: "/blogs", display: t("footer.blogs") },
+    { path: "/about", display: t("nav.about") },
+    { path: "/privacy-policy", display: t("footer.privacy") },
+    { path: "/contact", display: t("nav.contact") },
+  ];
 
   return (
     <footer className="footer footer--new">
@@ -26,7 +26,7 @@ const Footer = () => {
                 <span>Ziyo Rent Car</span>
               </Link>
               <p className="footer__desc">
-                Kokandda premium avtomobil ijarasi. Qulaylik, ishonchlilik va eng yaxshi narxlarda hashamatni his qiling.
+                {t("footer.description")}
               </p>
               {/* <div className="footer__social">
                 <a href="https://t.me/rentcarkokand" target="_blank" rel="noreferrer" aria-label="Telegram">
@@ -43,7 +43,7 @@ const Footer = () => {
           </Col>
 
           <Col lg="2" md="6" sm="6">
-            <h5 className="footer__title">Tez havolalar</h5>
+            <h5 className="footer__title">{t("footer.quickLinks")}</h5>
             <ul className="footer__links">
               {quickLinks.map((item) => (
                 <li key={item.path}>
@@ -54,11 +54,11 @@ const Footer = () => {
           </Col>
 
           <Col lg="3" md="6" sm="6">
-            <h5 className="footer__title">Bog'lanish</h5>
+            <h5 className="footer__title">{t("footer.contact")}</h5>
             <ul className="footer__contact">
               <li>
                 <i className="ri-map-pin-line"></i>
-                <span>Qo'qon shahar</span>
+                <span>{t("footer.address")}</span>
               </li>
               <li>
                 <i className="ri-phone-line"></i>
@@ -68,16 +68,24 @@ const Footer = () => {
           </Col>
 
           <Col lg="4" md="6" sm="12">
-            <h5 className="footer__title">Bizning manzilimiz</h5>
+            <h5 className="footer__title">{t("footer.ourAddress")}</h5>
             <div className="footer__map-placeholder">
-              <span>Xaritada ko'rsatish</span>
+              <span>{t("footer.showMap")}</span>
+              <div className="footer__map-frame">
+                <iframe
+                  title="Kokand location map on Yandex"
+                  src="https://yandex.uz/map-widget/v1/?ll=70.9428%2C40.5286&z=12"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
               <a
-                href="https://maps.google.com/?q=Kokand+Uzbekistan"
+                href="https://yandex.uz/maps/?ll=70.9428%2C40.5286&z=12"
                 target="_blank"
                 rel="noreferrer"
                 className="footer__map-link"
               >
-                Google xaritada ochish
+                {t("footer.openGoogleMap")}
               </a>
             </div>
           </Col>
@@ -85,7 +93,7 @@ const Footer = () => {
 
         <div className="footer__bottom">
           <p>
-            © {year} Ziyo Rent Car. Barcha huquqlar himoyalangan.
+            © {year} Ziyo Rent Car. {t("footer.rights")}
           </p>
         </div>
       </Container>

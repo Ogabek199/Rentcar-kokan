@@ -7,11 +7,13 @@ import AboutSection from "../components/UI/AboutSection";
 import carData from "../assets/data/carData";
 import CarItem from "../components/UI/CarItem";
 import Testimonial from "../components/UI/Testimonial";
+import { useTranslation } from "../i18n/LanguageContext";
 
 const Home = () => {
+  const { t } = useTranslation();
   return (
     <Helmet
-      title="Bosh sahifa"
+      title={t("home.title")}
       description="Kokandda premium avtomobil ijarasi: arzon narxlar, qulay xizmat va ishonchli avtopark. Tez bron qiling va mashinani uyigacha yetkazib berishdan bahramand bo‘ling."
       canonicalPath="/"
     >
@@ -24,8 +26,8 @@ const Home = () => {
       <section className="section--cars animate-on-scroll animate-fade-in-up">
         <Container>
           <div className="section-head section-head--center animate-on-scroll animate-fade-in-down">
-            <h2 className="section-head__title">Ommabop takliflar</h2>
-            <p className="section-head__sub">SHAHARDA ENG YAXSHI TANLOV</p>
+            <h2 className="section-head__title">{t("home.popularOffers")}</h2>
+            <p className="section-head__sub">{t("home.bestChoice")}</p>
             <span className="section-head__line" />
           </div>
           <Row>
@@ -35,7 +37,7 @@ const Home = () => {
           </Row>
           <div className="text-center mt-5 animate-on-scroll animate-fade-in">
             <Link to="/cars" className="btn-outline">
-              Barcha avtomobillar ({carData.length}+)
+              {t("common.allCars")} ({carData.length}+)
             </Link>
           </div>
         </Container>
@@ -44,8 +46,8 @@ const Home = () => {
       <section className="animate-on-scroll animate-fade-in-up">
         <Container>
           <div className="section-head animate-on-scroll animate-fade-in-down">
-            <h2 className="section-head__title">Mijozlarimiz fikrlari</h2>
-            <p className="section-head__sub">HAQIQI HIKOYALAR</p>
+            <h2 className="section-head__title">{t("home.testimonials")}</h2>
+            <p className="section-head__sub">{t("home.stories")}</p>
             <span className="section-head__line" />
           </div>
           <div className="animate-on-scroll animate-scale-in">
@@ -57,13 +59,11 @@ const Home = () => {
       <section className="section--cta animate-on-scroll animate-fade-in-up">
         <Container>
           <div className="cta-box animate-on-scroll animate-scale-in">
-            <h2 className="cta-box__title">Premium safaringizni boshlashga tayyormisiz?</h2>
-            <p className="cta-box__text">
-              Ziyo Rent Carga ishonadigan 5000+ dan ortiq mamnun mijozlar qo‘shildi. Premium mashinangiz bir necha bosish naridas.
-            </p>
+            <h2 className="cta-box__title">{t("home.ctaTitle")}</h2>
+            <p className="cta-box__text">{t("home.ctaText")}</p>
             <div className="cta-box__buttons">
               <Link to="/cars" className="cta-box__btn cta-box__btn--primary">
-                Hozir bron qiling
+                {t("home.bookNow")}
               </Link>
               <a href="tel:+998912008550" className="cta-box__btn cta-box__btn--outline text-white bg-transparent">
                 <i className="ri-phone-line text-white"></i>
